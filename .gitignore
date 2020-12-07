@@ -30,3 +30,4 @@
 *.exe
 *.out
 *.app
+/TimeBank/.vs/TimeBank/v15

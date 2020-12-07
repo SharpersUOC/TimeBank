@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BancoDeTiempoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="idCat" />
+    </Key>
+    <Property Name="idCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Demandas" Relationship="Self.FK_Demandas_Categorias" FromRole="Categorias" ToRole="Demandas" />
+    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Categorias" FromRole="Categorias" ToRole="Ofertas" />
+  </EntityType>
+  <EntityType Name="Demandas">
+    <Key>
+      <PropertyRef Name="idDemanda" />
+    </Key>
+    <Property Name="idDemanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <Property Name="Tiempo" Type="Double" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="Self.FK_Demandas_Categorias" FromRole="Demandas" ToRole="Categorias" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Demandas_Usuarios" FromRole="Demandas" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Estado" FromRole="Estado" ToRole="Ofertas" />
+  </EntityType>
+  <EntityType Name="Mensaje">
+    <Key>
+      <PropertyRef Name="idMensaje" />
+    </Key>
+    <Property Name="idMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idOferta" Type="Int32" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Mensaje_Ofertas" FromRole="Mensaje" ToRole="Ofertas" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Mensaje_Usuarios" FromRole="Mensaje" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Ofertas">
+    <Key>
+      <PropertyRef Name="idOferta" />
+    </Key>
+    <Property Name="idOferta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <Property Name="Tiempo" Type="Double" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="Self.FK_Ofertas_Categorias" FromRole="Ofertas" ToRole="Categorias" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK_Ofertas_Estado" FromRole="Ofertas" ToRole="Estado" />
+    <NavigationProperty Name="Mensaje" Relationship="Self.FK_Mensaje_Ofertas" FromRole="Ofertas" ToRole="Mensaje" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Ofertas_Usuarios" FromRole="Ofertas" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transferencia">
+    <Key>
+      <PropertyRef Name="idTransferencia" />
+    </Key>
+    <Property Name="idTransferencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Transferencia_Usuarios" FromRole="Transferencia" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Balance" Type="Double" Nullable="false" />
+    <Property Name="Esadmin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Demandas" Relationship="Self.FK_Demandas_Usuarios" FromRole="Usuarios" ToRole="Demandas" />
+    <NavigationProperty Name="Mensaje" Relationship="Self.FK_Mensaje_Usuarios" FromRole="Usuarios" ToRole="Mensaje" />
+    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Usuarios" FromRole="Usuarios" ToRole="Ofertas" />
+    <NavigationProperty Name="Transferencia" Relationship="Self.FK_Transferencia_Usuarios" FromRole="Usuarios" ToRole="Transferencia" />
+  </EntityType>
+  <Association Name="FK_Demandas_Categorias">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Demandas">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ofertas_Categorias">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Ofertas">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demandas_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Demandas">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ofertas_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Ofertas">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensaje_Ofertas">
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="1" />
+    <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ofertas">
+        <PropertyRef Name="idOferta" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="idOferta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensaje_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ofertas_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Ofertas">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transferencia_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Transferencia" Type="Self.Transferencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Transferencia">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BancoDeTiempoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+    <EntitySet Name="Demandas" EntityType="Self.Demandas" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" />
+    <EntitySet Name="Mensaje" EntityType="Self.Mensaje" />
+    <EntitySet Name="Ofertas" EntityType="Self.Ofertas" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Transferencia" EntityType="Self.Transferencia" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Demandas_Categorias" Association="Self.FK_Demandas_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Demandas" EntitySet="Demandas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ofertas_Categorias" Association="Self.FK_Ofertas_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Ofertas" EntitySet="Ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demandas_Usuarios" Association="Self.FK_Demandas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Demandas" EntitySet="Demandas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ofertas_Estado" Association="Self.FK_Ofertas_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Ofertas" EntitySet="Ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensaje_Ofertas" Association="Self.FK_Mensaje_Ofertas">
+      <End Role="Ofertas" EntitySet="Ofertas" />
+      <End Role="Mensaje" EntitySet="Mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensaje_Usuarios" Association="Self.FK_Mensaje_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Mensaje" EntitySet="Mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ofertas_Usuarios" Association="Self.FK_Ofertas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Ofertas" EntitySet="Ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transferencia_Usuarios" Association="Self.FK_Transferencia_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Transferencia" EntitySet="Transferencia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

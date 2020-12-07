@@ -1,0 +1,121 @@
+﻿namespace TimeBank
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Variable del diseñador necesaria.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Limpiar los recursos que se estén usando.
+        /// </summary>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Código generado por el Diseñador de Windows Forms
+
+        /// <summary>
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnCategorias = new System.Windows.Forms.Button();
+            this.btnEstado = new System.Windows.Forms.Button();
+            this.btnOfertas = new System.Windows.Forms.Button();
+            this.btnDemandas = new System.Windows.Forms.Button();
+            this.btnTransferencia = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Location = new System.Drawing.Point(34, 34);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(89, 23);
+            this.btnUsuarios.TabIndex = 0;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
+            // btnCategorias
+            // 
+            this.btnCategorias.Location = new System.Drawing.Point(34, 76);
+            this.btnCategorias.Name = "btnCategorias";
+            this.btnCategorias.Size = new System.Drawing.Size(89, 23);
+            this.btnCategorias.TabIndex = 1;
+            this.btnCategorias.Text = "Categorias";
+            this.btnCategorias.UseVisualStyleBackColor = true;
+            // 
+            // btnEstado
+            // 
+            this.btnEstado.Location = new System.Drawing.Point(34, 116);
+            this.btnEstado.Name = "btnEstado";
+            this.btnEstado.Size = new System.Drawing.Size(89, 23);
+            this.btnEstado.TabIndex = 2;
+            this.btnEstado.Text = "Estado";
+            this.btnEstado.UseVisualStyleBackColor = true;
+            // 
+            // btnOfertas
+            // 
+            this.btnOfertas.Location = new System.Drawing.Point(176, 34);
+            this.btnOfertas.Name = "btnOfertas";
+            this.btnOfertas.Size = new System.Drawing.Size(85, 23);
+            this.btnOfertas.TabIndex = 3;
+            this.btnOfertas.Text = "Ofertas";
+            this.btnOfertas.UseVisualStyleBackColor = true;
+            // 
+            // btnDemandas
+            // 
+            this.btnDemandas.Location = new System.Drawing.Point(176, 76);
+            this.btnDemandas.Name = "btnDemandas";
+            this.btnDemandas.Size = new System.Drawing.Size(85, 23);
+            this.btnDemandas.TabIndex = 4;
+            this.btnDemandas.Text = "Demandas";
+            this.btnDemandas.UseVisualStyleBackColor = true;
+            // 
+            // btnTransferencia
+            // 
+            this.btnTransferencia.Location = new System.Drawing.Point(176, 116);
+            this.btnTransferencia.Name = "btnTransferencia";
+            this.btnTransferencia.Size = new System.Drawing.Size(85, 23);
+            this.btnTransferencia.TabIndex = 5;
+            this.btnTransferencia.Text = "Transferencia";
+            this.btnTransferencia.UseVisualStyleBackColor = true;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.btnTransferencia);
+            this.Controls.Add(this.btnDemandas);
+            this.Controls.Add(this.btnOfertas);
+            this.Controls.Add(this.btnEstado);
+            this.Controls.Add(this.btnCategorias);
+            this.Controls.Add(this.btnUsuarios);
+            this.Name = "Form1";
+            this.Text = "Panel Inico";
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnCategorias;
+        private System.Windows.Forms.Button btnEstado;
+        private System.Windows.Forms.Button btnOfertas;
+        private System.Windows.Forms.Button btnDemandas;
+        private System.Windows.Forms.Button btnTransferencia;
+    }
+}
+
