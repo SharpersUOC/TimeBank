@@ -1,66 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BancoDeTiempoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BancoDeTiempoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="BancoDeTiempoModel.Categorias" />
+    <EntitySet Name="Clientes" EntityType="BancoDeTiempoModel.Clientes" />
+    <EntitySet Name="Demandas" EntityType="BancoDeTiempoModel.Demandas" />
+    <EntitySet Name="Estado" EntityType="BancoDeTiempoModel.Estado" />
+    <EntitySet Name="Media" EntityType="BancoDeTiempoModel.Media" />
+    <EntitySet Name="Ofertas" EntityType="BancoDeTiempoModel.Ofertas" />
+    <EntitySet Name="Orden" EntityType="BancoDeTiempoModel.Orden" />
+    <EntitySet Name="Sesiones" EntityType="BancoDeTiempoModel.Sesiones" />
+    <EntitySet Name="sysdiagrams" EntityType="BancoDeTiempoModel.sysdiagrams" />
+    <EntitySet Name="Transferencia" EntityType="BancoDeTiempoModel.Transferencia" />
+    <EntitySet Name="Usuarios" EntityType="BancoDeTiempoModel.Usuarios" />
+    <EntitySet Name="Wallet" EntityType="BancoDeTiempoModel.Wallet" />
+    <AssociationSet Name="FK_Demandas_Categorias" Association="BancoDeTiempoModel.FK_Demandas_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Demandas" EntitySet="Demandas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ofertas_Categorias" Association="BancoDeTiempoModel.FK_Ofertas_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Ofertas" EntitySet="Ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Usuarios" Association="BancoDeTiempoModel.FK_Clientes_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Wallet" Association="BancoDeTiempoModel.FK_Clientes_Wallet">
+      <End Role="Wallet" EntitySet="Wallet" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demandas_Usuarios" Association="BancoDeTiempoModel.FK_Demandas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Demandas" EntitySet="Demandas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Estado" Association="BancoDeTiempoModel.FK_Orden_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ofertas_Usuarios" Association="BancoDeTiempoModel.FK_Ofertas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Ofertas" EntitySet="Ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Ofertas" Association="BancoDeTiempoModel.FK_Orden_Ofertas">
+      <End Role="Ofertas" EntitySet="Ofertas" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Usuarios" Association="BancoDeTiempoModel.FK_Orden_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Usuarios" Association="BancoDeTiempoModel.FK_Sesiones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transferencia_Usuarios" Association="BancoDeTiempoModel.FK_Transferencia_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Transferencia" EntitySet="Transferencia" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Categorias">
     <Key>
       <PropertyRef Name="idCat" />
     </Key>
     <Property Name="idCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NombreCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Demandas" Relationship="Self.FK_Demandas_Categorias" FromRole="Categorias" ToRole="Demandas" />
-    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Categorias" FromRole="Categorias" ToRole="Ofertas" />
+    <Property Name="NombreCat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Demandas" Relationship="BancoDeTiempoModel.FK_Demandas_Categorias" FromRole="Categorias" ToRole="Demandas" />
+    <NavigationProperty Name="Ofertas" Relationship="BancoDeTiempoModel.FK_Ofertas_Categorias" FromRole="Categorias" ToRole="Ofertas" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Esadmin" Type="Boolean" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idWallet" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Clientes_Usuarios" FromRole="Clientes" ToRole="Usuarios" />
+    <NavigationProperty Name="Wallet" Relationship="BancoDeTiempoModel.FK_Clientes_Wallet" FromRole="Clientes" ToRole="Wallet" />
   </EntityType>
   <EntityType Name="Demandas">
     <Key>
       <PropertyRef Name="idDemanda" />
     </Key>
     <Property Name="idDemanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Titulo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="idCategoria" Type="Int32" Nullable="false" />
-    <Property Name="Tiempo" Type="Double" />
+    <Property Name="Tiempo" Type="Double" Nullable="false" />
+    <Property Name="fecha_dem" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Categorias" Relationship="Self.FK_Demandas_Categorias" FromRole="Demandas" ToRole="Categorias" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Demandas_Usuarios" FromRole="Demandas" ToRole="Usuarios" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="BancoDeTiempoModel.FK_Demandas_Categorias" FromRole="Demandas" ToRole="Categorias" />
+    <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Demandas_Usuarios" FromRole="Demandas" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Estado">
     <Key>
       <PropertyRef Name="idEstado" />
     </Key>
     <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NombreEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Estado" FromRole="Estado" ToRole="Ofertas" />
+    <Property Name="NombreEstado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orden" Relationship="BancoDeTiempoModel.FK_Orden_Estado" FromRole="Estado" ToRole="Orden" />
   </EntityType>
-  <EntityType Name="Mensaje">
+  <EntityType Name="Media">
     <Key>
-      <PropertyRef Name="idMensaje" />
+      <PropertyRef Name="idMedia" />
     </Key>
-    <Property Name="idMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idOferta" Type="Int32" Nullable="false" />
-    <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Mensaje_Ofertas" FromRole="Mensaje" ToRole="Ofertas" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Mensaje_Usuarios" FromRole="Mensaje" ToRole="Usuarios" />
+    <Property Name="idMedia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="path" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="format" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Ofertas">
     <Key>
       <PropertyRef Name="idOferta" />
     </Key>
     <Property Name="idOferta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Titulo" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="idCategoria" Type="Int32" Nullable="false" />
     <Property Name="Tiempo" Type="Double" Nullable="false" />
+    <Property Name="fecha_ofer" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="BancoDeTiempoModel.FK_Ofertas_Categorias" FromRole="Ofertas" ToRole="Categorias" />
+    <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Ofertas_Usuarios" FromRole="Ofertas" ToRole="Usuarios" />
+    <NavigationProperty Name="Orden" Relationship="BancoDeTiempoModel.FK_Orden_Ofertas" FromRole="Ofertas" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="idOrden" />
+    </Key>
+    <Property Name="idOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idOferta" Type="Int32" Nullable="false" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <Property Name="idEstado" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Categorias" Relationship="Self.FK_Ofertas_Categorias" FromRole="Ofertas" ToRole="Categorias" />
-    <NavigationProperty Name="Estado" Relationship="Self.FK_Ofertas_Estado" FromRole="Ofertas" ToRole="Estado" />
-    <NavigationProperty Name="Mensaje" Relationship="Self.FK_Mensaje_Ofertas" FromRole="Ofertas" ToRole="Mensaje" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Ofertas_Usuarios" FromRole="Ofertas" ToRole="Usuarios" />
+    <NavigationProperty Name="Estado" Relationship="BancoDeTiempoModel.FK_Orden_Estado" FromRole="Orden" ToRole="Estado" />
+    <NavigationProperty Name="Ofertas" Relationship="BancoDeTiempoModel.FK_Orden_Ofertas" FromRole="Orden" ToRole="Ofertas" />
+    <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Orden_Usuarios" FromRole="Orden" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Sesiones">
+    <Key>
+      <PropertyRef Name="idsesion" />
+    </Key>
+    <Property Name="idsesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_sesion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Sesiones_Usuarios" FromRole="Sesiones" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="principal_id" Type="Int32" Nullable="false" />
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
@@ -73,27 +164,35 @@
     <Property Name="idTransferencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Transferencia_Usuarios" FromRole="Transferencia" ToRole="Usuarios" />
+    <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Transferencia_Usuarios" FromRole="Transferencia" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="IdUser" />
     </Key>
     <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Clientes_Usuarios" FromRole="Usuarios" ToRole="Clientes" />
+    <NavigationProperty Name="Demandas" Relationship="BancoDeTiempoModel.FK_Demandas_Usuarios" FromRole="Usuarios" ToRole="Demandas" />
+    <NavigationProperty Name="Ofertas" Relationship="BancoDeTiempoModel.FK_Ofertas_Usuarios" FromRole="Usuarios" ToRole="Ofertas" />
+    <NavigationProperty Name="Orden" Relationship="BancoDeTiempoModel.FK_Orden_Usuarios" FromRole="Usuarios" ToRole="Orden" />
+    <NavigationProperty Name="Sesiones" Relationship="BancoDeTiempoModel.FK_Sesiones_Usuarios" FromRole="Usuarios" ToRole="Sesiones" />
+    <NavigationProperty Name="Transferencia" Relationship="BancoDeTiempoModel.FK_Transferencia_Usuarios" FromRole="Usuarios" ToRole="Transferencia" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="idWallet" />
+    </Key>
+    <Property Name="idWallet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Balance" Type="Double" Nullable="false" />
-    <Property Name="Esadmin" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Demandas" Relationship="Self.FK_Demandas_Usuarios" FromRole="Usuarios" ToRole="Demandas" />
-    <NavigationProperty Name="Mensaje" Relationship="Self.FK_Mensaje_Usuarios" FromRole="Usuarios" ToRole="Mensaje" />
-    <NavigationProperty Name="Ofertas" Relationship="Self.FK_Ofertas_Usuarios" FromRole="Usuarios" ToRole="Ofertas" />
-    <NavigationProperty Name="Transferencia" Relationship="Self.FK_Transferencia_Usuarios" FromRole="Usuarios" ToRole="Transferencia" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Clientes_Wallet" FromRole="Wallet" ToRole="Clientes" />
   </EntityType>
   <Association Name="FK_Demandas_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
-    <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
+    <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Demandas" Role="Demandas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
         <PropertyRef Name="idCat" />
@@ -104,8 +203,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ofertas_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+    <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
         <PropertyRef Name="idCat" />
@@ -115,9 +214,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Clientes_Usuarios">
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Clientes" Role="Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Wallet">
+    <End Type="BancoDeTiempoModel.Wallet" Role="Wallet" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Clientes" Role="Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="idWallet" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="idWallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Demandas_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-    <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Demandas" Role="Demandas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
         <PropertyRef Name="IdUser" />
@@ -127,57 +250,69 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Ofertas_Estado">
-    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+  <Association Name="FK_Orden_Estado">
+    <End Type="BancoDeTiempoModel.Estado" Role="Estado" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Estado">
         <PropertyRef Name="idEstado" />
       </Principal>
-      <Dependent Role="Ofertas">
+      <Dependent Role="Orden">
         <PropertyRef Name="idEstado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Mensaje_Ofertas">
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="1" />
-    <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ofertas">
-        <PropertyRef Name="idOferta" />
-      </Principal>
-      <Dependent Role="Mensaje">
-        <PropertyRef Name="idOferta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Mensaje_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-    <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuarios">
-        <PropertyRef Name="IdUser" />
-      </Principal>
-      <Dependent Role="Mensaje">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Ofertas_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
         <PropertyRef Name="IdUser" />
       </Principal>
       <Dependent Role="Ofertas">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Ofertas">
+    <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ofertas">
+        <PropertyRef Name="idOferta" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="idOferta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Usuarios">
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesiones_Usuarios">
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Sesiones" Role="Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Sesiones">
         <PropertyRef Name="idUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Transferencia_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-    <End Role="Transferencia" Type="Self.Transferencia" Multiplicity="*" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Transferencia" Role="Transferencia" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
         <PropertyRef Name="IdUser" />
@@ -187,46 +322,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BancoDeTiempoEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
-    <EntitySet Name="Demandas" EntityType="Self.Demandas" />
-    <EntitySet Name="Estado" EntityType="Self.Estado" />
-    <EntitySet Name="Mensaje" EntityType="Self.Mensaje" />
-    <EntitySet Name="Ofertas" EntityType="Self.Ofertas" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Transferencia" EntityType="Self.Transferencia" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-    <AssociationSet Name="FK_Demandas_Categorias" Association="Self.FK_Demandas_Categorias">
-      <End Role="Categorias" EntitySet="Categorias" />
-      <End Role="Demandas" EntitySet="Demandas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Ofertas_Categorias" Association="Self.FK_Ofertas_Categorias">
-      <End Role="Categorias" EntitySet="Categorias" />
-      <End Role="Ofertas" EntitySet="Ofertas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Demandas_Usuarios" Association="Self.FK_Demandas_Usuarios">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="Demandas" EntitySet="Demandas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Ofertas_Estado" Association="Self.FK_Ofertas_Estado">
-      <End Role="Estado" EntitySet="Estado" />
-      <End Role="Ofertas" EntitySet="Ofertas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Mensaje_Ofertas" Association="Self.FK_Mensaje_Ofertas">
-      <End Role="Ofertas" EntitySet="Ofertas" />
-      <End Role="Mensaje" EntitySet="Mensaje" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Mensaje_Usuarios" Association="Self.FK_Mensaje_Usuarios">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="Mensaje" EntitySet="Mensaje" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Ofertas_Usuarios" Association="Self.FK_Ofertas_Usuarios">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="Ofertas" EntitySet="Ofertas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Transferencia_Usuarios" Association="Self.FK_Transferencia_Usuarios">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="Transferencia" EntitySet="Transferencia" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

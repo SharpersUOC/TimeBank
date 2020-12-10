@@ -4,83 +4,122 @@
     <EntitySetMapping Name="Categorias">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Categorias">
         <MappingFragment StoreEntitySet="Categorias">
-          <ScalarProperty Name="idCat" ColumnName="idCat" />
           <ScalarProperty Name="NombreCat" ColumnName="NombreCat" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="BancoDeTiempoModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="idWallet" ColumnName="idWallet" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="Esadmin" ColumnName="Esadmin" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Demandas">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Demandas">
         <MappingFragment StoreEntitySet="Demandas">
-          <ScalarProperty Name="idDemanda" ColumnName="idDemanda" />
-          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="fecha_dem" ColumnName="fecha_dem" />
+          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="idDemanda" ColumnName="idDemanda" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Estado">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Estado">
         <MappingFragment StoreEntitySet="Estado">
-          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
           <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Mensaje">
-      <EntityTypeMapping TypeName="BancoDeTiempoModel.Mensaje">
-        <MappingFragment StoreEntitySet="Mensaje">
-          <ScalarProperty Name="idMensaje" ColumnName="idMensaje" />
-          <ScalarProperty Name="idOferta" ColumnName="idOferta" />
-          <ScalarProperty Name="idUser" ColumnName="idUser" />
+    <EntitySetMapping Name="Media">
+      <EntityTypeMapping TypeName="BancoDeTiempoModel.Media">
+        <MappingFragment StoreEntitySet="Media">
+          <ScalarProperty Name="format" ColumnName="format" />
+          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="idMedia" ColumnName="idMedia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ofertas">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Ofertas">
         <MappingFragment StoreEntitySet="Ofertas">
-          <ScalarProperty Name="idOferta" ColumnName="idOferta" />
-          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="fecha_ofer" ColumnName="fecha_ofer" />
+          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="idOferta" ColumnName="idOferta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orden">
+      <EntityTypeMapping TypeName="BancoDeTiempoModel.Orden">
+        <MappingFragment StoreEntitySet="Orden">
           <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idOferta" ColumnName="idOferta" />
+          <ScalarProperty Name="idOrden" ColumnName="idOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sesiones">
+      <EntityTypeMapping TypeName="BancoDeTiempoModel.Sesiones">
+        <MappingFragment StoreEntitySet="Sesiones">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="fecha_sesion" ColumnName="fecha_sesion" />
+          <ScalarProperty Name="idsesion" ColumnName="idsesion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Transferencia">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Transferencia">
         <MappingFragment StoreEntitySet="Transferencia">
-          <ScalarProperty Name="idTransferencia" ColumnName="idTransferencia" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idTransferencia" ColumnName="idTransferencia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
           <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wallet">
+      <EntityTypeMapping TypeName="BancoDeTiempoModel.Wallet">
+        <MappingFragment StoreEntitySet="Wallet">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="Balance" ColumnName="Balance" />
-          <ScalarProperty Name="Esadmin" ColumnName="Esadmin" />
+          <ScalarProperty Name="idWallet" ColumnName="idWallet" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

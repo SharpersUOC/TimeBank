@@ -64,6 +64,9 @@
     <Compile Include="Modelos\Categorias.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Clientes.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\DBTimeBankModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,10 +88,16 @@
     <Compile Include="Modelos\Estado.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\Mensaje.cs">
+    <Compile Include="Modelos\Media.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Ofertas.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Orden.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Sesiones.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\sysdiagrams.cs">
@@ -98,6 +107,9 @@
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuarios.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Wallet.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\FormUsuarios.cs">

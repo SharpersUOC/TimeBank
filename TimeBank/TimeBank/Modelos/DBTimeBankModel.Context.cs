@@ -26,12 +26,16 @@ namespace TimeBank.Modelos
         }
     
         public virtual DbSet<Categorias> Categorias { get; set; }
+        public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Demandas> Demandas { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
-        public virtual DbSet<Mensaje> Mensaje { get; set; }
+        public virtual DbSet<Media> Media { get; set; }
         public virtual DbSet<Ofertas> Ofertas { get; set; }
+        public virtual DbSet<Orden> Orden { get; set; }
+        public virtual DbSet<Sesiones> Sesiones { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Transferencia> Transferencia { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Wallet> Wallet { get; set; }
     }
 }

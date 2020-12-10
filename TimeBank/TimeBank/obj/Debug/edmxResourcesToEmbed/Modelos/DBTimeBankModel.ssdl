@@ -7,6 +7,17 @@
     <Property Name="idCat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreCat" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Esadmin" Type="bit" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idWallet" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Demandas">
     <Key>
       <PropertyRef Name="idDemanda" />
@@ -14,9 +25,10 @@
     <Property Name="idDemanda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Titulo" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="Descripcion" Type="text" />
-    <Property Name="idCategoria" Type="int" Nullable="false" />
-    <Property Name="Tiempo" Type="float" />
+    <Property Name="Tiempo" Type="float" Nullable="false" />
+    <Property Name="fecha_dem" Type="date" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idCategoria" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Estado">
     <Key>
@@ -25,13 +37,14 @@
     <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreEstado" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Mensaje">
+  <EntityType Name="Media">
     <Key>
-      <PropertyRef Name="idMensaje" />
+      <PropertyRef Name="idMedia" />
     </Key>
-    <Property Name="idMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idOferta" Type="int" Nullable="false" />
-    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idMedia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="filename" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="path" Type="varchar" MaxLength="90" Nullable="false" />
+    <Property Name="format" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Ofertas">
     <Key>
@@ -40,10 +53,27 @@
     <Property Name="idOferta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Titulo" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="Descripcion" Type="text" />
-    <Property Name="idCategoria" Type="int" Nullable="false" />
     <Property Name="Tiempo" Type="float" Nullable="false" />
+    <Property Name="fecha_ofer" Type="date" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idCategoria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="idOrden" />
+    </Key>
+    <Property Name="idOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOferta" Type="int" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
     <Property Name="idEstado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sesiones">
+    <Key>
+      <PropertyRef Name="idsesion" />
+    </Key>
+    <Property Name="idsesion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_sesion" Type="date" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -68,13 +98,42 @@
       <PropertyRef Name="IdUser" />
     </Key>
     <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="Contraseña" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Balance" Type="float" Nullable="false" />
-    <Property Name="Esadmin" Type="bit" Nullable="false" />
+    <Property Name="fecha_alta" Type="date" Nullable="false" />
   </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="idWallet" />
+    </Key>
+    <Property Name="idWallet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Balance" Type="float" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Clientes_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Wallet">
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallet">
+        <PropertyRef Name="idWallet" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="idWallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Demandas_Categorias">
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
     <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
@@ -99,30 +158,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Mensaje_Ofertas">
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="1" />
-    <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ofertas">
-        <PropertyRef Name="idOferta" />
-      </Principal>
-      <Dependent Role="Mensaje">
-        <PropertyRef Name="idOferta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Mensaje_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-    <End Role="Mensaje" Type="Self.Mensaje" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuarios">
-        <PropertyRef Name="IdUser" />
-      </Principal>
-      <Dependent Role="Mensaje">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Ofertas_Categorias">
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
     <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
@@ -135,18 +170,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Ofertas_Estado">
-    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Estado">
-        <PropertyRef Name="idEstado" />
-      </Principal>
-      <Dependent Role="Ofertas">
-        <PropertyRef Name="idEstado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Ofertas_Usuarios">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
     <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
@@ -155,6 +178,54 @@
         <PropertyRef Name="IdUser" />
       </Principal>
       <Dependent Role="Ofertas">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Ofertas">
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ofertas">
+        <PropertyRef Name="idOferta" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="idOferta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesiones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Sesiones">
         <PropertyRef Name="idUser" />
       </Dependent>
     </ReferentialConstraint>
@@ -173,13 +244,25 @@
   </Association>
   <EntityContainer Name="BancoDeTiempoModelStoreContainer">
     <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Demandas" EntityType="Self.Demandas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Mensaje" EntityType="Self.Mensaje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Media" EntityType="Self.Media" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ofertas" EntityType="Self.Ofertas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orden" EntityType="Self.Orden" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sesiones" EntityType="Self.Sesiones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transferencia" EntityType="Self.Transferencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Clientes_Usuarios" Association="Self.FK_Clientes_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Wallet" Association="Self.FK_Clientes_Wallet">
+      <End Role="Wallet" EntitySet="Wallet" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
     <AssociationSet Name="FK_Demandas_Categorias" Association="Self.FK_Demandas_Categorias">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Demandas" EntitySet="Demandas" />
@@ -188,25 +271,29 @@
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Demandas" EntitySet="Demandas" />
     </AssociationSet>
-    <AssociationSet Name="FK_Mensaje_Ofertas" Association="Self.FK_Mensaje_Ofertas">
-      <End Role="Ofertas" EntitySet="Ofertas" />
-      <End Role="Mensaje" EntitySet="Mensaje" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Mensaje_Usuarios" Association="Self.FK_Mensaje_Usuarios">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="Mensaje" EntitySet="Mensaje" />
-    </AssociationSet>
     <AssociationSet Name="FK_Ofertas_Categorias" Association="Self.FK_Ofertas_Categorias">
       <End Role="Categorias" EntitySet="Categorias" />
-      <End Role="Ofertas" EntitySet="Ofertas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Ofertas_Estado" Association="Self.FK_Ofertas_Estado">
-      <End Role="Estado" EntitySet="Estado" />
       <End Role="Ofertas" EntitySet="Ofertas" />
     </AssociationSet>
     <AssociationSet Name="FK_Ofertas_Usuarios" Association="Self.FK_Ofertas_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Ofertas" EntitySet="Ofertas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Estado" Association="Self.FK_Orden_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Ofertas" Association="Self.FK_Orden_Ofertas">
+      <End Role="Ofertas" EntitySet="Ofertas" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Usuarios" Association="Self.FK_Orden_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Usuarios" Association="Self.FK_Sesiones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
     </AssociationSet>
     <AssociationSet Name="FK_Transferencia_Usuarios" Association="Self.FK_Transferencia_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />

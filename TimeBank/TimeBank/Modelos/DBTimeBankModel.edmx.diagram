@@ -5,22 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="afac9dc348484064948d1cf6ef670b52" Name="Diagram1">
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Categorias" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Demandas" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Estado" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Mensaje" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Ofertas" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Transferencia" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Usuarios" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Demandas_Categorias" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Categorias" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Demandas_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Estado" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Mensaje_Ofertas" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Mensaje_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Transferencia_Usuarios" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Categorias" Width="1.5" PointX="3.75" PointY="12.125" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Clientes" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Demandas" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Estado" Width="1.5" PointX="6" PointY="5.125" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Media" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Ofertas" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Orden" Width="1.5" PointX="8.25" PointY="7.75" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Sesiones" Width="1.5" PointX="3" PointY="19.875" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Transferencia" Width="1.5" PointX="3" PointY="17.375" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Wallet" Width="1.5" PointX="0.75" PointY="4.125" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Demandas_Categorias" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Categorias" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Clientes_Usuarios" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Clientes_Wallet" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Demandas_Usuarios" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Orden_Estado" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Usuarios" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Orden_Ofertas" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Orden_Usuarios" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Sesiones_Usuarios" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Transferencia_Usuarios" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

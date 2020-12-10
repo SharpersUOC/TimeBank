@@ -12,13 +12,11 @@ namespace TimeBank.Modelos
     using System;
     using System.Collections.Generic;
     
-    public partial class Mensaje
+    public partial class Media
     {
-        public int idMensaje { get; set; }
-        public int idOferta { get; set; }
-        public int idUser { get; set; }
-    
-        public virtual Ofertas Ofertas { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
+        public int idMedia { get; set; }
+        public string filename { get; set; }
+        public string path { get; set; }
+        public string format { get; set; }
     }
 }

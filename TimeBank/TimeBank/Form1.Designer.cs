@@ -34,6 +34,7 @@
             this.btnOfertas = new System.Windows.Forms.Button();
             this.btnDemandas = new System.Windows.Forms.Button();
             this.btnTransferencia = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -48,7 +49,7 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(34, 76);
+            this.btnCategorias.Location = new System.Drawing.Point(34, 116);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(89, 23);
             this.btnCategorias.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             // btnEstado
             // 
-            this.btnEstado.Location = new System.Drawing.Point(34, 116);
+            this.btnEstado.Location = new System.Drawing.Point(34, 156);
             this.btnEstado.Name = "btnEstado";
             this.btnEstado.Size = new System.Drawing.Size(89, 23);
             this.btnEstado.TabIndex = 2;
@@ -91,11 +92,21 @@
             this.btnTransferencia.Text = "Transferencia";
             this.btnTransferencia.UseVisualStyleBackColor = true;
             // 
+            // btnClientes
+            // 
+            this.btnClientes.Location = new System.Drawing.Point(34, 76);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(89, 23);
+            this.btnClientes.TabIndex = 6;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnTransferencia);
             this.Controls.Add(this.btnDemandas);
             this.Controls.Add(this.btnOfertas);
@@ -104,6 +115,7 @@
             this.Controls.Add(this.btnUsuarios);
             this.Name = "Form1";
             this.Text = "Panel Inico";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -116,6 +128,7 @@
         private System.Windows.Forms.Button btnOfertas;
         private System.Windows.Forms.Button btnDemandas;
         private System.Windows.Forms.Button btnTransferencia;
+        private System.Windows.Forms.Button btnClientes;
     }
 }
 

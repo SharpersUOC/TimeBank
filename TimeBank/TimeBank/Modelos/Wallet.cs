@@ -12,18 +12,19 @@ namespace TimeBank.Modelos
     using System;
     using System.Collections.Generic;
     
-    public partial class Estado
+    public partial class Wallet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Estado()
+        public Wallet()
         {
-            this.Orden = new HashSet<Orden>();
+            this.Clientes = new HashSet<Clientes>();
         }
     
-        public int idEstado { get; set; }
-        public string NombreEstado { get; set; }
+        public int idWallet { get; set; }
+        public double Balance { get; set; }
+        public System.DateTime fecha { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orden> Orden { get; set; }
+        public virtual ICollection<Clientes> Clientes { get; set; }
     }
 }

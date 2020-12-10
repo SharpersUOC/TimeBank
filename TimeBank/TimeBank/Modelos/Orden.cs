@@ -12,17 +12,15 @@ namespace TimeBank.Modelos
     using System;
     using System.Collections.Generic;
     
-    public partial class Demandas
+    public partial class Orden
     {
-        public int idDemanda { get; set; }
-        public string Titulo { get; set; }
-        public string Descripcion { get; set; }
-        public double Tiempo { get; set; }
-        public System.DateTime fecha_dem { get; set; }
+        public int idOrden { get; set; }
+        public int idOferta { get; set; }
         public int idUser { get; set; }
-        public int idCategoria { get; set; }
+        public int idEstado { get; set; }
     
-        public virtual Categorias Categorias { get; set; }
+        public virtual Estado Estado { get; set; }
+        public virtual Ofertas Ofertas { get; set; }
         public virtual Usuarios Usuarios { get; set; }
     }
 }
