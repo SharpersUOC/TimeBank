@@ -30,3 +30,6 @@ C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.cs
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.csproj.CopyComplete
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.exe
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.pdb
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormClientes.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormCategorias.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormEstados.resources

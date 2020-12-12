@@ -27,9 +27,27 @@ namespace TimeBank
             formUsuarios.Refrescar();
         }
 
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            Presentacion.FormCategorias formCategorias = new Presentacion.FormCategorias();
+            formCategorias.ShowDialog();
+            formCategorias.RefrescarCategorias();
+        }
+
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEstado_Click(object sender, EventArgs e)
+        {
+            Presentacion.FormEstados formEstados = new Presentacion.FormEstados();
+            formEstados.ShowDialog();
+            formEstados.RefrescarEstados();
         }
     }
 }

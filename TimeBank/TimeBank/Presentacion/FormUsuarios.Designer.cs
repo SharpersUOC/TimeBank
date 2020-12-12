@@ -70,7 +70,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvUsuarios);
-            this.splitContainer1.Size = new System.Drawing.Size(822, 249);
+            this.splitContainer1.Size = new System.Drawing.Size(874, 249);
             this.splitContainer1.SplitterDistance = 346;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -159,7 +159,7 @@
             this.dgvUsuarios.Location = new System.Drawing.Point(0, 0);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
-            this.dgvUsuarios.Size = new System.Drawing.Size(472, 249);
+            this.dgvUsuarios.Size = new System.Drawing.Size(524, 249);
             this.dgvUsuarios.TabIndex = 1;
             this.dgvUsuarios.DoubleClick += new System.EventHandler(this.dgvUsuarios_DoubleClick);
             // 
@@ -169,7 +169,7 @@
             this.idUser.HeaderText = "Id";
             this.idUser.Name = "idUser";
             this.idUser.ReadOnly = true;
-            this.idUser.Visible = false;
+            this.idUser.Width = 50;
             // 
             // Email
             // 
@@ -197,7 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 249);
+            this.ClientSize = new System.Drawing.Size(874, 249);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormUsuarios";
             this.Text = "Formulario Usuarios";

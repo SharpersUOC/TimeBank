@@ -191,7 +191,9 @@
     <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Clientes_Wallet" FromRole="Wallet" ToRole="Clientes" />
   </EntityType>
   <Association Name="FK_Demandas_Categorias">
-    <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Demandas" Role="Demandas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
@@ -203,7 +205,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ofertas_Categorias">
-    <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
@@ -215,7 +219,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Clientes_Usuarios">
-    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Clientes" Role="Clientes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -227,7 +233,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Clientes_Wallet">
-    <End Type="BancoDeTiempoModel.Wallet" Role="Wallet" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Wallet" Role="Wallet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Clientes" Role="Clientes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Wallet">
@@ -239,7 +247,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Demandas_Usuarios">
-    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Demandas" Role="Demandas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -251,7 +261,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orden_Estado">
-    <End Type="BancoDeTiempoModel.Estado" Role="Estado" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Estado" Role="Estado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Estado">
@@ -263,7 +275,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ofertas_Usuarios">
-    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -275,7 +289,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orden_Ofertas">
-    <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Ofertas" Role="Ofertas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Ofertas">
@@ -299,7 +315,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sesiones_Usuarios">
-    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Sesiones" Role="Sesiones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -311,7 +329,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Transferencia_Usuarios">
-    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="BancoDeTiempoModel.Transferencia" Role="Transferencia" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">

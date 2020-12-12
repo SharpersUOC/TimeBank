@@ -55,6 +55,7 @@
             this.btnCategorias.TabIndex = 1;
             this.btnCategorias.Text = "Categorias";
             this.btnCategorias.UseVisualStyleBackColor = true;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
             // btnEstado
             // 
@@ -64,6 +65,7 @@
             this.btnEstado.TabIndex = 2;
             this.btnEstado.Text = "Estado";
             this.btnEstado.UseVisualStyleBackColor = true;
+            this.btnEstado.Click += new System.EventHandler(this.btnEstado_Click);
             // 
             // btnOfertas
             // 

@@ -111,7 +111,9 @@
     <Property Name="fecha" Type="date" Nullable="false" />
   </EntityType>
   <Association Name="FK_Clientes_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -123,7 +125,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Clientes_Wallet">
-    <End Role="Wallet" Type="Self.Wallet" Multiplicity="1" />
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Wallet">
@@ -135,7 +139,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Demandas_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
@@ -147,7 +153,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Demandas_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Demandas" Type="Self.Demandas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -159,7 +167,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ofertas_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
@@ -171,7 +181,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ofertas_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -183,7 +195,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orden_Estado">
-    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Estado">
@@ -195,7 +209,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orden_Ofertas">
-    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="1" />
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Ofertas">
@@ -219,7 +235,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sesiones_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
@@ -231,7 +249,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Transferencia_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Transferencia" Type="Self.Transferencia" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">
