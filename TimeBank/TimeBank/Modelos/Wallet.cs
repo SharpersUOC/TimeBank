@@ -14,17 +14,11 @@ namespace TimeBank.Modelos
     
     public partial class Wallet
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Wallet()
-        {
-            this.Clientes = new HashSet<Clientes>();
-        }
-    
         public int idWallet { get; set; }
         public double Balance { get; set; }
         public System.DateTime fecha { get; set; }
+        public int idCliente { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clientes> Clientes { get; set; }
+        public virtual Clientes Clientes { get; set; }
     }
 }

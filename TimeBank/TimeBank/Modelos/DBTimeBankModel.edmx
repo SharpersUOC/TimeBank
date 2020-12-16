@@ -21,7 +21,6 @@
           <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Esadmin" Type="bit" Nullable="false" />
           <Property Name="idUser" Type="int" Nullable="false" />
-          <Property Name="idWallet" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Demandas">
           <Key>
@@ -114,6 +113,7 @@
           <Property Name="idWallet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Balance" Type="float" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Clientes_Usuarios">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
@@ -126,20 +126,6 @@
             </Principal>
             <Dependent Role="Clientes">
               <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Clientes_Wallet">
-          <End Role="Wallet" Type="Self.Wallet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Wallet">
-              <PropertyRef Name="idWallet" />
-            </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="idWallet" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -267,6 +253,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Wallet_Clientes1">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BancoDeTiempoModelStoreContainer">
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -282,10 +282,6 @@
           <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Clientes_Usuarios" Association="Self.FK_Clientes_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Clientes_Wallet" Association="Self.FK_Clientes_Wallet">
-            <End Role="Wallet" EntitySet="Wallet" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
           <AssociationSet Name="FK_Demandas_Categorias" Association="Self.FK_Demandas_Categorias">
@@ -324,6 +320,10 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Transferencia" EntitySet="Transferencia" />
           </AssociationSet>
+          <AssociationSet Name="FK_Wallet_Clientes1" Association="Self.FK_Wallet_Clientes1">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Wallet" EntitySet="Wallet" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -354,9 +354,9 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Clientes_Wallet" Association="BancoDeTiempoModel.FK_Clientes_Wallet">
-            <End Role="Wallet" EntitySet="Wallet" />
+          <AssociationSet Name="FK_Wallet_Clientes1" Association="BancoDeTiempoModel.FK_Wallet_Clientes1">
             <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Wallet" EntitySet="Wallet" />
           </AssociationSet>
           <AssociationSet Name="FK_Demandas_Usuarios" Association="BancoDeTiempoModel.FK_Demandas_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -405,9 +405,8 @@
           <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Esadmin" Type="Boolean" Nullable="false" />
           <Property Name="idUser" Type="Int32" Nullable="false" />
-          <Property Name="idWallet" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Clientes_Usuarios" FromRole="Clientes" ToRole="Usuarios" />
-          <NavigationProperty Name="Wallet" Relationship="BancoDeTiempoModel.FK_Clientes_Wallet" FromRole="Clientes" ToRole="Wallet" />
+          <NavigationProperty Name="Wallet" Relationship="BancoDeTiempoModel.FK_Wallet_Clientes1" FromRole="Clientes" ToRole="Wallet" />
         </EntityType>
         <EntityType Name="Demandas">
           <Key>
@@ -517,7 +516,8 @@
           <Property Name="idWallet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Balance" Type="Double" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Clientes_Wallet" FromRole="Wallet" ToRole="Clientes" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Wallet_Clientes1" FromRole="Wallet" ToRole="Clientes" />
         </EntityType>
         <Association Name="FK_Demandas_Categorias">
           <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1">
@@ -561,17 +561,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Clientes_Wallet">
-          <End Type="BancoDeTiempoModel.Wallet" Role="Wallet" Multiplicity="1">
+        <Association Name="FK_Wallet_Clientes1">
+          <End Type="BancoDeTiempoModel.Clientes" Role="Clientes" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="BancoDeTiempoModel.Clientes" Role="Clientes" Multiplicity="*" />
+          <End Type="BancoDeTiempoModel.Wallet" Role="Wallet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Wallet">
-              <PropertyRef Name="idWallet" />
+            <Principal Role="Clientes">
+              <PropertyRef Name="idCliente" />
             </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="idWallet" />
+            <Dependent Role="Wallet">
+              <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -688,7 +688,6 @@
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="BancoDeTiempoModel.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="idWallet" ColumnName="idWallet" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="Esadmin" ColumnName="Esadmin" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
@@ -793,6 +792,7 @@
           <EntitySetMapping Name="Wallet">
             <EntityTypeMapping TypeName="BancoDeTiempoModel.Wallet">
               <MappingFragment StoreEntitySet="Wallet">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="idWallet" ColumnName="idWallet" />

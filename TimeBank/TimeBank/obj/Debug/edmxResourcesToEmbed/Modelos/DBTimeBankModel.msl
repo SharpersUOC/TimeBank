@@ -12,7 +12,6 @@
     <EntitySetMapping Name="Clientes">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Clientes">
         <MappingFragment StoreEntitySet="Clientes">
-          <ScalarProperty Name="idWallet" ColumnName="idWallet" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="Esadmin" ColumnName="Esadmin" />
           <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
@@ -117,6 +116,7 @@
     <EntitySetMapping Name="Wallet">
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Wallet">
         <MappingFragment StoreEntitySet="Wallet">
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="Balance" ColumnName="Balance" />
           <ScalarProperty Name="idWallet" ColumnName="idWallet" />

@@ -5,22 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="afac9dc348484064948d1cf6ef670b52" Name="Diagram1">
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Categorias" Width="1.5" PointX="0.75" PointY="12.125" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Clientes" Width="1.5" PointX="3" PointY="3.75" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Demandas" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Estado" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Categorias" Width="1.5" PointX="3.75" PointY="2" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Clientes" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Demandas" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Estado" Width="1.5" PointX="6" PointY="12.625" />
         <EntityTypeShape EntityType="BancoDeTiempoModel.Media" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Ofertas" Width="1.5" PointX="6" PointY="7.5" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Orden" Width="1.5" PointX="8.25" PointY="7.75" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Sesiones" Width="1.5" PointX="3" PointY="19.875" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Transferencia" Width="1.5" PointX="3" PointY="17.375" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="BancoDeTiempoModel.Wallet" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Ofertas" Width="1.5" PointX="6" PointY="8.375" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Orden" Width="1.5" PointX="8.25" PointY="8.25" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Sesiones" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Transferencia" Width="1.5" PointX="3" PointY="18" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="BancoDeTiempoModel.Wallet" Width="1.5" PointX="5.25" PointY="5.375" />
         <AssociationConnector Association="BancoDeTiempoModel.FK_Demandas_Categorias" />
         <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Categorias" />
         <AssociationConnector Association="BancoDeTiempoModel.FK_Clientes_Usuarios" />
-        <AssociationConnector Association="BancoDeTiempoModel.FK_Clientes_Wallet" />
+        <AssociationConnector Association="BancoDeTiempoModel.FK_Wallet_Clientes1" />
         <AssociationConnector Association="BancoDeTiempoModel.FK_Demandas_Usuarios" />
         <AssociationConnector Association="BancoDeTiempoModel.FK_Orden_Estado" />
         <AssociationConnector Association="BancoDeTiempoModel.FK_Ofertas_Usuarios" />

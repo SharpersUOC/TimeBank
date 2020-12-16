@@ -16,7 +16,6 @@
     <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Esadmin" Type="bit" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
-    <Property Name="idWallet" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Demandas">
     <Key>
@@ -109,6 +108,7 @@
     <Property Name="idWallet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Balance" Type="float" Nullable="false" />
     <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="idCliente" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Clientes_Usuarios">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
@@ -121,20 +121,6 @@
       </Principal>
       <Dependent Role="Clientes">
         <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Clientes_Wallet">
-    <End Role="Wallet" Type="Self.Wallet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Wallet">
-        <PropertyRef Name="idWallet" />
-      </Principal>
-      <Dependent Role="Clientes">
-        <PropertyRef Name="idWallet" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -262,6 +248,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Wallet_Clientes1">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Wallet">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="BancoDeTiempoModelStoreContainer">
     <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -277,10 +277,6 @@
     <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Clientes_Usuarios" Association="Self.FK_Clientes_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="Clientes" EntitySet="Clientes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Clientes_Wallet" Association="Self.FK_Clientes_Wallet">
-      <End Role="Wallet" EntitySet="Wallet" />
       <End Role="Clientes" EntitySet="Clientes" />
     </AssociationSet>
     <AssociationSet Name="FK_Demandas_Categorias" Association="Self.FK_Demandas_Categorias">
@@ -318,6 +314,10 @@
     <AssociationSet Name="FK_Transferencia_Usuarios" Association="Self.FK_Transferencia_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Transferencia" EntitySet="Transferencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wallet_Clientes1" Association="Self.FK_Wallet_Clientes1">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Wallet" EntitySet="Wallet" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
