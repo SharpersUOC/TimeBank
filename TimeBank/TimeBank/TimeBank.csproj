@@ -112,11 +112,35 @@
     <Compile Include="Modelos\Wallet.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
+        <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.Designer.cs">
+      <DependentUpon>DemandaPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandasPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandasPage.Designer.cs">
+      <DependentUpon>DemandasPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FormCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\FormCategorias.Designer.cs">
       <DependentUpon>FormCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\FormDemanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\FormDemanda.Designer.cs">
+      <DependentUpon>FormDemanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\FormOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\FormOferta.Designer.cs">
+      <DependentUpon>FormOferta.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\FormEstados.cs">
       <SubType>Form</SubType>
@@ -130,19 +154,58 @@
     <Compile Include="Presentacion\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
+        <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.Designer.cs">
+      <DependentUpon>OfertaPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\OfertasPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\OfertasPage.Designer.cs">
+      <DependentUpon>OfertasPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\OrdenesPresentacion\OrdenesPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OrdenesPresentacion\OrdenesPage.Designer.cs">
+      <DependentUpon>OrdenesPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+       <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandaPage.resx">
+      <DependentUpon>DemandaPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandasPage.resx">
+      <DependentUpon>DemandasPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormCategorias.resx">
       <DependentUpon>FormCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\DemandasPresentacion\FormDemanda.resx">
+      <DependentUpon>FormDemanda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormEstados.resx">
       <DependentUpon>FormEstados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\OfertasPresentacion\FormOferta.resx">
+      <DependentUpon>FormOferta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+        <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertaPage.resx">
+      <DependentUpon>OfertaPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertasPage.resx">
+      <DependentUpon>OfertasPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\OrdenesPresentacion\OrdenesPage.resx">
+      <DependentUpon>OrdenesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
