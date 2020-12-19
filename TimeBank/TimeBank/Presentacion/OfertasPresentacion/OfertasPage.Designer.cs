@@ -28,33 +28,33 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ofertasDataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.ofertasDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // ofertasDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 372);
-            this.dataGridView1.TabIndex = 1;
+            this.ofertasDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ofertasDataGrid.Location = new System.Drawing.Point(12, 66);
+            this.ofertasDataGrid.Name = "ofertasDataGrid";
+            this.ofertasDataGrid.Size = new System.Drawing.Size(776, 372);
+            this.ofertasDataGrid.TabIndex = 1;
             // 
             // Ofertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ofertasDataGrid);
             this.Name = "Ofertas";
             this.Text = "Ofertas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ofertasDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ofertasDataGrid;
     }
 } 

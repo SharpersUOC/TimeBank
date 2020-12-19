@@ -49,5 +49,17 @@ namespace TimeBank
             formEstados.ShowDialog();
             formEstados.RefrescarEstados();
         }
+
+        private void btnOfertaForm_Click(object sender, EventArgs e)
+        {
+            Presentacion.OfertasPresentacion.FormOferta formOferta = new Presentacion.OfertasPresentacion.FormOferta();
+            formOferta.Show();
+        }
+
+        private void btnOfertas_Click(object sender, EventArgs e)
+        {
+            Presentacion.OfertasPresentacion.OfertasPage ofertasPage = new Presentacion.OfertasPresentacion.OfertasPage();
+            ofertasPage.Show();
+        }
     }
 }

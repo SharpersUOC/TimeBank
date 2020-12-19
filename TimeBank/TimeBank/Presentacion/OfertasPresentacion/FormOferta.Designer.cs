@@ -1,4 +1,4 @@
-namespace TimeBank.Presentacion
+namespace TimeBank.Presentacion.OfertasPresentacion
 {
     partial class FormOferta
     {
@@ -28,53 +28,57 @@ namespace TimeBank.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timeField = new System.Windows.Forms.TextBox();
+            this.saveOfertaBtn = new System.Windows.Forms.Button();
+            this.titleField = new System.Windows.Forms.TextBox();
+            this.decriptionField = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox3
+            // timeField
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 336);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(357, 20);
-            this.textBox3.TabIndex = 7;
+            this.timeField.Location = new System.Drawing.Point(12, 336);
+            this.timeField.Multiline = true;
+            this.timeField.Name = "priceField";
+            this.timeField.Size = new System.Drawing.Size(357, 20);
+            this.timeField.TabIndex = 7;
+            this.timeField.Click += new System.EventHandler(this.timeField_TextChanged);
             // 
-            // button1
+            // saveOfertaBtn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 375);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.saveOfertaBtn.Location = new System.Drawing.Point(12, 375);
+            this.saveOfertaBtn.Name = "saveOfertaBtn";
+            this.saveOfertaBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveOfertaBtn.TabIndex = 6;
+            this.saveOfertaBtn.Text = "Guardar";
+            this.saveOfertaBtn.UseVisualStyleBackColor = true;
+            this.saveOfertaBtn.Click += new System.EventHandler(this.saveOfertaBtn_Click);
             // 
-            // textBox2
+            // titleField
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 85);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(357, 20);
-            this.textBox2.TabIndex = 5;
+            this.titleField.Location = new System.Drawing.Point(12, 85);
+            this.titleField.Name = "titleField";
+            this.titleField.Size = new System.Drawing.Size(357, 20);
+            this.titleField.TabIndex = 5;
+            this.titleField.TextChanged += new System.EventHandler(this.titleField_TextChanged);
             // 
-            // textBox1
+            // decriptionField
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 111);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(357, 189);
-            this.textBox1.TabIndex = 4;
+            this.decriptionField.Location = new System.Drawing.Point(12, 111);
+            this.decriptionField.Multiline = true;
+            this.decriptionField.Name = "decriptionField";
+            this.decriptionField.Size = new System.Drawing.Size(357, 189);
+            this.decriptionField.TabIndex = 4;
+            this.decriptionField.Click += new System.EventHandler(this.descriptionField_TextChanged);
             // 
             // FormOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.timeField);
+            this.Controls.Add(this.saveOfertaBtn);
+            this.Controls.Add(this.titleField);
+            this.Controls.Add(this.decriptionField);
             this.Name = "FormOferta";
             this.Text = "FormOferta";
             this.ResumeLayout(false);
@@ -84,9 +88,9 @@ namespace TimeBank.Presentacion
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox timeField;
+        private System.Windows.Forms.Button saveOfertaBtn;
+        private System.Windows.Forms.TextBox titleField;
+        private System.Windows.Forms.TextBox decriptionField;
     }
-} 
+}

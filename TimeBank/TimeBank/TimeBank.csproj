@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -112,7 +115,7 @@
     <Compile Include="Modelos\Wallet.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
-        <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.cs">
+    <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.Designer.cs">
@@ -154,7 +157,7 @@
     <Compile Include="Presentacion\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
-        <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.cs">
+    <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.Designer.cs">
@@ -177,7 +180,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-       <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandaPage.resx">
+    <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandaPage.resx">
       <DependentUpon>DemandaPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandasPage.resx">
@@ -198,7 +201,7 @@
     <EmbeddedResource Include="Presentacion\FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-        <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertaPage.resx">
+    <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertaPage.resx">
       <DependentUpon>OfertaPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertasPage.resx">
@@ -254,4 +257,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

@@ -35,6 +35,7 @@
             this.btnDemandas = new System.Windows.Forms.Button();
             this.btnTransferencia = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
+            this.btnOfertaForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -75,6 +76,7 @@
             this.btnOfertas.TabIndex = 3;
             this.btnOfertas.Text = "Ofertas";
             this.btnOfertas.UseVisualStyleBackColor = true;
+            this.btnOfertas.Click += new System.EventHandler(this.btnOfertas_Click);
             // 
             // btnDemandas
             // 
@@ -103,11 +105,22 @@
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.btnOfertaForm.Location = new System.Drawing.Point(34, 236);
+            this.btnOfertaForm.Name = "btnOfertaForm";
+            this.btnOfertaForm.Size = new System.Drawing.Size(75, 23);
+            this.btnOfertaForm.TabIndex = 7;
+            this.btnOfertaForm.Text = "Crear oferta";
+            this.btnOfertaForm.UseVisualStyleBackColor = true;
+            this.btnOfertaForm.Click += new System.EventHandler(this.btnOfertaForm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.btnOfertaForm);
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnTransferencia);
             this.Controls.Add(this.btnDemandas);
@@ -131,6 +144,7 @@
         private System.Windows.Forms.Button btnDemandas;
         private System.Windows.Forms.Button btnTransferencia;
         private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button btnOfertaForm;
     }
 }
 
