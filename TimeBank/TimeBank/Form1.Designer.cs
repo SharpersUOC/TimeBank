@@ -34,7 +34,9 @@
             this.btnOfertas = new System.Windows.Forms.Button();
             this.btnDemandas = new System.Windows.Forms.Button();
             this.btnTransferencia = new System.Windows.Forms.Button();
-            this.btnClientes = new System.Windows.Forms.Button();
+            this.grpXML = new System.Windows.Forms.GroupBox();
+            this.btnXMLUsers = new System.Windows.Forms.Button();
+            this.grpXML.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -49,7 +51,7 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(34, 116);
+            this.btnCategorias.Location = new System.Drawing.Point(34, 76);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(89, 23);
             this.btnCategorias.TabIndex = 1;
@@ -59,7 +61,7 @@
             // 
             // btnEstado
             // 
-            this.btnEstado.Location = new System.Drawing.Point(34, 156);
+            this.btnEstado.Location = new System.Drawing.Point(34, 116);
             this.btnEstado.Name = "btnEstado";
             this.btnEstado.Size = new System.Drawing.Size(89, 23);
             this.btnEstado.TabIndex = 2;
@@ -94,21 +96,34 @@
             this.btnTransferencia.Text = "Transferencia";
             this.btnTransferencia.UseVisualStyleBackColor = true;
             // 
-            // btnClientes
+            // grpXML
             // 
-            this.btnClientes.Location = new System.Drawing.Point(34, 76);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(89, 23);
-            this.btnClientes.TabIndex = 6;
-            this.btnClientes.Text = "Clientes";
-            this.btnClientes.UseVisualStyleBackColor = true;
+            this.grpXML.Controls.Add(this.btnXMLUsers);
+            this.grpXML.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grpXML.Location = new System.Drawing.Point(0, 215);
+            this.grpXML.Name = "grpXML";
+            this.grpXML.Padding = new System.Windows.Forms.Padding(10);
+            this.grpXML.Size = new System.Drawing.Size(327, 235);
+            this.grpXML.TabIndex = 6;
+            this.grpXML.TabStop = false;
+            this.grpXML.Text = "XML";
+            // 
+            // btnXMLUsers
+            // 
+            this.btnXMLUsers.Location = new System.Drawing.Point(34, 27);
+            this.btnXMLUsers.Name = "btnXMLUsers";
+            this.btnXMLUsers.Size = new System.Drawing.Size(75, 23);
+            this.btnXMLUsers.TabIndex = 0;
+            this.btnXMLUsers.Text = "Usuarios";
+            this.btnXMLUsers.UseVisualStyleBackColor = true;
+            this.btnXMLUsers.Click += new System.EventHandler(this.btnXMLUsers_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
-            this.Controls.Add(this.btnClientes);
+            this.Controls.Add(this.grpXML);
             this.Controls.Add(this.btnTransferencia);
             this.Controls.Add(this.btnDemandas);
             this.Controls.Add(this.btnOfertas);
@@ -118,6 +133,7 @@
             this.Name = "Form1";
             this.Text = "Panel Inico";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.grpXML.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -130,7 +146,8 @@
         private System.Windows.Forms.Button btnOfertas;
         private System.Windows.Forms.Button btnDemandas;
         private System.Windows.Forms.Button btnTransferencia;
-        private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.GroupBox grpXML;
+        private System.Windows.Forms.Button btnXMLUsers;
     }
 }
 

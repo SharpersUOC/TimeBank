@@ -49,5 +49,12 @@ namespace TimeBank
             formEstados.ShowDialog();
             formEstados.RefrescarEstados();
         }
+
+        private void btnXMLUsers_Click(object sender, EventArgs e)
+        {
+            Presentacion.XMLUserForm formXMLUser = new Presentacion.XMLUserForm();
+            formXMLUser.ShowDialog();
+
+        }
     }
 }
