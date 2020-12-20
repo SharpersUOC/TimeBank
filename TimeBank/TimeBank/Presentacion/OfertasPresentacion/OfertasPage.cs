@@ -14,23 +14,41 @@ namespace TimeBank.Presentacion.OfertasPresentacion
     public partial class OfertasPage : Form
     {
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
-        List<Ofertas> ofertas = new List<Ofertas>();
 
         public OfertasPage()
         {
             InitializeComponent();
-            loadOfertas();
-        }
-
-        private void loadOfertas() {
-            System.Linq.IQueryable<TimeBank.Modelos.Ofertas> ofertasQuery = from oferta in context.Ofertas
-                           select oferta;
-
-            this.ofertas = ofertasQuery.ToList<Ofertas>();
+            populateTable();
         }
 
         private void populateTable() {
-            ofertasDataGrid.DataSource = this.ofertas;
+            var ofertasQuery = from oferta in context.Ofertas
+                               select new
+                               {
+                                   id = oferta.idOferta,
+                                   Titulo = oferta.Titulo,
+                                   Tiempo = oferta.Tiempo
+                               };
+
+            this.ofertasDataGrid.DataSource = ofertasQuery.ToList();
+            
+            var buttonColumn = new DataGridViewButtonColumn();
+            
+            {
+                buttonColumn.Text = "Ver";
+                buttonColumn.UseColumnTextForButtonValue = true;
+            }
+            
+            this.ofertasDataGrid.Columns.Add(buttonColumn);
+
+            ofertasDataGrid.CellClick += new DataGridViewCellEventHandler(ofertasDataGrid_CellClick);
+        }
+
+        private void ofertasDataGrid_CellClick(object sender, EventArgs e) {
+            DataGridView dataGridView = sender as DataGridView;
+            int id = Convert.ToInt32(dataGridView.CurrentRow.Cells[1].Value);
+            Presentacion.OfertasPresentacion.OfertaPage ofertaPage = new Presentacion.OfertasPresentacion.OfertaPage(id);
+            ofertaPage.Show();
         }
     }
 }

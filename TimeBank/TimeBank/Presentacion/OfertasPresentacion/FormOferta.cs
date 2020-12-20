@@ -16,6 +16,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
         String title = "";
         String description = "";
+        Double tiempo = 0;
 
         public FormOferta()
         {
@@ -26,9 +27,14 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             Ofertas oferta = new Ofertas() {
                 Titulo = this.title,
                 Descripcion = this.description,
+                Tiempo = this.tiempo,
+                fecha_ofer = DateTime.Now,
+                idCategoria = 1,
+                idUser = 1
             };
 
             context.Ofertas.Add(oferta);
+            context.SaveChanges();
         }
 
         private void saveOfertaBtn_Click(object sender, EventArgs e)

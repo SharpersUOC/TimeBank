@@ -28,58 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tiempoField = new System.Windows.Forms.TextBox();
+            this.contratarBtn = new System.Windows.Forms.Button();
+            this.titleField = new System.Windows.Forms.TextBox();
+            this.descriptionField = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox3
+            // tiempoField
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 330);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(357, 20);
-            this.textBox3.TabIndex = 7;
+            this.tiempoField.Location = new System.Drawing.Point(12, 330);
+            this.tiempoField.Multiline = true;
+            this.tiempoField.Name = "tiempoField";
+            this.tiempoField.ReadOnly = true;
+            this.tiempoField.Size = new System.Drawing.Size(357, 20);
+            this.tiempoField.TabIndex = 7;
             // 
-            // button1
+            // contratarBtn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Contratar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.contratarBtn.Location = new System.Drawing.Point(12, 369);
+            this.contratarBtn.Name = "contratarBtn";
+            this.contratarBtn.Size = new System.Drawing.Size(75, 23);
+            this.contratarBtn.TabIndex = 6;
+            this.contratarBtn.Text = "Contratar";
+            this.contratarBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // titleField
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 79);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(357, 20);
-            this.textBox2.TabIndex = 5;
+            this.titleField.Location = new System.Drawing.Point(12, 79);
+            this.titleField.Multiline = true;
+            this.titleField.Name = "titleField";
+            this.titleField.ReadOnly = true;
+            this.titleField.Size = new System.Drawing.Size(357, 20);
+            this.titleField.TabIndex = 5;
             // 
-            // textBox1
+            // descriptionField
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 105);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(357, 198);
-            this.textBox1.TabIndex = 4;
+            this.descriptionField.Location = new System.Drawing.Point(12, 105);
+            this.descriptionField.Multiline = true;
+            this.descriptionField.Name = "descriptionField";
+            this.descriptionField.ReadOnly = true;
+            this.descriptionField.Size = new System.Drawing.Size(357, 198);
+            this.descriptionField.TabIndex = 4;
             // 
-            // Oferta
+            // OfertaPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Name = "Oferta";
+            this.Controls.Add(this.tiempoField);
+            this.Controls.Add(this.contratarBtn);
+            this.Controls.Add(this.titleField);
+            this.Controls.Add(this.descriptionField);
+            this.Name = "OfertaPage";
             this.Text = "Oferta";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -88,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tiempoField;
+        private System.Windows.Forms.Button contratarBtn;
+        private System.Windows.Forms.TextBox titleField;
+        private System.Windows.Forms.TextBox descriptionField;
     }
 } 

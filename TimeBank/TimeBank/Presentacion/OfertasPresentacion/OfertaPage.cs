@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TimeBank.Modelos;
 
 namespace TimeBank.Presentacion.OfertasPresentacion
 {
     public partial class OfertaPage : Form
     {
-        public OfertaPage()
+        BancoDeTiempoEntities context = new BancoDeTiempoEntities();
+        Ofertas oferta = null;
+        public OfertaPage(int id)
         {
             InitializeComponent();
+            this.oferta = context.Ofertas.Find(id);
+
+            titleField.Text = oferta.Titulo;
+            descriptionField.Text = oferta.Descripcion;
+            // tiempoField.Text = oferta.Tiempo;
         }
     }
 }
