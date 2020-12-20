@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,16 +37,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -112,11 +117,35 @@
     <Compile Include="Modelos\Wallet.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandaPage.Designer.cs">
+      <DependentUpon>DemandaPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandasPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\DemandasPage.Designer.cs">
+      <DependentUpon>DemandasPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FormCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\FormCategorias.Designer.cs">
       <DependentUpon>FormCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\FormDemanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\DemandasPresentacion\FormDemanda.Designer.cs">
+      <DependentUpon>FormDemanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\FormOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\FormOferta.Designer.cs">
+      <DependentUpon>FormOferta.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\FormEstados.cs">
       <SubType>Form</SubType>
@@ -130,28 +159,58 @@
     <Compile Include="Presentacion\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\XMLUserForm.cs">
+    <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\XMLUserForm.Designer.cs">
-      <DependentUpon>XMLUserForm.cs</DependentUpon>
+    <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.Designer.cs">
+      <DependentUpon>OfertaPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\OfertasPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OfertasPresentacion\OfertasPage.Designer.cs">
+      <DependentUpon>OfertasPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\OrdenesPresentacion\OrdenesPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\OrdenesPresentacion\OrdenesPage.Designer.cs">
+      <DependentUpon>OrdenesPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandaPage.resx">
+      <DependentUpon>DemandaPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\DemandasPresentacion\DemandasPage.resx">
+      <DependentUpon>DemandasPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormCategorias.resx">
       <DependentUpon>FormCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\DemandasPresentacion\FormDemanda.resx">
+      <DependentUpon>FormDemanda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormEstados.resx">
       <DependentUpon>FormEstados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\OfertasPresentacion\FormOferta.resx">
+      <DependentUpon>FormOferta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\XMLUserForm.resx">
-      <DependentUpon>XMLUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertaPage.resx">
+      <DependentUpon>OfertaPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\OfertasPresentacion\OfertasPage.resx">
+      <DependentUpon>OfertasPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\OrdenesPresentacion\OrdenesPage.resx">
+      <DependentUpon>OrdenesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -195,13 +254,17 @@
       <DependentUpon>DBTimeBankModel.edmx</DependentUpon>
       <LastGenOutput>DBTimeBankModel.cs</LastGenOutput>
     </Content>
-    <Content Include="XMLFiles\XMLUsuarios.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

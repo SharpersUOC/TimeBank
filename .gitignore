@@ -31,3 +31,6 @@
 *.out
 *.app
 /TimeBank/.vs/TimeBank/v15
+
+.vs/
+TimeBank/TimeBank/obj/Debug/

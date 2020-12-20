@@ -50,11 +50,16 @@ namespace TimeBank
             formEstados.RefrescarEstados();
         }
 
-        private void btnXMLUsers_Click(object sender, EventArgs e)
+        private void btnOfertaForm_Click(object sender, EventArgs e)
         {
-            Presentacion.XMLUserForm formXMLUser = new Presentacion.XMLUserForm();
-            formXMLUser.ShowDialog();
+            Presentacion.OfertasPresentacion.FormOferta formOferta = new Presentacion.OfertasPresentacion.FormOferta();
+            formOferta.Show();
+        }
 
+        private void btnOfertas_Click(object sender, EventArgs e)
+        {
+            Presentacion.OfertasPresentacion.OfertasPage ofertasPage = new Presentacion.OfertasPresentacion.OfertasPage();
+            ofertasPage.Show();
         }
     }
 }
