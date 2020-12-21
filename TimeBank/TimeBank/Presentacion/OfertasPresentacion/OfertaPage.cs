@@ -24,5 +24,17 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             descriptionField.Text = oferta.Descripcion;
             // tiempoField.Text = oferta.Tiempo;
         }
+
+        private void contratarBtn_Click(object sender, EventArgs e)
+        {
+            Orden orden = new Orden() { 
+                idUser = 1, // TODO: Add current user
+                idOferta = this.oferta.idOferta,
+                idEstado = 1
+            };
+
+            this.context.Orden.Add(orden);
+            this.context.SaveChanges();
+        }
     }
 }

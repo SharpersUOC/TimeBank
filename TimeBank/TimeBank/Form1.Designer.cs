@@ -36,6 +36,7 @@
             this.btnTransferencia = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnOfertaForm = new System.Windows.Forms.Button();
+            this.btnOrdenes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -105,7 +106,7 @@
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnOfertaForm
             // 
             this.btnOfertaForm.Location = new System.Drawing.Point(34, 236);
             this.btnOfertaForm.Name = "btnOfertaForm";
@@ -115,11 +116,22 @@
             this.btnOfertaForm.UseVisualStyleBackColor = true;
             this.btnOfertaForm.Click += new System.EventHandler(this.btnOfertaForm_Click);
             // 
+            // ordenesBtn
+            // 
+            this.btnOrdenes.Location = new System.Drawing.Point(172, 156);
+            this.btnOrdenes.Name = "ordenesBtn";
+            this.btnOrdenes.Size = new System.Drawing.Size(89, 23);
+            this.btnOrdenes.TabIndex = 8;
+            this.btnOrdenes.Text = "Ordenes";
+            this.btnOrdenes.UseVisualStyleBackColor = true;
+            this.btnOrdenes.Click += new System.EventHandler(this.btnOrdenes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.btnOrdenes);
             this.Controls.Add(this.btnOfertaForm);
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnTransferencia);
@@ -145,6 +157,7 @@
         private System.Windows.Forms.Button btnTransferencia;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnOfertaForm;
+        private System.Windows.Forms.Button btnOrdenes;
     }
 }
 

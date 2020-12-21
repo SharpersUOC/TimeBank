@@ -16,25 +16,51 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
         String title = "";
         String description = "";
-        Double tiempo = 0;
+        int horas = 0;
+        int minutos = 0;
+        double tiempo = 3600;
+        int categoria = 0;
 
         public FormOferta()
         {
             InitializeComponent();
+
+            var categorias = from c in context.Categorias
+                             select c;
+
+            foreach (Categorias categoria in categorias) {
+                categoriaField.Items.Add(categoria);
+            }
+
+            categoriaField.DisplayMember = "NombreCat";
         }
 
         public void saveOferta() {
+            TimeSpan time = TimeSpan.Parse(horas + ":" + minutos);
+
             Ofertas oferta = new Ofertas() {
                 Titulo = this.title,
                 Descripcion = this.description,
-                Tiempo = this.tiempo,
+                Tiempo = time.TotalSeconds,
                 fecha_ofer = DateTime.Now,
-                idCategoria = 1,
-                idUser = 1
+                idCategoria = this.categoria,
+                idUser = 1 // TODO Add current user
             };
 
             context.Ofertas.Add(oferta);
-            context.SaveChanges();
+            
+            try
+            {
+                context.SaveChanges();
+
+                MessageBox.Show("Oferta creada con éxito.");
+                this.Close();
+            }
+            catch (Exception e) {
+                Console.Error.Write(e);
+                MessageBox.Show("Ups! Algo ha salido mal.");
+            }
+            
         }
 
         private void saveOfertaBtn_Click(object sender, EventArgs e)
@@ -54,10 +80,45 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             this.description = textBox.Text;
         }
 
-        private void timeField_TextChanged(object sender, EventArgs e)
+        private void horasField_TextChanged(object sender, EventArgs e)
         {
-            TextBox textBox = sender as TextBox;
+;
+            Console.WriteLine("hello world");
             // this.time = textBox.Text;
         }
+
+        private void categoriaField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox categoriaField = sender as ComboBox;
+
+            Categorias categoriaSelected = categoriaField.SelectedItem as Categorias;
+
+            this.categoria = categoriaSelected.idCat;
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            this.titleField.Text = "";
+            this.decriptionField.Text = "";
+            this.horasField.Text = "";
+            this.categoriaField.SelectedItem = null;
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void horasField_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            this.tiempo = Convert.ToDouble(numericUpDown.Value);
+        }
+
+        private void minutosField_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            this.tiempo = Convert.ToDouble(numericUpDown.Value);
+        }
     }
-}
+} 
