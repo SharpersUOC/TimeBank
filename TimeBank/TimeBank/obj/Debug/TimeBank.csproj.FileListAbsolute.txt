@@ -32,3 +32,5 @@ C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.ex
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.pdb
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormCategorias.resources
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormEstados.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.XMLUserForm.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\bin\Debug\XMLFiles\XMLUsuarios.xml
