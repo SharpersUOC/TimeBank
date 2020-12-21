@@ -35,3 +35,5 @@
 .vs/
 TimeBank/TimeBank/obj/Debug/
 /TimeBank/packages/
+/TimeBank/TimeBank/obj/Release
+/TimeBank/TimeBankSetup/Debug
