@@ -135,13 +135,6 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             this.title = textBox.Text;
         }
 
-        private void horasField_TextChanged(object sender, EventArgs e)
-        {
-;
-            Console.WriteLine("hello world");
-            // this.time = textBox.Text;
-        }
-
         private void categoriaField_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox categoriaField = sender as ComboBox;
@@ -155,7 +148,8 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         {
             this.titleField.Text = "";
             this.decriptionField.Text = "";
-            this.horasField.Text = "";
+            this.horasField.Value = 0;
+            this.minutosField.Value = 0;
             this.categoriaField.SelectedItem = null;
         }
 
