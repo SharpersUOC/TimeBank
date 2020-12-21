@@ -127,11 +127,11 @@
             this.btnOrdenes.UseVisualStyleBackColor = true;
             this.btnOrdenes.Click += new System.EventHandler(this.btnOrdenes_Click);
             // 
-            // btnDemanda
+            // btnDemandaForm
             // 
             this.btnDemandaForm.Location = new System.Drawing.Point(126, 236);
-            this.btnDemandaForm.Name = "btnDemanda";
-            this.btnDemandaForm.Size = new System.Drawing.Size(75, 23);
+            this.btnDemandaForm.Name = "btnDemandaForm";
+            this.btnDemandaForm.Size = new System.Drawing.Size(100, 23);
             this.btnDemandaForm.TabIndex = 9;
             this.btnDemandaForm.Text = "Crear demanda";
             this.btnDemandaForm.UseVisualStyleBackColor = true;
