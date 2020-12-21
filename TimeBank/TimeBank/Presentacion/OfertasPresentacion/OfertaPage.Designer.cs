@@ -32,6 +32,10 @@
             this.contratarBtn = new System.Windows.Forms.Button();
             this.titleField = new System.Windows.Forms.TextBox();
             this.descriptionField = new System.Windows.Forms.TextBox();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.categoriaField = new System.Windows.Forms.TextBox();
+            this.publicadoField = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tiempoField
@@ -51,6 +55,7 @@
             this.contratarBtn.TabIndex = 6;
             this.contratarBtn.Text = "Contratar";
             this.contratarBtn.UseVisualStyleBackColor = true;
+            this.contratarBtn.Click += new System.EventHandler(this.contratarBtn_Click);
             // 
             // titleField
             // 
@@ -70,11 +75,53 @@
             this.descriptionField.Size = new System.Drawing.Size(357, 198);
             this.descriptionField.TabIndex = 4;
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(93, 369);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.TabIndex = 8;
+            this.deleteBtn.Text = "Eliminar";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Location = new System.Drawing.Point(174, 369);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.TabIndex = 9;
+            this.updateBtn.Text = "Actualizar";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // categoriaField
+            // 
+            this.categoriaField.Location = new System.Drawing.Point(375, 79);
+            this.categoriaField.Multiline = true;
+            this.categoriaField.Name = "categoriaField";
+            this.categoriaField.ReadOnly = true;
+            this.categoriaField.Size = new System.Drawing.Size(245, 20);
+            this.categoriaField.TabIndex = 10;
+            // 
+            // publicadoField
+            // 
+            this.publicadoField.Location = new System.Drawing.Point(375, 330);
+            this.publicadoField.Multiline = true;
+            this.publicadoField.Name = "publicadoField";
+            this.publicadoField.ReadOnly = true;
+            this.publicadoField.Size = new System.Drawing.Size(245, 20);
+            this.publicadoField.TabIndex = 11;
+            // 
             // OfertaPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.publicadoField);
+            this.Controls.Add(this.categoriaField);
+            this.Controls.Add(this.updateBtn);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.tiempoField);
             this.Controls.Add(this.contratarBtn);
             this.Controls.Add(this.titleField);
@@ -92,5 +139,9 @@
         private System.Windows.Forms.Button contratarBtn;
         private System.Windows.Forms.TextBox titleField;
         private System.Windows.Forms.TextBox descriptionField;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button updateBtn;
+        private System.Windows.Forms.TextBox categoriaField;
+        private System.Windows.Forms.TextBox publicadoField;
     }
 } 

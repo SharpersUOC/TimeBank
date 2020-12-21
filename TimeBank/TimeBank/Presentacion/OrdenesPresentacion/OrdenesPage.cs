@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.Entity;
 using TimeBank.Modelos;
 
-namespace TimeBank.Presentacion
+namespace TimeBank.Presentacion.OrdenesPresentacion
 {
     public partial class OrdenesPage : Form
     {
@@ -31,21 +31,6 @@ namespace TimeBank.Presentacion
         {
 
             dataGridView1.DataSource = getOrdenes();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

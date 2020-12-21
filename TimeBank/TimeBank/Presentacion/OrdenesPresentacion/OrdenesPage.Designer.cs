@@ -1,4 +1,4 @@
-namespace TimeBank.Presentacion
+namespace TimeBank.Presentacion.OrdenesPresentacion
 {
     partial class OrdenesPage
     {
@@ -39,7 +39,6 @@ namespace TimeBank.Presentacion
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 372);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Ordenes
             // 

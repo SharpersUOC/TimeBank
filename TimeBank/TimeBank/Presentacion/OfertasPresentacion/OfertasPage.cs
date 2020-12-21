@@ -27,11 +27,14 @@ namespace TimeBank.Presentacion.OfertasPresentacion
                                {
                                    id = oferta.idOferta,
                                    Titulo = oferta.Titulo,
-                                   Tiempo = oferta.Tiempo
+                                   Tiempo = oferta.Tiempo,
+                                   Categoria = oferta.Categorias.NombreCat,
+                                   Publicado = oferta.fecha_ofer,
+                                   Usuario = oferta.Usuarios.Email,
                                };
 
             this.ofertasDataGrid.DataSource = ofertasQuery.ToList();
-            
+
             var buttonColumn = new DataGridViewButtonColumn();
             
             {
