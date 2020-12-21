@@ -81,6 +81,7 @@
             this.deleteBtn.TabIndex = 8;
             this.deleteBtn.Text = "Eliminar";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // updateBtn
             // 
@@ -90,6 +91,7 @@
             this.updateBtn.TabIndex = 9;
             this.updateBtn.Text = "Actualizar";
             this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // OfertaPage
             // 

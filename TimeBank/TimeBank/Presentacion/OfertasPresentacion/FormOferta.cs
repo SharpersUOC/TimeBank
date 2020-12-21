@@ -14,31 +14,56 @@ namespace TimeBank.Presentacion.OfertasPresentacion
     public partial class FormOferta : Form
     {
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
+        int id = 0;
         String title = "";
         String description = "";
-        int horas = 0;
-        int minutos = 0;
-        double tiempo = 3600;
+        double horas = 0;
+        double minutos = 0;
         int categoria = 0;
 
         public FormOferta()
         {
             InitializeComponent();
 
+            loadCategorias();
+        }
+
+        public FormOferta(Ofertas oferta) {
+            InitializeComponent();
+
+            loadCategorias();
+
+            id = oferta.idOferta;
+            title = oferta.Titulo;
+            description = oferta.Descripcion;
+
+            populateFields();
+        }
+
+        private void populateFields() {
+            this.titleField.Text = title;
+            this.decriptionField.Text = description;
+            this.horasField.Value = Convert.ToDecimal(horas);
+            this.minutosField.Value = Convert.ToDecimal(minutos);
+        }
+
+        private void loadCategorias() {
             var categorias = from c in context.Categorias
                              select c;
 
-            foreach (Categorias categoria in categorias) {
+            foreach (Categorias categoria in categorias)
+            {
                 categoriaField.Items.Add(categoria);
             }
 
             categoriaField.DisplayMember = "NombreCat";
         }
 
-        public void saveOferta() {
+        private Ofertas createOferta() {
             TimeSpan time = TimeSpan.Parse(horas + ":" + minutos);
 
-            Ofertas oferta = new Ofertas() {
+            Ofertas oferta = new Ofertas()
+            {
                 Titulo = this.title,
                 Descripcion = this.description,
                 Tiempo = time.TotalSeconds,
@@ -47,7 +72,12 @@ namespace TimeBank.Presentacion.OfertasPresentacion
                 idUser = 1 // TODO Add current user
             };
 
-            context.Ofertas.Add(oferta);
+            return oferta;
+        }
+
+        public void saveOferta() {
+
+            context.Ofertas.Add(createOferta());
             
             try
             {
@@ -63,21 +93,42 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             
         }
 
+        private void updateOferta() {
+            Ofertas oferta = context.Ofertas.Find(id);
+
+            oferta.Titulo = title;
+            oferta.Descripcion = description;
+
+            try
+            {
+                context.SaveChanges();
+
+                MessageBox.Show("Oferta actualizada con éxito.");
+                this.Close();
+            }
+            catch (Exception e)
+            {
+                Console.Error.Write(e);
+                MessageBox.Show("Ups! Algo ha salido mal.");
+            }
+        }
+
         private void saveOfertaBtn_Click(object sender, EventArgs e)
         {
-            this.saveOferta();
+            if (id != 0)
+            {
+                this.updateOferta();
+            }
+            else
+            {
+                this.saveOferta();
+            }
         }
 
         private void titleField_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox; 
             this.title = textBox.Text;
-        }
-
-        private void descriptionField_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            this.description = textBox.Text;
         }
 
         private void horasField_TextChanged(object sender, EventArgs e)
@@ -112,13 +163,19 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         private void horasField_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown numericUpDown = sender as NumericUpDown;
-            this.tiempo = Convert.ToDouble(numericUpDown.Value);
+            this.horas = Convert.ToDouble(numericUpDown.Value);
         }
 
         private void minutosField_ValueChanged(object sender, EventArgs e)
         {
             NumericUpDown numericUpDown = sender as NumericUpDown;
-            this.tiempo = Convert.ToDouble(numericUpDown.Value);
+            this.minutos = Convert.ToDouble(numericUpDown.Value);
+        }
+
+        private void decriptionField_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            this.description = textBox.Text;
         }
     }
 } 

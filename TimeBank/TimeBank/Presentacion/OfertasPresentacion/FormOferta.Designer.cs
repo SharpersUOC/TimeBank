@@ -69,7 +69,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             this.decriptionField.Name = "decriptionField";
             this.decriptionField.Size = new System.Drawing.Size(357, 189);
             this.decriptionField.TabIndex = 4;
-            this.decriptionField.Click += new System.EventHandler(this.descriptionField_TextChanged);
+            this.decriptionField.TextChanged += new System.EventHandler(this.decriptionField_TextChanged);
             // 
             // categoriaField
             // 
@@ -132,7 +132,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 14;
-            this.cancelBtn.Text = "Borrar";
+            this.cancelBtn.Text = "Cancelar";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 

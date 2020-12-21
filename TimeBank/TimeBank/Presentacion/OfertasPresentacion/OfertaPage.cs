@@ -35,6 +35,22 @@ namespace TimeBank.Presentacion.OfertasPresentacion
 
             this.context.Orden.Add(orden);
             this.context.SaveChanges();
+            MessageBox.Show("¡Se acaba de enviar la solicitud de la oferta!");
+            this.Close();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            context.Ofertas.Remove(this.oferta);
+            context.SaveChanges();
+            this.Close();
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            Presentacion.OfertasPresentacion.FormOferta ordenesPage = new Presentacion.OfertasPresentacion.FormOferta(oferta);
+            ordenesPage.Show();
+            this.Refresh();
         }
     }
 }
