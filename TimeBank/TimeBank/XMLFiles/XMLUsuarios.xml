@@ -41,7 +41,7 @@
     <fecha_alta>15-10-2019</fecha_alta>
     <cliente>
       <idCliente>3</idCliente>
-      <nombre>Saray</nombre>
+      <nombre>Sara</nombre>
       <apellidos>Torres Galan</apellidos>
       <EsAdmin>false</EsAdmin>
       <Wallet>

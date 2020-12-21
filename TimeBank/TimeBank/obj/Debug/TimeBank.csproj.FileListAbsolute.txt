@@ -32,5 +32,10 @@ C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.ex
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.pdb
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormCategorias.resources
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.FormEstados.resources
-C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.XMLUserForm.resources
-C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\bin\Debug\XMLFiles\XMLUsuarios.xml
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.DemandasPresentacion.DemandaPage.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.DemandasPresentacion.DemandasPage.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.DemandasPresentacion.FormDemanda.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OfertasPresentacion.FormOferta.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OfertasPresentacion.OfertaPage.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OfertasPresentacion.OfertasPage.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OrdenesPage.resources
