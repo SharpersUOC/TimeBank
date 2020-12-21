@@ -139,6 +139,11 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             // minutosField
             // 
             this.minutosField.Location = new System.Drawing.Point(70, 336);
+            this.minutosField.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.minutosField.Name = "minutosField";
             this.minutosField.Size = new System.Drawing.Size(49, 20);
             this.minutosField.TabIndex = 15;

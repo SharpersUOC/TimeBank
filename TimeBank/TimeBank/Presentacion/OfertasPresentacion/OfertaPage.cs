@@ -19,10 +19,13 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         {
             InitializeComponent();
             this.oferta = context.Ofertas.Find(id);
+            TimeSpan time = TimeSpan.FromSeconds(oferta.Tiempo);
 
             titleField.Text = oferta.Titulo;
             descriptionField.Text = oferta.Descripcion;
-            // tiempoField.Text = oferta.Tiempo;
+            categoriaField.Text = oferta.Categorias.NombreCat;
+            tiempoField.Text = time.ToString(@"hh\:mm");
+            publicadoField.Text = oferta.fecha_ofer.ToString();
         }
 
         private void contratarBtn_Click(object sender, EventArgs e)

@@ -33,9 +33,13 @@ namespace TimeBank.Presentacion.OfertasPresentacion
 
             loadCategorias();
 
+            TimeSpan time = TimeSpan.FromSeconds(oferta.Tiempo);
+
             id = oferta.idOferta;
             title = oferta.Titulo;
             description = oferta.Descripcion;
+            horas = time.Hours;
+            minutos = time.Minutes;
 
             populateFields();
         }

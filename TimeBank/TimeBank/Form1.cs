@@ -67,5 +67,11 @@ namespace TimeBank
             Presentacion.OrdenesPresentacion.OrdenesPage ordenesPage = new Presentacion.OrdenesPresentacion.OrdenesPage();
             ordenesPage.Show();
         }
+
+        private void btnDemandaForm_Click(object sender, EventArgs e)
+        {
+            Presentacion.DemandasPresentacion.FormDemanda FormDemanda = new Presentacion.DemandasPresentacion.FormDemanda();
+            FormDemanda.Show();
+        }
     }
 }
