@@ -175,6 +175,12 @@
     <Compile Include="Presentacion\OrdenesPresentacion\OrdenesPage.Designer.cs">
       <DependentUpon>OrdenesPage.cs</DependentUpon>
     </Compile>
+ <Compile Include="Presentacion\XMLUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\XMLUserForm.Designer.cs">
+      <DependentUpon>XMLUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\OrdenesPresentacion\OrdenesPage.resx">
       <DependentUpon>OrdenesPage.cs</DependentUpon>
+    </EmbeddedResource>
+   <EmbeddedResource Include="Presentacion\XMLUserForm.resx">
+      <DependentUpon>XMLUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -251,6 +260,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBTimeBankModel.edmx</DependentUpon>
       <LastGenOutput>DBTimeBankModel.cs</LastGenOutput>
+    </Content>
+<Content Include="XMLFiles\XMLUsuarios.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

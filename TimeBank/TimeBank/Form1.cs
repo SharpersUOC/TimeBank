@@ -73,5 +73,13 @@ namespace TimeBank
             Presentacion.DemandasPresentacion.FormDemanda FormDemanda = new Presentacion.DemandasPresentacion.FormDemanda();
             FormDemanda.Show();
         }
+
+        private void btnXMLUsers_Click(object sender, EventArgs e)
+        {
+            Presentacion.XMLUserForm formXMLUser = new Presentacion.XMLUserForm();
+            formXMLUser.ShowDialog();
+
+        }
+
     }
 }
