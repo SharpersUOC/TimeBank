@@ -154,8 +154,14 @@
     <Compile Include="Presentacion\FormUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Presentacion\FormWallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Presentacion\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FormWallet.Designer.cs">
+      <DependentUpon>FormWallet.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\OfertasPresentacion\OfertaPage.cs">
       <SubType>Form</SubType>
