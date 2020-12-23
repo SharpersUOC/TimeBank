@@ -39,5 +39,5 @@ C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Pr
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OfertasPresentacion.OfertaPage.resources
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OfertasPresentacion.OfertasPage.resources
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.OrdenesPresentacion.OrdenesPage.resources
-C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\bin\Debug\XMLFiles\XMLUsuarios.xml
 C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\obj\Debug\TimeBank.Presentacion.XMLUserForm.resources
+C:\Users\Pablo.000\source\repos\TimeBank\TimeBank\TimeBank\bin\Debug\XMLFiles\XMLUsuarios.xml

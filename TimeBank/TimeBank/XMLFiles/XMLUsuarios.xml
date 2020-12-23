@@ -37,16 +37,16 @@
   <usuario>
     <idUser>3</idUser>
     <Email>SaraToga@gmail.com</Email>
-    <Contraseña>SaraToga</Contraseña>
+    <Contraseña>SarayToga</Contraseña>
     <fecha_alta>15-10-2019</fecha_alta>
     <cliente>
       <idCliente>3</idCliente>
-      <nombre>Sara</nombre>
+      <nombre>Saray</nombre>
       <apellidos>Torres Galan</apellidos>
       <EsAdmin>false</EsAdmin>
       <Wallet>
         <idWallet>3</idWallet>
-        <Balance>10</Balance>
+        <Balance>12</Balance>
         <fecha>17-12-2020</fecha>
       </Wallet>
     </cliente>

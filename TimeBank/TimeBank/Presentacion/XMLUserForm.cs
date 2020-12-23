@@ -19,8 +19,11 @@ namespace TimeBank.Presentacion
         //Atributos de la clase
 
         DataSet ds = new DataSet();
+        String filename;
 
-        const String FILENAME = "C:\\Users\\Pablo.000\\source\\repos\\TimeBank\\TimeBank\\TimeBank\\XMLFiles\\XMLUsuarios.xml";
+        //String relativepath = "XMLFiles/XMLUsuarios.xml";
+        //String fullpath; //donde almacenamos la ruta absoluta
+
                 
 
         public XMLUserForm()
@@ -29,25 +32,40 @@ namespace TimeBank.Presentacion
             dgvClientes.AutoGenerateColumns = false;
             dgvUsuarios.AutoGenerateColumns = false;
             dgvWallet.AutoGenerateColumns = false;
-            
-
+            //fullpath = Path.GetFullPath(relativepath);
+            //MessageBox.Show(fullpath);
 
         }
 
         private void btnReadXML_Click(object sender, EventArgs e)
         {
-            ds.ReadXml(FILENAME);
+            OpenFileDialog ofd = new OpenFileDialog();
+            //String direct = @"\XMLFiles";
+            //ofd.InitialDirectory = direct;
+            ofd.Filter = "XML|*.xml";
+            if (ofd.ShowDialog() == DialogResult.OK) {
+                try {
+                    filename = ofd.FileName;
+                    ds.ReadXml(filename);
 
-            dgvClientes.DataSource = ds.Tables[1];
-            dgvUsuarios.DataSource = ds.Tables[0];
-            dgvWallet.DataSource = ds.Tables[2];
+                    dgvClientes.DataSource = ds.Tables[1];
+                    dgvUsuarios.DataSource = ds.Tables[0];
+                    dgvWallet.DataSource = ds.Tables[2];
+                }
+                catch (Exception exc){
+
+                    MessageBox.Show(exc.ToString());
+                }
+
+            }  
 
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
-            ds.WriteXml(FILENAME);
+            
+            
+            ds.WriteXml(filename);
 
             MessageBox.Show("Los datos se modificaron em el archivo XML con éxito");
 
@@ -58,7 +76,7 @@ namespace TimeBank.Presentacion
             if (dgvUsuarios.SelectedRows.Count>0)
             {
                 dgvUsuarios.Rows.RemoveAt(dgvUsuarios.SelectedRows[0].Index);
-                ds.WriteXml(FILENAME);
+                ds.WriteXml(filename);
 
             }
             else if (dgvClientes.SelectedRows.Count > 0)

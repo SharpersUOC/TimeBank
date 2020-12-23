@@ -81,7 +81,7 @@ namespace TimeBank
 
         }
 
-        private void btnWallet_Click(object sender, EventArgs e)
+       private void btnWallet_Click(object sender, EventArgs e)
         {
             Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
             formWallet.Show();
