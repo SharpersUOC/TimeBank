@@ -39,6 +39,7 @@
             this.btnDemandaForm = new System.Windows.Forms.Button();
             this.btnXMLUsers = new System.Windows.Forms.Button();
             this.grpXML = new System.Windows.Forms.GroupBox();
+            this.btnWallet = new System.Windows.Forms.Button();
             this.grpXML.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,11 +153,21 @@
             this.grpXML.TabStop = false;
             this.grpXML.Text = "XML";
             // 
+            // btnWallet
+            // 
+            this.btnWallet.Location = new System.Drawing.Point(176, 159);
+            this.btnWallet.Name = "btnWallet";
+            this.btnWallet.Size = new System.Drawing.Size(85, 23);
+            this.btnWallet.TabIndex = 10;
+            this.btnWallet.Text = "Wallet";
+            this.btnWallet.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.btnWallet);
             this.Controls.Add(this.grpXML);
             this.Controls.Add(this.btnDemandaForm);
             this.Controls.Add(this.btnOrdenes);
@@ -188,6 +199,7 @@
         private System.Windows.Forms.Button btnDemandaForm;
         private System.Windows.Forms.Button btnXMLUsers;
         private System.Windows.Forms.GroupBox grpXML;
+        private System.Windows.Forms.Button btnWallet;
     }
 }
 
