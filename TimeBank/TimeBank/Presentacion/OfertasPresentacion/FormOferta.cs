@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeBank.Modelos;
+using TimeBank.Servicios;
 
 namespace TimeBank.Presentacion.OfertasPresentacion
 {
@@ -20,6 +21,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         double horas = 0;
         double minutos = 0;
         int categoria = 0;
+        Session session = new Session();
 
         public FormOferta()
         {
@@ -73,7 +75,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
                 Tiempo = time.TotalSeconds,
                 fecha_ofer = DateTime.Now,
                 idCategoria = this.categoria,
-                idUser = 1 // TODO Add current user
+                idUser = session.getCurrentUser().IdUser
             };
 
             return oferta;
