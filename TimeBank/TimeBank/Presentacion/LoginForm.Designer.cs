@@ -33,6 +33,7 @@
             this.emailLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordField = new System.Windows.Forms.TextBox();
+            this.registerLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // emailField
@@ -79,11 +80,23 @@
             this.passwordField.TabIndex = 3;
             this.passwordField.TextChanged += new System.EventHandler(this.passwordField_TextChanged);
             // 
+            // registerLink
+            // 
+            this.registerLink.AutoSize = true;
+            this.registerLink.Location = new System.Drawing.Point(81, 287);
+            this.registerLink.Name = "registerLink";
+            this.registerLink.Size = new System.Drawing.Size(130, 13);
+            this.registerLink.TabIndex = 5;
+            this.registerLink.TabStop = true;
+            this.registerLink.Text = "¿Aún no estas registrado?";
+            this.registerLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.registerLink_LinkClicked);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.registerLink);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.passwordField);
             this.Controls.Add(this.emailLabel);
@@ -104,5 +117,6 @@
         private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox passwordField;
+        private System.Windows.Forms.LinkLabel registerLink;
     }
 }

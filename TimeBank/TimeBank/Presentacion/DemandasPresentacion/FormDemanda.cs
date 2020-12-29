@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeBank.Modelos;
+using TimeBank.Servicios;
 
 namespace TimeBank.Presentacion.DemandasPresentacion
 {
@@ -53,13 +54,14 @@ namespace TimeBank.Presentacion.DemandasPresentacion
 
         private Ofertas createDemanda()
         {
+            Session session = Session.GetCurrentSession();
             Ofertas oferta = new Ofertas()
             {
                 Titulo = this.title,
                 Descripcion = this.description,
                 fecha_ofer = DateTime.Now,
                 idCategoria = this.categoria,
-                idUser = 1 // TODO Add current user
+                idUser = session.getCurrentUser().IdUser,
             };
 
             return oferta;

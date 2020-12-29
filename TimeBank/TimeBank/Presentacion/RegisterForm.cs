@@ -91,6 +91,7 @@ namespace TimeBank.Presentacion
         private void openLoginPage() {
             Presentacion.LoginForm loginForm = new Presentacion.LoginForm();
             loginForm.Show();
+            this.Close();
         }
 
         private void registerBtn_Click(object sender, EventArgs e)

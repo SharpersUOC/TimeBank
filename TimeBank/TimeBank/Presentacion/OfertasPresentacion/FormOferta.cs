@@ -21,7 +21,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         double horas = 0;
         double minutos = 0;
         int categoria = 0;
-        Session session = new Session();
+        Session session = Session.GetCurrentSession();
 
         public FormOferta()
         {
