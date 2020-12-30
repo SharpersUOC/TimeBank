@@ -45,7 +45,7 @@ namespace TimeBank.Presentacion
                 return;
             }
             
-            if (user.Contraseña == password) {
+            if (user.Contraseña == TimeBank.Servicios.Password.Encrypt(password)) {
                 Session session = Session.GetCurrentSession();
                 session.setUser(user);
                 this.onLogin();
@@ -59,7 +59,7 @@ namespace TimeBank.Presentacion
         private void emailField_TextChanged(object sender, EventArgs e)
         {
             TextBox emailField = sender as TextBox;
-            this.email = emailField.Text;
+            this.email = emailField.Text.Trim();
         }
 
         private void passwordField_TextChanged(object sender, EventArgs e)

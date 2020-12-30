@@ -68,7 +68,7 @@
           </Key>
           <Property Name="idOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idOferta" Type="int" Nullable="false" />
-          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="true" />
           <Property Name="idEstado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sesiones">
@@ -214,7 +214,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orden_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
@@ -460,7 +460,7 @@
           </Key>
           <Property Name="idOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idOferta" Type="Int32" Nullable="false" />
-          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="true" />
           <Property Name="idEstado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Estado" Relationship="BancoDeTiempoModel.FK_Orden_Estado" FromRole="Orden" ToRole="Estado" />
           <NavigationProperty Name="Ofertas" Relationship="BancoDeTiempoModel.FK_Orden_Ofertas" FromRole="Orden" ToRole="Ofertas" />
@@ -632,7 +632,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orden_Usuarios">
-          <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
           <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">

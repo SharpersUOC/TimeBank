@@ -94,5 +94,11 @@ namespace TimeBank
             Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
             formWallet.Show();
         }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Presentacion.RegisterForm registerForm = new Presentacion.RegisterForm(TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser());
+            registerForm.Show();
+        }
     }
 }
