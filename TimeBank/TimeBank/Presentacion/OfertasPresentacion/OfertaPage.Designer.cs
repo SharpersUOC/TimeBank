@@ -128,6 +128,7 @@
             this.Controls.Add(this.descriptionField);
             this.Name = "OfertaPage";
             this.Text = "Oferta";
+            this.Load += new System.EventHandler(this.OfertaPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

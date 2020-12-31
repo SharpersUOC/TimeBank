@@ -41,5 +41,14 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             formDemanda.Show();
             this.Refresh();
         }
+
+        private void DemandaPage_Load(object sender, EventArgs e)
+        {
+            if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser != this.demanda.idUser)
+            {
+                this.updateBtn.Visible = false;
+                this.deleteBtn.Visible = false;
+            }
+        }
     }
 }

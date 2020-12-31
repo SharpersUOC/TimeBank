@@ -41,14 +41,17 @@
             this.grpXML = new System.Windows.Forms.GroupBox();
             this.btnWallet = new System.Windows.Forms.Button();
             this.btnPerfil = new System.Windows.Forms.Button();
+            this.adminGroup = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpXML.SuspendLayout();
+            this.adminGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.Location = new System.Drawing.Point(34, 34);
+            this.btnUsuarios.Location = new System.Drawing.Point(315, 30);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(89, 23);
+            this.btnUsuarios.Size = new System.Drawing.Size(89, 24);
             this.btnUsuarios.TabIndex = 0;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = true;
@@ -56,9 +59,9 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(34, 76);
+            this.btnCategorias.Location = new System.Drawing.Point(34, 30);
             this.btnCategorias.Name = "btnCategorias";
-            this.btnCategorias.Size = new System.Drawing.Size(89, 23);
+            this.btnCategorias.Size = new System.Drawing.Size(89, 24);
             this.btnCategorias.TabIndex = 1;
             this.btnCategorias.Text = "Categorias";
             this.btnCategorias.UseVisualStyleBackColor = true;
@@ -66,9 +69,9 @@
             // 
             // btnEstado
             // 
-            this.btnEstado.Location = new System.Drawing.Point(34, 116);
+            this.btnEstado.Location = new System.Drawing.Point(129, 30);
             this.btnEstado.Name = "btnEstado";
-            this.btnEstado.Size = new System.Drawing.Size(89, 23);
+            this.btnEstado.Size = new System.Drawing.Size(89, 24);
             this.btnEstado.TabIndex = 2;
             this.btnEstado.Text = "Estado";
             this.btnEstado.UseVisualStyleBackColor = true;
@@ -76,7 +79,7 @@
             // 
             // btnOfertas
             // 
-            this.btnOfertas.Location = new System.Drawing.Point(176, 34);
+            this.btnOfertas.Location = new System.Drawing.Point(161, 24);
             this.btnOfertas.Name = "btnOfertas";
             this.btnOfertas.Size = new System.Drawing.Size(85, 23);
             this.btnOfertas.TabIndex = 3;
@@ -86,7 +89,7 @@
             // 
             // btnDemandas
             // 
-            this.btnDemandas.Location = new System.Drawing.Point(176, 76);
+            this.btnDemandas.Location = new System.Drawing.Point(252, 24);
             this.btnDemandas.Name = "btnDemandas";
             this.btnDemandas.Size = new System.Drawing.Size(85, 23);
             this.btnDemandas.TabIndex = 4;
@@ -95,7 +98,7 @@
             // 
             // btnTransferencia
             // 
-            this.btnTransferencia.Location = new System.Drawing.Point(176, 116);
+            this.btnTransferencia.Location = new System.Drawing.Point(343, 24);
             this.btnTransferencia.Name = "btnTransferencia";
             this.btnTransferencia.Size = new System.Drawing.Size(85, 23);
             this.btnTransferencia.TabIndex = 5;
@@ -105,7 +108,7 @@
             // 
             // btnOfertaForm
             // 
-            this.btnOfertaForm.Location = new System.Drawing.Point(34, 209);
+            this.btnOfertaForm.Location = new System.Drawing.Point(625, 24);
             this.btnOfertaForm.Name = "btnOfertaForm";
             this.btnOfertaForm.Size = new System.Drawing.Size(75, 23);
             this.btnOfertaForm.TabIndex = 7;
@@ -115,7 +118,7 @@
             // 
             // btnOrdenes
             // 
-            this.btnOrdenes.Location = new System.Drawing.Point(34, 159);
+            this.btnOrdenes.Location = new System.Drawing.Point(434, 24);
             this.btnOrdenes.Name = "btnOrdenes";
             this.btnOrdenes.Size = new System.Drawing.Size(89, 23);
             this.btnOrdenes.TabIndex = 8;
@@ -125,7 +128,7 @@
             // 
             // btnDemandaForm
             // 
-            this.btnDemandaForm.Location = new System.Drawing.Point(161, 209);
+            this.btnDemandaForm.Location = new System.Drawing.Point(715, 24);
             this.btnDemandaForm.Name = "btnDemandaForm";
             this.btnDemandaForm.Size = new System.Drawing.Size(100, 23);
             this.btnDemandaForm.TabIndex = 9;
@@ -147,26 +150,26 @@
             // 
             this.grpXML.Controls.Add(this.btnXMLUsers);
             this.grpXML.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpXML.Location = new System.Drawing.Point(0, 280);
+            this.grpXML.Location = new System.Drawing.Point(0, 360);
             this.grpXML.Name = "grpXML";
             this.grpXML.Padding = new System.Windows.Forms.Padding(10);
-            this.grpXML.Size = new System.Drawing.Size(327, 170);
+            this.grpXML.Size = new System.Drawing.Size(925, 76);
             this.grpXML.TabIndex = 6;
             this.grpXML.TabStop = false;
             this.grpXML.Text = "XML";
             // 
             // btnWallet
             // 
-            this.btnWallet.Location = new System.Drawing.Point(176, 159);
+            this.btnWallet.Location = new System.Drawing.Point(224, 30);
             this.btnWallet.Name = "btnWallet";
-            this.btnWallet.Size = new System.Drawing.Size(85, 23);
+            this.btnWallet.Size = new System.Drawing.Size(85, 24);
             this.btnWallet.TabIndex = 10;
             this.btnWallet.Text = "Wallet";
             this.btnWallet.UseVisualStyleBackColor = true;
             // 
             // btnPerfil
             // 
-            this.btnPerfil.Location = new System.Drawing.Point(34, 251);
+            this.btnPerfil.Location = new System.Drawing.Point(821, 24);
             this.btnPerfil.Name = "btnPerfil";
             this.btnPerfil.Size = new System.Drawing.Size(75, 23);
             this.btnPerfil.TabIndex = 11;
@@ -174,13 +177,37 @@
             this.btnPerfil.UseVisualStyleBackColor = true;
             this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
             // 
+            // adminGroup
+            // 
+            this.adminGroup.Controls.Add(this.btnCategorias);
+            this.adminGroup.Controls.Add(this.btnEstado);
+            this.adminGroup.Controls.Add(this.btnWallet);
+            this.adminGroup.Controls.Add(this.btnUsuarios);
+            this.adminGroup.Location = new System.Drawing.Point(0, 269);
+            this.adminGroup.Name = "adminGroup";
+            this.adminGroup.Size = new System.Drawing.Size(925, 75);
+            this.adminGroup.TabIndex = 12;
+            this.adminGroup.TabStop = false;
+            this.adminGroup.Text = "Admininistracion";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F);
+            this.label1.Location = new System.Drawing.Point(283, 162);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(366, 29);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Bienvenido a Banco de Tiempo";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 450);
+            this.ClientSize = new System.Drawing.Size(925, 436);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.adminGroup);
             this.Controls.Add(this.btnPerfil);
-            this.Controls.Add(this.btnWallet);
             this.Controls.Add(this.grpXML);
             this.Controls.Add(this.btnDemandaForm);
             this.Controls.Add(this.btnOrdenes);
@@ -188,14 +215,13 @@
             this.Controls.Add(this.btnTransferencia);
             this.Controls.Add(this.btnDemandas);
             this.Controls.Add(this.btnOfertas);
-            this.Controls.Add(this.btnEstado);
-            this.Controls.Add(this.btnCategorias);
-            this.Controls.Add(this.btnUsuarios);
             this.Name = "Form1";
             this.Text = "Panel Inico";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpXML.ResumeLayout(false);
+            this.adminGroup.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -214,6 +240,8 @@
         private System.Windows.Forms.GroupBox grpXML;
         private System.Windows.Forms.Button btnWallet;
         private System.Windows.Forms.Button btnPerfil;
+        private System.Windows.Forms.GroupBox adminGroup;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -38,10 +38,18 @@ namespace TimeBank
 
         private void activatePage() {
             this.Enabled = true;
+            if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().Clientes.First().Esadmin)
+            {
+                this.adminGroup.Visible = true;
+                this.grpXML.Visible = true;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.adminGroup.Visible = false;
+            this.grpXML.Visible = false;
+
             Session session = Session.GetCurrentSession();
             if (!session.hasUser()) {
                 this.Enabled = false;
@@ -105,6 +113,11 @@ namespace TimeBank
         {
             Presentacion.FormTransferencia formTransferencia = new Presentacion.FormTransferencia();
             formTransferencia.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

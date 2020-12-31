@@ -105,6 +105,7 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             this.Controls.Add(this.descriptionField);
             this.Name = "DemandaPage";
             this.Text = "Demanda";
+            this.Load += new System.EventHandler(this.DemandaPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
