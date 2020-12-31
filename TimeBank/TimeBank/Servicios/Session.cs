@@ -12,26 +12,27 @@ namespace TimeBank.Servicios
         private static Session instance = null;
         Usuarios usuario = null;
 
-        public Session() { }
-        public Session(Usuarios usuario) {
-            this.usuario = usuario;
-        }
-        public static Session Instance
+        private Session() { }
+        public static Session GetCurrentSession()
         {
-            get
+            if (instance == null)
             {
-
-                if (instance == null)
-                {
-                    instance = new Session();
-                }
-
-                return instance;
+                instance = new Session();
             }
+
+            return instance;
         }
 
         public Usuarios getCurrentUser() {
             return usuario;
+        }
+
+        public void setUser(Usuarios usuario) {
+            this.usuario = usuario;
+        }
+
+        public Boolean hasUser() {
+            return this.usuario != null;
         }
     }
 }

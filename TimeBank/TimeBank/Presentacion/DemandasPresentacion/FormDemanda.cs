@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeBank.Modelos;
+using TimeBank.Servicios;
 
 namespace TimeBank.Presentacion.DemandasPresentacion
 {
@@ -53,13 +54,14 @@ namespace TimeBank.Presentacion.DemandasPresentacion
 
         private Ofertas createDemanda()
         {
+            Session session = Session.GetCurrentSession();
             Ofertas oferta = new Ofertas()
             {
                 Titulo = this.title,
                 Descripcion = this.description,
                 fecha_ofer = DateTime.Now,
                 idCategoria = this.categoria,
-                idUser = 1 // TODO Add current user
+                idUser = session.getCurrentUser().IdUser,
             };
 
             return oferta;
@@ -108,6 +110,12 @@ namespace TimeBank.Presentacion.DemandasPresentacion
 
         private void saveDemandaBtn_Click(object sender, EventArgs e)
         {
+            if (this.title == "" || this.description == "" || this.categoria == 0)
+            {
+                MessageBox.Show("Debes de rellenar todos los campos");
+                return;
+            }
+
             if (id != 0)
             {
                 this.updateDemanda();
@@ -121,7 +129,7 @@ namespace TimeBank.Presentacion.DemandasPresentacion
         private void titleField_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            this.title = textBox.Text;
+            this.title = textBox.Text.Trim();
         }
 
         private void categoriaField_SelectedIndexChanged(object sender, EventArgs e)
@@ -148,7 +156,7 @@ namespace TimeBank.Presentacion.DemandasPresentacion
         private void descriptionField_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            this.description = textBox.Text;
+            this.description = textBox.Text.Trim();
         }
     }
 }

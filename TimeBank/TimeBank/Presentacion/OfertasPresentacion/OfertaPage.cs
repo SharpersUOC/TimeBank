@@ -30,13 +30,15 @@ namespace TimeBank.Presentacion.OfertasPresentacion
 
         private void contratarBtn_Click(object sender, EventArgs e)
         {
-            Orden orden = new Orden() { 
-                idUser = 1, // TODO: Add current user
-                idOferta = this.oferta.idOferta,
-                idEstado = 1
-            };
+            var ordenQuery = from o in context.Orden
+                             where o.idOferta == this.oferta.idOferta
+                             select o;
 
-            this.context.Orden.Add(orden);
+            Orden orden = ordenQuery.FirstOrDefault();
+
+            orden.idUser = TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser;
+            orden.idEstado = 2;
+
             this.context.SaveChanges();
             MessageBox.Show("¡Se acaba de enviar la solicitud de la oferta!");
             this.Close();

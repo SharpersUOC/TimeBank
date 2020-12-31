@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TimeBank.Servicios;
 
 namespace TimeBank
 {
@@ -35,12 +36,19 @@ namespace TimeBank
             formCategorias.RefrescarCategorias();
         }
 
-
-
+        private void activatePage() {
+            this.Enabled = true;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Session session = Session.GetCurrentSession();
+            if (!session.hasUser()) {
+                this.Enabled = false;
+                Presentacion.LoginForm loginForm = new Presentacion.LoginForm();
+                loginForm.Show();
+                loginForm.setOnLogin(this.activatePage);
+            }
         }
 
         private void btnEstado_Click(object sender, EventArgs e)
@@ -81,20 +89,16 @@ namespace TimeBank
 
         }
 
-        private void btnTransferencia_Click(object sender, EventArgs e)
+       private void btnWallet_Click(object sender, EventArgs e)
         {
-            Presentacion.FormTransferencia formTransferencia = new Presentacion.FormTransferencia();
-            formTransferencia.ShowDialog();
+            Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
+            formWallet.Show();
         }
 
-        /* private void btnWallet_Click(object sender, EventArgs e)
-          {
-              Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
-              formWallet.Show();
-          }*/
-
-
-
-
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Presentacion.RegisterForm registerForm = new Presentacion.RegisterForm(TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser());
+            registerForm.Show();
+        }
     }
 }

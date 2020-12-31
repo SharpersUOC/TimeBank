@@ -21,7 +21,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         double horas = 0;
         double minutos = 0;
         int categoria = 0;
-        Session session = new Session();
+        Session session = Session.GetCurrentSession();
 
         public FormOferta()
         {
@@ -82,11 +82,23 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         }
 
         public void saveOferta() {
+            Ofertas oferta = createOferta();
 
-            context.Ofertas.Add(createOferta());
+            context.Ofertas.Add(oferta);
             
             try
             {
+                context.SaveChanges();
+
+                Orden orden = new Orden()
+                {
+                    idUser = null,
+                    idOferta = oferta.idOferta,
+                    idEstado = 1
+                };
+
+                context.Orden.Add(orden);
+
                 context.SaveChanges();
 
                 MessageBox.Show("Oferta creada con éxito.");
@@ -121,6 +133,11 @@ namespace TimeBank.Presentacion.OfertasPresentacion
 
         private void saveOfertaBtn_Click(object sender, EventArgs e)
         {
+            if (this.title == "" || this.description == "" || this.categoria == 0 || (this.minutos == 0 && this.horas == 0) ) {
+                MessageBox.Show("Debes de rellenar todos los campos");
+                return;
+            }
+
             if (id != 0)
             {
                 this.updateOferta();
@@ -134,7 +151,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         private void titleField_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox; 
-            this.title = textBox.Text;
+            this.title = textBox.Text.Trim();
         }
 
         private void categoriaField_SelectedIndexChanged(object sender, EventArgs e)
@@ -175,7 +192,7 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         private void decriptionField_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            this.description = textBox.Text;
+            this.description = textBox.Text.Trim();
         }
     }
 } 

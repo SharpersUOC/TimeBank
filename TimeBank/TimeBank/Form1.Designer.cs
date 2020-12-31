@@ -40,6 +40,7 @@
             this.btnXMLUsers = new System.Windows.Forms.Button();
             this.grpXML = new System.Windows.Forms.GroupBox();
             this.btnWallet = new System.Windows.Forms.Button();
+            this.btnPerfil = new System.Windows.Forms.Button();
             this.grpXML.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -163,11 +164,22 @@
             this.btnWallet.Text = "Wallet";
             this.btnWallet.UseVisualStyleBackColor = true;
             // 
+            // btnPerfil
+            // 
+            this.btnPerfil.Location = new System.Drawing.Point(34, 251);
+            this.btnPerfil.Name = "btnPerfil";
+            this.btnPerfil.Size = new System.Drawing.Size(75, 23);
+            this.btnPerfil.TabIndex = 11;
+            this.btnPerfil.Text = "Ver perfil";
+            this.btnPerfil.UseVisualStyleBackColor = true;
+            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.btnPerfil);
             this.Controls.Add(this.btnWallet);
             this.Controls.Add(this.grpXML);
             this.Controls.Add(this.btnDemandaForm);
@@ -201,6 +213,7 @@
         private System.Windows.Forms.Button btnXMLUsers;
         private System.Windows.Forms.GroupBox grpXML;
         private System.Windows.Forms.Button btnWallet;
+        private System.Windows.Forms.Button btnPerfil;
     }
 }
 

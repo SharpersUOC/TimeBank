@@ -17,6 +17,8 @@ namespace TimeBank.Presentacion
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
         String email = "";
         String password = "";
+        Action onLogin = null;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -27,29 +29,50 @@ namespace TimeBank.Presentacion
 
         }
 
+        public void setOnLogin(Action action) {
+            this.onLogin = action;
+        }
         private void loginBtn_Click(object sender, EventArgs e)
         {
             var userQuery = from u in context.Usuarios
                             where u.Email == email
                             select u;
             
-            Usuarios user = userQuery.First();
-            
-            if (user.Contraseña == password) {
-                Session session = new Session(user);
+            Usuarios user = userQuery.FirstOrDefault<Usuarios>();
+
+            if (user == null) {
+                MessageBox.Show("Usuario no encontrado.");
+                return;
             }
+            
+            if (user.Contraseña == TimeBank.Servicios.Password.Encrypt(password)) {
+                Session session = Session.GetCurrentSession();
+                session.setUser(user);
+                this.onLogin();
+                this.Close();
+                return;
+            }
+
+            MessageBox.Show("Contraseña erronea.");
         }
 
         private void emailField_TextChanged(object sender, EventArgs e)
         {
             TextBox emailField = sender as TextBox;
-            this.email = emailField.Text;
+            this.email = emailField.Text.Trim();
         }
 
         private void passwordField_TextChanged(object sender, EventArgs e)
         {
             TextBox passwordField = sender as TextBox;
             this.password = passwordField.Text;
+        }
+
+        private void registerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Presentacion.RegisterForm registerForm = new Presentacion.RegisterForm();
+            registerForm.Show();
+            this.Close();
         }
     }
 }
