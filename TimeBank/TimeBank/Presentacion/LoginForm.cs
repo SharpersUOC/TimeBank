@@ -48,7 +48,11 @@ namespace TimeBank.Presentacion
             if (user.Contraseña == TimeBank.Servicios.Password.Encrypt(password)) {
                 Session session = Session.GetCurrentSession();
                 session.setUser(user);
-                this.onLogin();
+                
+                if (this.onLogin != null) {
+                    this.onLogin();
+                }
+
                 this.Close();
                 return;
             }
@@ -72,7 +76,6 @@ namespace TimeBank.Presentacion
         {
             Presentacion.RegisterForm registerForm = new Presentacion.RegisterForm();
             registerForm.Show();
-            this.Close();
         }
     }
 }

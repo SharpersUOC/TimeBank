@@ -40,10 +40,10 @@ namespace TimeBank.Presentacion
 
         private void createUser() {
             usuario.Email = emailField.Text.Trim();             // Con la función Trim eliminamos los espacios en blanco antes y después del contenido
-            usuario.Contraseña = passwordField.Text.Trim();
+            usuario.Contraseña = TimeBank.Servicios.Password.Encrypt(passwordField.Text.Trim());
             usuario.fecha_alta = DateTime.Now.ToLocalTime();
             cliente.Nombre = nameField.Text.Trim();
-            cliente.Apellidos = TimeBank.Servicios.Password.Encrypt(passwordField.Text.Trim());
+            cliente.Apellidos = surnameField.Text.Trim();
             cliente.Esadmin = checkBAdmin.Checked;
             cartera.Balance = 0.0;
             cartera.fecha = usuario.fecha_alta;
@@ -78,18 +78,12 @@ namespace TimeBank.Presentacion
             MessageBox.Show("Registro actualizado correctamente");
         }
 
-        private void openLoginPage() {
-            Presentacion.LoginForm loginForm = new Presentacion.LoginForm();
-            loginForm.Show();
-        }
-
         private void registerBtn_Click(object sender, EventArgs e)
         {
             try {
                 if (usuario.IdUser == 0)
                 {
                     createUser();
-                    openLoginPage();
                 }
                 else
                 {
