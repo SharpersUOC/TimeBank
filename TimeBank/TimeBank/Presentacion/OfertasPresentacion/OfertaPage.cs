@@ -57,5 +57,13 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             ordenesPage.Show();
             this.Refresh();
         }
+
+        private void OfertaPage_Load(object sender, EventArgs e)
+        {
+            if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser != this.oferta.idUser) {
+                this.updateBtn.Visible = false;
+                this.deleteBtn.Visible = false;
+            }
+        }
     }
 }
