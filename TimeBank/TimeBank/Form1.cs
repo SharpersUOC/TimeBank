@@ -40,21 +40,15 @@ namespace TimeBank
             this.Enabled = true;
             if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().Clientes.First().Esadmin)
             {
-                this.btnCategorias.Visible = true;
-                this.btnWallet.Visible = true;
-                this.btnEstado.Visible = true;
+                this.adminGroup.Visible = true;
                 this.grpXML.Visible = true;
-                this.btnUsuarios.Visible = true;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.btnCategorias.Visible = false;
-            this.btnWallet.Visible = false;
-            this.btnEstado.Visible = false;
+            this.adminGroup.Visible = false;
             this.grpXML.Visible = false;
-            this.btnUsuarios.Visible = false;
 
             Session session = Session.GetCurrentSession();
             if (!session.hasUser()) {
@@ -119,6 +113,11 @@ namespace TimeBank
         {
             Presentacion.FormTransferencia formTransferencia = new Presentacion.FormTransferencia();
             formTransferencia.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

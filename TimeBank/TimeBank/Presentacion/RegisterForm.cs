@@ -103,6 +103,7 @@ namespace TimeBank.Presentacion
                 this.passwordField.Text = TimeBank.Servicios.Password.Decrypt(usuario.Contraseña);
                 this.nameField.Text = cliente.Nombre;
                 this.surnameField.Text = cliente.Apellidos;
+                this.checkBAdmin.Checked = cliente.Esadmin;
                 this.emailField.ReadOnly = true;
             }
         }
