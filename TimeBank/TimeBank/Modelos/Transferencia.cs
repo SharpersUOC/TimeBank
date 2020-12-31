@@ -16,6 +16,7 @@ namespace TimeBank.Modelos
     {
         public int idTransferencia { get; set; }
         public System.DateTime fecha { get; set; }
+        public string comentarios { get; set; }
         public int idUser { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }

@@ -131,7 +131,7 @@
     </Key>
     <Property Name="idOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idOferta" Type="Int32" Nullable="false" />
-    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="true" />
     <Property Name="idEstado" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Estado" Relationship="BancoDeTiempoModel.FK_Orden_Estado" FromRole="Orden" ToRole="Estado" />
     <NavigationProperty Name="Ofertas" Relationship="BancoDeTiempoModel.FK_Orden_Ofertas" FromRole="Orden" ToRole="Ofertas" />
@@ -162,6 +162,7 @@
     </Key>
     <Property Name="idTransferencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Usuarios" Relationship="BancoDeTiempoModel.FK_Transferencia_Usuarios" FromRole="Transferencia" ToRole="Usuarios" />
   </EntityType>
@@ -303,7 +304,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orden_Usuarios">
-    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+    <End Type="BancoDeTiempoModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
     <End Type="BancoDeTiempoModel.Orden" Role="Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">

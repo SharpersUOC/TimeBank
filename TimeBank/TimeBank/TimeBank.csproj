@@ -139,6 +139,18 @@
     <Compile Include="Presentacion\DemandasPresentacion\FormDemanda.Designer.cs">
       <DependentUpon>FormDemanda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\FormSelectOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FormSelectOferta.Designer.cs">
+      <DependentUpon>FormSelectOferta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\FormTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FormTransferencia.Designer.cs">
+      <DependentUpon>FormTransferencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormEstados.resx">
       <DependentUpon>FormEstados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FormSelectOferta.resx">
+      <DependentUpon>FormSelectOferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FormTransferencia.resx">
+      <DependentUpon>FormTransferencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

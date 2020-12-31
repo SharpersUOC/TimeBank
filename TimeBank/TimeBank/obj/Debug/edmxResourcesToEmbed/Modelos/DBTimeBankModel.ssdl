@@ -63,7 +63,7 @@
     </Key>
     <Property Name="idOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idOferta" Type="int" Nullable="false" />
-    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="true" />
     <Property Name="idEstado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Sesiones">
@@ -90,6 +90,7 @@
     </Key>
     <Property Name="idTransferencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="comentarios" Type="text" />
     <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuarios">
@@ -209,7 +210,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Orden_Usuarios">
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
     <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuarios">

@@ -100,5 +100,11 @@ namespace TimeBank
             Presentacion.RegisterForm registerForm = new Presentacion.RegisterForm(TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser());
             registerForm.Show();
         }
+
+        private void btnTransferencia_Click(object sender, EventArgs e)
+        {
+            Presentacion.FormTransferencia formTransferencia = new Presentacion.FormTransferencia();
+            formTransferencia.Show();
+        }
     }
 }
