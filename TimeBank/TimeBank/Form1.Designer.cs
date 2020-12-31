@@ -100,6 +100,7 @@
             this.btnTransferencia.TabIndex = 5;
             this.btnTransferencia.Text = "Transferencia";
             this.btnTransferencia.UseVisualStyleBackColor = true;
+            this.btnTransferencia.Click += new System.EventHandler(this.btnTransferencia_Click);
             // 
             // btnOfertaForm
             // 

@@ -98,6 +98,7 @@
       <EntityTypeMapping TypeName="BancoDeTiempoModel.Transferencia">
         <MappingFragment StoreEntitySet="Transferencia">
           <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="comentarios" ColumnName="comentarios" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="idTransferencia" ColumnName="idTransferencia" />
         </MappingFragment>

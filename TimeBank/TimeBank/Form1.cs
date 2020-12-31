@@ -81,11 +81,20 @@ namespace TimeBank
 
         }
 
-       private void btnWallet_Click(object sender, EventArgs e)
+        private void btnTransferencia_Click(object sender, EventArgs e)
         {
-            Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
-            formWallet.Show();
+            Presentacion.FormTransferencia formTransferencia = new Presentacion.FormTransferencia();
+            formTransferencia.ShowDialog();
         }
+
+        /* private void btnWallet_Click(object sender, EventArgs e)
+          {
+              Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
+              formWallet.Show();
+          }*/
+
+
+
 
     }
 }

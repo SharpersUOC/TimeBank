@@ -90,6 +90,7 @@
     </Key>
     <Property Name="idTransferencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="comentarios" Type="text" />
     <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuarios">
