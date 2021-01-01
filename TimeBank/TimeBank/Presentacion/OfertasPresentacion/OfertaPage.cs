@@ -13,11 +13,19 @@ namespace TimeBank.Presentacion.OfertasPresentacion
 {
     public partial class OfertaPage : Form
     {
-        BancoDeTiempoEntities context = new BancoDeTiempoEntities();
+        BancoDeTiempoEntities context = null;
+        public Form parent = null;
         Ofertas oferta = null;
+        int id = 0;
         public OfertaPage(int id)
         {
             InitializeComponent();
+            this.id = id;
+        }
+
+        private void populateFields() {
+            context = new BancoDeTiempoEntities();
+
             this.oferta = context.Ofertas.Find(id);
             TimeSpan time = TimeSpan.FromSeconds(oferta.Tiempo);
 
@@ -54,15 +62,35 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         private void updateBtn_Click(object sender, EventArgs e)
         {
             Presentacion.OfertasPresentacion.FormOferta ordenesPage = new Presentacion.OfertasPresentacion.FormOferta(oferta);
+            ordenesPage.parent = this;
             ordenesPage.Show();
-            this.Refresh();
         }
 
+        public override void Refresh()
+        {
+            base.Refresh();
+
+            populateFields();
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            if (parent != null) {
+                this.parent.Refresh();
+            }
+        }
+        
         private void OfertaPage_Load(object sender, EventArgs e)
         {
-            if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser != this.oferta.idUser) {
+            this.populateFields();
+            if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser != this.oferta.idUser)
+            {
                 this.updateBtn.Visible = false;
                 this.deleteBtn.Visible = false;
+            }
+            else {
+                this.contratarBtn.Visible = false;
             }
         }
     }

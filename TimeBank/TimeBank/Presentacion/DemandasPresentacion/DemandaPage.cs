@@ -13,13 +13,19 @@ namespace TimeBank.Presentacion.DemandasPresentacion
 {
     public partial class DemandaPage : Form
     {
-        BancoDeTiempoEntities context = new BancoDeTiempoEntities();
+        BancoDeTiempoEntities context = null;
         Demandas demanda = null;
+        public Form parent = null;
+        int id = 0;
 
         public DemandaPage(int id)
         {
             InitializeComponent();
+            this.id = id;
+        }
 
+        public void populateData() {
+            context = new BancoDeTiempoEntities();
             this.demanda = context.Demandas.Find(id);
 
             titleField.Text = demanda.Titulo;
@@ -38,12 +44,26 @@ namespace TimeBank.Presentacion.DemandasPresentacion
         private void updateBtn_Click(object sender, EventArgs e)
         {
             Presentacion.DemandasPresentacion.FormDemanda formDemanda = new Presentacion.DemandasPresentacion.FormDemanda(demanda);
+            formDemanda.parent = this;
             formDemanda.Show();
-            this.Refresh();
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            if (parent != null) {
+                parent.Refresh();
+            }
+        }
+
+        override public void Refresh() {
+            base.Refresh();
+            populateData();
+        }
         private void DemandaPage_Load(object sender, EventArgs e)
         {
+            populateData();
+
             if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser != this.demanda.idUser)
             {
                 this.updateBtn.Visible = false;

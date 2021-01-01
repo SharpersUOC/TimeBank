@@ -95,6 +95,7 @@
             this.btnDemandas.TabIndex = 4;
             this.btnDemandas.Text = "Demandas";
             this.btnDemandas.UseVisualStyleBackColor = true;
+            this.btnDemandas.Click += new System.EventHandler(this.btnDemandas_Click);
             // 
             // btnTransferencia
             // 
