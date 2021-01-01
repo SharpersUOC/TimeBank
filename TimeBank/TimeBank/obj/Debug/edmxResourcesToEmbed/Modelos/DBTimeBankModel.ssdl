@@ -63,7 +63,7 @@
     </Key>
     <Property Name="idOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idOferta" Type="int" Nullable="false" />
-    <Property Name="idUser" Type="int" Nullable="true" />
+    <Property Name="idUser" Type="int" />
     <Property Name="idEstado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Sesiones">
@@ -110,6 +110,28 @@
     <Property Name="Balance" Type="float" Nullable="false" />
     <Property Name="fecha" Type="date" Nullable="false" />
     <Property Name="idCliente" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ResumenOfertas">
+    <Key>
+      <PropertyRef Name="idOferta" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellidos" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="Tiempo" />
+      <PropertyRef Name="OfertaUser" />
+      <PropertyRef Name="OrdenUser" />
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idOferta" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Tiempo" Type="float" Nullable="false" />
+    <Property Name="OfertaUser" Type="int" Nullable="false" />
+    <Property Name="OrdenUser" Type="int" Nullable="false" />
+    <Property Name="idEstado" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Clientes_Usuarios">
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
@@ -263,6 +285,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BancoDeTiempoModelStoreContainer">
     <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -276,6 +329,18 @@
     <EntitySet Name="Transferencia" EntityType="Self.Transferencia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResumenOfertas" EntityType="Self.ResumenOfertas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ResumenOfertas].[idOferta] AS [idOferta], 
+    [ResumenOfertas].[Nombre] AS [Nombre], 
+    [ResumenOfertas].[Apellidos] AS [Apellidos], 
+    [ResumenOfertas].[Titulo] AS [Titulo], 
+    [ResumenOfertas].[Tiempo] AS [Tiempo], 
+    [ResumenOfertas].[OfertaUser] AS [OfertaUser], 
+    [ResumenOfertas].[OrdenUser] AS [OrdenUser], 
+    [ResumenOfertas].[idEstado] AS [idEstado]
+    FROM [dbo].[ResumenOfertas] AS [ResumenOfertas]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Clientes_Usuarios" Association="Self.FK_Clientes_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Clientes" EntitySet="Clientes" />

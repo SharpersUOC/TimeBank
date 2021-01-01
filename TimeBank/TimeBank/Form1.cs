@@ -38,7 +38,6 @@ namespace TimeBank
 
         private void activatePage() {
             this.Enabled = true;
-            // No mostrar transferir si no se tiene dinero
             if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().Clientes.First().Esadmin)
             {
                 this.adminGroup.Visible = true;
@@ -123,8 +122,8 @@ namespace TimeBank
 
         private void btnDemandas_Click(object sender, EventArgs e)
         {
-            Presentacion.DemandasPresentacion.DemandasPage demandas = new Presentacion.DemandasPresentacion.DemandasPage();
-            demandas.Show();
+            Presentacion.DemandasPresentacion.DemandasPage demandasPage = new Presentacion.DemandasPresentacion.DemandasPage();
+            demandasPage.Show();
         }
     }
 }

@@ -100,7 +100,16 @@
     <Compile Include="Modelos\Orden.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\ResumenOfertas.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Sesiones.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\sp_helpdiagrams_Result.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\sysdiagrams.cs">

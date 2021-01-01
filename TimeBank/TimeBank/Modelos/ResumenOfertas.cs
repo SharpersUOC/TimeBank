@@ -12,12 +12,15 @@ namespace TimeBank.Modelos
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class ResumenOfertas
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int idOferta { get; set; }
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
+        public string Titulo { get; set; }
+        public double Tiempo { get; set; }
+        public int OfertaUser { get; set; }
+        public int OrdenUser { get; set; }
+        public int idEstado { get; set; }
     }
 }
