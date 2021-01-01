@@ -47,11 +47,19 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             demandasGridView.CellClick += new DataGridViewCellEventHandler(demandasDataView_CellClick);
         }
 
+        public override void Refresh()
+        {
+            base.Refresh();
+
+            this.populateTable();
+        }
+
         private void demandasDataView_CellClick(object sender, EventArgs e)
         {
             DataGridView dataGridView = sender as DataGridView;
             int id = Convert.ToInt32(dataGridView.CurrentRow.Cells[1].Value);
             Presentacion.DemandasPresentacion.DemandaPage demandaPage = new Presentacion.DemandasPresentacion.DemandaPage(id);
+            demandaPage.parent = this; 
             demandaPage.Show();
         }
     }

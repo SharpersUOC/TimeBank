@@ -47,10 +47,18 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             ofertasDataGrid.CellClick += new DataGridViewCellEventHandler(ofertasDataGrid_CellClick);
         }
 
+        public override void Refresh()
+        {
+            base.Refresh();
+
+            this.populateTable();
+        }
+
         private void ofertasDataGrid_CellClick(object sender, EventArgs e) {
             DataGridView dataGridView = sender as DataGridView;
             int id = Convert.ToInt32(dataGridView.CurrentRow.Cells[1].Value);
             Presentacion.OfertasPresentacion.OfertaPage ofertaPage = new Presentacion.OfertasPresentacion.OfertaPage(id);
+            ofertaPage.parent = this;
             ofertaPage.Show();
         }
     }

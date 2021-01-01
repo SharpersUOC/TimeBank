@@ -15,6 +15,9 @@ namespace TimeBank.Presentacion.OfertasPresentacion
     public partial class FormOferta : Form
     {
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
+        
+        public Form parent = null;
+
         int id = 0;
         String title = "";
         String description = "";
@@ -30,7 +33,8 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             loadCategorias();
         }
 
-        public FormOferta(Ofertas oferta) {
+        public FormOferta(Ofertas oferta)
+        {
             InitializeComponent();
 
             loadCategorias();
@@ -43,12 +47,13 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             horas = time.Hours;
             minutos = time.Minutes;
 
-            populateFields();
+            populateFields(oferta);
         }
 
-        private void populateFields() {
+        private void populateFields(Ofertas oferta) {
             this.titleField.Text = title;
             this.decriptionField.Text = description;
+            this.categoriaField.SelectedIndex = categoriaField.FindString(oferta.Categorias.NombreCat);
             this.horasField.Value = Convert.ToDecimal(horas);
             this.minutosField.Value = Convert.ToDecimal(minutos);
         }
@@ -102,7 +107,6 @@ namespace TimeBank.Presentacion.OfertasPresentacion
                 context.SaveChanges();
 
                 MessageBox.Show("Oferta creada con éxito.");
-                this.Close();
             }
             catch (Exception e) {
                 Console.Error.Write(e);
@@ -113,9 +117,12 @@ namespace TimeBank.Presentacion.OfertasPresentacion
 
         private void updateOferta() {
             Ofertas oferta = context.Ofertas.Find(id);
-
+            TimeSpan time = TimeSpan.Parse(horas + ":" + minutos);
             oferta.Titulo = title;
             oferta.Descripcion = description;
+            oferta.Tiempo = time.TotalSeconds;
+            oferta.fecha_ofer = DateTime.Now;
+            oferta.idCategoria = this.categoria;
 
             try
             {
@@ -145,6 +152,15 @@ namespace TimeBank.Presentacion.OfertasPresentacion
             else
             {
                 this.saveOferta();
+            }
+
+            refreshParent();
+            this.Close();
+        }
+
+        private void refreshParent() {
+            if (parent != null) {
+                parent.Refresh();
             }
         }
 

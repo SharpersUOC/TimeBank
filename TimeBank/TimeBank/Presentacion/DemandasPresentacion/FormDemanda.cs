@@ -15,6 +15,10 @@ namespace TimeBank.Presentacion.DemandasPresentacion
     public partial class FormDemanda : Form
     {
         BancoDeTiempoEntities context = new BancoDeTiempoEntities();
+        
+        public DemandaPage parent = null;
+        
+        Demandas demanda = null;
         int id = 0;
         String title = "";
         String description = "";
@@ -31,12 +35,20 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             InitializeComponent();
 
             loadCategorias();
+            this.demanda = demanda;
+            id = demanda.idDemanda;
+            title = demanda.Titulo;
+            description = demanda.Descripcion;
+            categoria = demanda.idCategoria;
+
+            populateFields(demanda);
         }
 
-        private void populateFields()
+        private void populateFields(Demandas demanda)
         {
             this.titleField.Text = title;
             this.descriptionField.Text = description;
+            this.categoriaField.SelectedIndex = this.categoriaField.FindString(demanda.Categorias.NombreCat);
         }
 
         private void loadCategorias()
@@ -76,8 +88,7 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             {
                 context.SaveChanges();
 
-                MessageBox.Show("Demanda creada con éxito.");
-                this.Close();
+                MessageBox.Show("Oferta creada con éxito.");
             }
             catch (Exception e)
             {
@@ -93,13 +104,13 @@ namespace TimeBank.Presentacion.DemandasPresentacion
 
             demanda.Titulo = title;
             demanda.Descripcion = description;
+            demanda.idCategoria = categoria;
 
             try
             {
                 context.SaveChanges();
 
                 MessageBox.Show("Demanda actualizada con éxito.");
-                this.Close();
             }
             catch (Exception e)
             {
@@ -123,6 +134,15 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             else
             {
                 this.saveDemanda();
+            }
+
+            refreshParent();
+            this.Close();
+        }
+
+        private void refreshParent() {
+            if (this.parent != null) {
+                this.parent.populateData();
             }
         }
 
