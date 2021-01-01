@@ -30,6 +30,7 @@ namespace TimeBank.Presentacion
         {
             InitializeComponent();
             currentsession = Session.GetCurrentSession();
+            btnTransferir.Enabled = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -48,43 +49,45 @@ namespace TimeBank.Presentacion
 
             using (BancoDeTiempoEntities db = new BancoDeTiempoEntities()) {
 
-                miusuario = db.Usuarios.Where(x => x.IdUser == mioferta.idUser).FirstOrDefault();
-                micliente = db.Clientes.Where(x => x.idUser == miusuario.IdUser).FirstOrDefault();
-                txtNombreApellidos.Text = micliente.Nombre + " " + micliente.Apellidos;
-                txtEmail.Text = miusuario.Email;
-                txtTitulo.Text = mioferta.Titulo;
-                txtDescripcion.Text = mioferta.Descripcion;
-                txtTiempo.Text = Math.Truncate(mioferta.Tiempo).ToString() + ":" + ((mioferta.Tiempo - Math.Truncate(mioferta.Tiempo))*60).ToString();
+                if (mioferta.Titulo == null)
+                {
+
+                    String mensaje = "No puedes transferir tiempo: Revisa si contactaste la oferta";
+                    String titulo = "Operación no permitida";
+                    MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    btnTransferir.Enabled = true;
+                    miusuario = db.Usuarios.Where(x => x.IdUser == mioferta.idUser).FirstOrDefault();
+                    micliente = db.Clientes.Where(x => x.idUser == miusuario.IdUser).FirstOrDefault();
+                    txtNombreApellidos.Text = micliente.Nombre + " " + micliente.Apellidos;
+                    txtEmail.Text = miusuario.Email;
+                    txtTitulo.Text = mioferta.Titulo;
+                    txtDescripcion.Text = mioferta.Descripcion;
+                    txtTiempo.Text = Math.Truncate(mioferta.Tiempo).ToString() + ":" + ((mioferta.Tiempo - Math.Truncate(mioferta.Tiempo)) * 60).ToString();
+                }
                 
             }
 
         } // End setOferInformation
+
+
+
+        //Método para realizar las transferencias y actualizar registros de la base de datos
 
         private void btnTransferir_Click(object sender, EventArgs e)
         {
             Clientes clienteDemandante, clienteOfertante;
             Wallet MonederoDemandante,monederoOfertante;
             Orden miorden;
-            Usuarios miusuario;
-
 
             transferencia.fecha = selectedTime;
             transferencia.comentarios = txtComentarios.Text.ToString();
             transferencia.idUser = currentsession.getCurrentUser().IdUser;
 
-            if (transferencia.idUser == formSelectOferta.SelectedOferta.idUser)
-            {
-                String mensaje = "No puedes transferirte TIEMPO A TI MISMO.";
-                String titulo = "Operación no permitida";
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-
                 using (BancoDeTiempoEntities db = new BancoDeTiempoEntities())
                 {
-
-
 
                     //seleccionar el cliente asociado a idUser del demandante y ofertante
 
@@ -99,68 +102,32 @@ namespace TimeBank.Presentacion
 
                     miorden = db.Orden.Where(x => x.idOferta == formSelectOferta.SelectedOferta.idOferta).FirstOrDefault();
 
-                    //obtener usuario que contacto el servicio
+                    // insertar registro en tabla Transferencias
 
-                    miusuario = db.Usuarios.Where(x => x.IdUser == miorden.idUser).FirstOrDefault();
+                    db.Transferencia.Add(transferencia);
 
-                    //Cuando el usuario que intenta transferir no es el que generó la orden al contactar o la orden no se encuentra en estado En__proceso
+                    //actualizar wallet de ofertante y demandante
 
-                    if ((miusuario.IdUser != currentsession.getCurrentUser().IdUser))
-                    {
+                    monederoOfertante.Balance += formSelectOferta.SelectedOferta.Tiempo;
+                    MonederoDemandante.Balance -= formSelectOferta.SelectedOferta.Tiempo;
 
-                        String mensaje1 = "Esta Oferta YA HA SIDO CONTACTADA.";
-                        String titulo1 = "Operación no permitida";
-                        MessageBox.Show(mensaje1, titulo1, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (miorden.idEstado == 1)
-                        {
+                    //actualizar valores en base de datos
 
-                            String mensaje1 = "Debes CONTACTAR ANTES DE TRANSFERIR.";
-                            String titulo1 = "Operación no permitida";
-                            MessageBox.Show(mensaje1, titulo1, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else if (miorden.idEstado == 3)
-                        {
-                            String mensaje = "El servicio está ya está CERRADO.";
-                            String titulo = "Operación no permitida";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
+                    db.Entry(monederoOfertante).State = EntityState.Modified;
+                    db.Entry(MonederoDemandante).State = EntityState.Modified;
 
-                            // insertar registro en tabla Transferencias
+                    //actualizar registro orden que oasa a cerrada
 
-                            db.Transferencia.Add(transferencia);
+                    miorden.idEstado = 3;
 
-                            //actualizar wallet de ofertante y demandante
-
-                            monederoOfertante.Balance += formSelectOferta.SelectedOferta.Tiempo;
-                            MonederoDemandante.Balance -= formSelectOferta.SelectedOferta.Tiempo;
-
-                            //actualizar valores en base de datos
-
-                            db.Entry(monederoOfertante).State = EntityState.Modified;
-                            db.Entry(MonederoDemandante).State = EntityState.Modified;
-
-                            //actualizar registro orden que oasa a cerrada
-
-                            miorden.idEstado = 3;
-
-                            db.Entry(miorden).State = EntityState.Modified;
-                            db.SaveChanges();
-
-
-                        }//End Else
-                    }//End Else
+                    db.Entry(miorden).State = EntityState.Modified;
+                    db.SaveChanges();
 
                 }//End Using
-            }//End Else
 
+            MessageBox.Show("La transferencia se realizó CORRECTAMENTE");
 
-
-        }
+        }//btnTransferir_Click
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -169,16 +136,9 @@ namespace TimeBank.Presentacion
                 String mensaje = "La fecha seleccionada debe ser posterior a la publicación de la OFERTA.";
                 String titulo = "Operación no permitida";
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                selectedTime = dateTimePicker1.Value;
+                selectedTime = DateTime.Today.Date;
             }
         }
-
-
-
-
-        //Método para registrar transferencias en la base de datos
-
-
 
 
 

@@ -52,31 +52,31 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             categoriaField.DisplayMember = "NombreCat";
         }
 
-        private Ofertas createDemanda()
+        private Demandas createDemanda()
         {
             Session session = Session.GetCurrentSession();
-            Ofertas oferta = new Ofertas()
+            Demandas demanda = new Demandas()
             {
                 Titulo = this.title,
                 Descripcion = this.description,
-                fecha_ofer = DateTime.Now,
+                fecha_dem = DateTime.Now,
                 idCategoria = this.categoria,
                 idUser = session.getCurrentUser().IdUser,
             };
 
-            return oferta;
+            return demanda;
         }
 
         public void saveDemanda()
         {
 
-            context.Ofertas.Add(createDemanda());
+            context.Demandas.Add(createDemanda());
 
             try
             {
                 context.SaveChanges();
 
-                MessageBox.Show("Oferta creada con éxito.");
+                MessageBox.Show("Demanda creada con éxito.");
                 this.Close();
             }
             catch (Exception e)
@@ -89,16 +89,16 @@ namespace TimeBank.Presentacion.DemandasPresentacion
 
         private void updateDemanda()
         {
-            Ofertas oferta = context.Ofertas.Find(id);
+            Demandas demanda = context.Demandas.Find(id);
 
-            oferta.Titulo = title;
-            oferta.Descripcion = description;
+            demanda.Titulo = title;
+            demanda.Descripcion = description;
 
             try
             {
                 context.SaveChanges();
 
-                MessageBox.Show("Oferta actualizada con éxito.");
+                MessageBox.Show("Demanda actualizada con éxito.");
                 this.Close();
             }
             catch (Exception e)

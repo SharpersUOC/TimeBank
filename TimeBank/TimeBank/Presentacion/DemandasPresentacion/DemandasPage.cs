@@ -51,8 +51,8 @@ namespace TimeBank.Presentacion.DemandasPresentacion
         {
             DataGridView dataGridView = sender as DataGridView;
             int id = Convert.ToInt32(dataGridView.CurrentRow.Cells[1].Value);
-            // Presentacion.DemandasPresentacion.DemandaPage demandaPage = new Presentacion.DemandasPresentacion.DemandaPage(id);
-            // demandaPage.Show();
+            Presentacion.DemandasPresentacion.DemandaPage demandaPage = new Presentacion.DemandasPresentacion.DemandaPage(id);
+            demandaPage.Show();
         }
     }
 }

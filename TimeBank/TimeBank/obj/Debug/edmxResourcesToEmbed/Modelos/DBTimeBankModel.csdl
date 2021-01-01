@@ -1,6 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BancoDeTiempoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="BancoDeTiempoEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BancoDeTiempoModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BancoDeTiempoModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
     <EntitySet Name="Categorias" EntityType="BancoDeTiempoModel.Categorias" />
     <EntitySet Name="Clientes" EntityType="BancoDeTiempoModel.Clientes" />
     <EntitySet Name="Demandas" EntityType="BancoDeTiempoModel.Demandas" />
@@ -13,6 +43,7 @@
     <EntitySet Name="Transferencia" EntityType="BancoDeTiempoModel.Transferencia" />
     <EntitySet Name="Usuarios" EntityType="BancoDeTiempoModel.Usuarios" />
     <EntitySet Name="Wallet" EntityType="BancoDeTiempoModel.Wallet" />
+    <EntitySet Name="ResumenOfertas" EntityType="BancoDeTiempoModel.ResumenOfertas" />
     <AssociationSet Name="FK_Demandas_Categorias" Association="BancoDeTiempoModel.FK_Demandas_Categorias">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Demandas" EntitySet="Demandas" />
@@ -58,6 +89,17 @@
       <End Role="Transferencia" EntitySet="Transferencia" />
     </AssociationSet>
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
   <EntityType Name="Categorias">
     <Key>
       <PropertyRef Name="idCat" />
@@ -131,7 +173,7 @@
     </Key>
     <Property Name="idOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idOferta" Type="Int32" Nullable="false" />
-    <Property Name="idUser" Type="Int32" Nullable="true" />
+    <Property Name="idUser" Type="Int32" />
     <Property Name="idEstado" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Estado" Relationship="BancoDeTiempoModel.FK_Orden_Estado" FromRole="Orden" ToRole="Estado" />
     <NavigationProperty Name="Ofertas" Relationship="BancoDeTiempoModel.FK_Orden_Ofertas" FromRole="Orden" ToRole="Ofertas" />
@@ -190,6 +232,26 @@
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="idCliente" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Wallet_Clientes1" FromRole="Wallet" ToRole="Clientes" />
+  </EntityType>
+  <EntityType Name="ResumenOfertas">
+    <Key>
+      <PropertyRef Name="idOferta" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellidos" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="Tiempo" />
+      <PropertyRef Name="OfertaUser" />
+      <PropertyRef Name="OrdenUser" />
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idOferta" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Tiempo" Type="Double" Nullable="false" />
+    <Property Name="OfertaUser" Type="Int32" Nullable="false" />
+    <Property Name="OrdenUser" Type="Int32" Nullable="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Demandas_Categorias">
     <End Type="BancoDeTiempoModel.Categorias" Role="Categorias" Multiplicity="1">

@@ -119,5 +119,11 @@ namespace TimeBank
         {
 
         }
+
+        private void btnDemandas_Click(object sender, EventArgs e)
+        {
+            Presentacion.DemandasPresentacion.DemandasPage demandasPage = new Presentacion.DemandasPresentacion.DemandasPage();
+            demandasPage.Show();
+        }
     }
 }

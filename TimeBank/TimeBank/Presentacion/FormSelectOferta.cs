@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeBank.Modelos;
+using TimeBank.Servicios;
+
 
 namespace TimeBank.Presentacion
 {
@@ -16,13 +13,18 @@ namespace TimeBank.Presentacion
 
         //Atributos de la clase
 
-        Usuarios usuario = new Usuarios();
+        Usuarios currentuser;
         Clientes cliente = new Clientes();
         Ofertas selectedOferta=new Ofertas();
+        Session currentsession;
+
+
 
         public FormSelectOferta()
         {
             InitializeComponent();
+            currentsession = Servicios.Session.GetCurrentSession();
+            currentuser = currentsession.getCurrentUser();
         }
 
         private void FormSelectOferta_Load(object sender, EventArgs e)
@@ -38,21 +40,9 @@ namespace TimeBank.Presentacion
             dgvSelecOferta.AutoGenerateColumns = false; // para que sólo muestre las columnas especificadas
             using (BancoDeTiempoEntities db = new BancoDeTiempoEntities()) {
 
-                var lstDatosOfertas = (from c in db.Clientes
-                                       join u in db.Usuarios
-                                       on c.idUser equals u.IdUser
-                                       join o in db.Ofertas
-                                       on u.IdUser equals o.idUser
-                                       select new
-                                       {
-                                           idOferta = o.idOferta,
-                                           Nombre = c.Nombre,
-                                           Apellidos = c.Apellidos,
-                                           Titulo = o.Titulo,
-                                           Tiempo = o.Tiempo
-                                       }
-
-                                     ).ToList();
+                var lstDatosOfertas = from d in db.ResumenOfertas
+                                      where (d.OfertaUser != currentuser.IdUser && d.OrdenUser == currentuser.IdUser && d.idEstado == 2)
+                                      select d;
 
                 dgvSelecOferta.DataSource = lstDatosOfertas.ToList();
             }

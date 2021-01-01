@@ -35,6 +35,9 @@
             this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.OferUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdenUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelecOferta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +51,10 @@
             this.Apellidos,
             this.Titulo,
             this.Tiempo,
-            this.Detalle});
+            this.Detalle,
+            this.OferUser,
+            this.OrdenUser,
+            this.idEstado});
             this.dgvSelecOferta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSelecOferta.Location = new System.Drawing.Point(0, 0);
             this.dgvSelecOferta.Margin = new System.Windows.Forms.Padding(5);
@@ -107,6 +113,30 @@
             this.Detalle.Text = "Detalle";
             this.Detalle.UseColumnTextForButtonValue = true;
             // 
+            // OferUser
+            // 
+            this.OferUser.DataPropertyName = "OfertaUser";
+            this.OferUser.HeaderText = "OferUser";
+            this.OferUser.Name = "OferUser";
+            this.OferUser.ReadOnly = true;
+            this.OferUser.Visible = false;
+            // 
+            // OrdenUser
+            // 
+            this.OrdenUser.DataPropertyName = "OrdenUser";
+            this.OrdenUser.HeaderText = "OrdenUser";
+            this.OrdenUser.Name = "OrdenUser";
+            this.OrdenUser.ReadOnly = true;
+            this.OrdenUser.Visible = false;
+            // 
+            // idEstado
+            // 
+            this.idEstado.DataPropertyName = "idEstado";
+            this.idEstado.HeaderText = "idEstado";
+            this.idEstado.Name = "idEstado";
+            this.idEstado.ReadOnly = true;
+            this.idEstado.Visible = false;
+            // 
             // FormSelectOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,5 +160,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
         private System.Windows.Forms.DataGridViewButtonColumn Detalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OferUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdenUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idEstado;
     }
 }
