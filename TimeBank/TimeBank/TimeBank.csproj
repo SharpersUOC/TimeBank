@@ -280,6 +280,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Modelos\DBTimeBankModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -314,6 +315,7 @@
       <DependentUpon>DBTimeBankModel.edmx</DependentUpon>
       <LastGenOutput>DBTimeBankModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo.png" />
     <Content Include="XMLFiles\XMLUsuarios.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

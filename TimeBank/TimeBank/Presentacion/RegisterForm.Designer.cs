@@ -38,18 +38,20 @@
             this.passwordField = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.registerBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // surnameField
             // 
-            this.surnameField.Location = new System.Drawing.Point(126, 174);
+            this.surnameField.Location = new System.Drawing.Point(121, 67);
             this.surnameField.Name = "surnameField";
             this.surnameField.Size = new System.Drawing.Size(203, 20);
             this.surnameField.TabIndex = 18;
             // 
             // nameField
             // 
-            this.nameField.Location = new System.Drawing.Point(126, 142);
+            this.nameField.Location = new System.Drawing.Point(121, 35);
             this.nameField.Name = "nameField";
             this.nameField.Size = new System.Drawing.Size(147, 20);
             this.nameField.TabIndex = 17;
@@ -57,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 146);
+            this.label1.Location = new System.Drawing.Point(42, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 11;
@@ -67,7 +69,7 @@
             // 
             this.checkBAdmin.AutoSize = true;
             this.checkBAdmin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBAdmin.Location = new System.Drawing.Point(50, 313);
+            this.checkBAdmin.Location = new System.Drawing.Point(45, 206);
             this.checkBAdmin.Name = "checkBAdmin";
             this.checkBAdmin.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.checkBAdmin.Size = new System.Drawing.Size(89, 17);
@@ -78,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 174);
+            this.label2.Location = new System.Drawing.Point(42, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 13;
@@ -87,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 225);
+            this.label3.Location = new System.Drawing.Point(42, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 10;
@@ -95,14 +97,14 @@
             // 
             // emailField
             // 
-            this.emailField.Location = new System.Drawing.Point(126, 222);
+            this.emailField.Location = new System.Drawing.Point(121, 115);
             this.emailField.Name = "emailField";
             this.emailField.Size = new System.Drawing.Size(185, 20);
             this.emailField.TabIndex = 12;
             // 
             // passwordField
             // 
-            this.passwordField.Location = new System.Drawing.Point(126, 255);
+            this.passwordField.Location = new System.Drawing.Point(121, 148);
             this.passwordField.Name = "passwordField";
             this.passwordField.Size = new System.Drawing.Size(185, 20);
             this.passwordField.TabIndex = 16;
@@ -110,7 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 259);
+            this.label4.Location = new System.Drawing.Point(42, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 14;
@@ -118,7 +120,7 @@
             // 
             // registerBtn
             // 
-            this.registerBtn.Location = new System.Drawing.Point(50, 373);
+            this.registerBtn.Location = new System.Drawing.Point(45, 266);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(75, 23);
             this.registerBtn.TabIndex = 19;
@@ -126,11 +128,23 @@
             this.registerBtn.UseVisualStyleBackColor = true;
             this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TimeBank.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(391, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 264);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.ClientSize = new System.Drawing.Size(600, 317);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.registerBtn);
             this.Controls.Add(this.surnameField);
             this.Controls.Add(this.nameField);
@@ -141,9 +155,11 @@
             this.Controls.Add(this.emailField);
             this.Controls.Add(this.passwordField);
             this.Controls.Add(this.label4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RegisterForm";
-            this.Text = "RegisterForm";
+            this.Text = "TimeBank Register";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +177,6 @@
         private System.Windows.Forms.TextBox passwordField;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button registerBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

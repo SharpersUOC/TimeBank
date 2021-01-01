@@ -37,14 +37,13 @@
             this.btnOfertaForm = new System.Windows.Forms.Button();
             this.btnOrdenes = new System.Windows.Forms.Button();
             this.btnDemandaForm = new System.Windows.Forms.Button();
-            this.btnXMLUsers = new System.Windows.Forms.Button();
-            this.grpXML = new System.Windows.Forms.GroupBox();
             this.btnWallet = new System.Windows.Forms.Button();
             this.btnPerfil = new System.Windows.Forms.Button();
             this.adminGroup = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.grpXML.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.adminGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUsuarios
@@ -137,28 +136,6 @@
             this.btnDemandaForm.UseVisualStyleBackColor = true;
             this.btnDemandaForm.Click += new System.EventHandler(this.btnDemandaForm_Click);
             // 
-            // btnXMLUsers
-            // 
-            this.btnXMLUsers.Location = new System.Drawing.Point(34, 27);
-            this.btnXMLUsers.Name = "btnXMLUsers";
-            this.btnXMLUsers.Size = new System.Drawing.Size(75, 23);
-            this.btnXMLUsers.TabIndex = 0;
-            this.btnXMLUsers.Text = "Usuarios";
-            this.btnXMLUsers.UseVisualStyleBackColor = true;
-            this.btnXMLUsers.Click += new System.EventHandler(this.btnXMLUsers_Click);
-            // 
-            // grpXML
-            // 
-            this.grpXML.Controls.Add(this.btnXMLUsers);
-            this.grpXML.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpXML.Location = new System.Drawing.Point(0, 360);
-            this.grpXML.Name = "grpXML";
-            this.grpXML.Padding = new System.Windows.Forms.Padding(10);
-            this.grpXML.Size = new System.Drawing.Size(925, 76);
-            this.grpXML.TabIndex = 6;
-            this.grpXML.TabStop = false;
-            this.grpXML.Text = "XML";
-            // 
             // btnWallet
             // 
             this.btnWallet.Location = new System.Drawing.Point(224, 30);
@@ -184,9 +161,9 @@
             this.adminGroup.Controls.Add(this.btnEstado);
             this.adminGroup.Controls.Add(this.btnWallet);
             this.adminGroup.Controls.Add(this.btnUsuarios);
-            this.adminGroup.Location = new System.Drawing.Point(0, 269);
+            this.adminGroup.Location = new System.Drawing.Point(12, 323);
             this.adminGroup.Name = "adminGroup";
-            this.adminGroup.Size = new System.Drawing.Size(925, 75);
+            this.adminGroup.Size = new System.Drawing.Size(901, 75);
             this.adminGroup.TabIndex = 12;
             this.adminGroup.TabStop = false;
             this.adminGroup.Text = "Admininistracion";
@@ -201,15 +178,25 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Bienvenido a Banco de Tiempo";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TimeBank.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(46, 102);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 188);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 436);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.adminGroup);
             this.Controls.Add(this.btnPerfil);
-            this.Controls.Add(this.grpXML);
             this.Controls.Add(this.btnDemandaForm);
             this.Controls.Add(this.btnOrdenes);
             this.Controls.Add(this.btnOfertaForm);
@@ -219,8 +206,8 @@
             this.Name = "Form1";
             this.Text = "Panel Inico";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.grpXML.ResumeLayout(false);
             this.adminGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,12 +224,11 @@
         private System.Windows.Forms.Button btnOfertaForm;
         private System.Windows.Forms.Button btnOrdenes;
         private System.Windows.Forms.Button btnDemandaForm;
-        private System.Windows.Forms.Button btnXMLUsers;
-        private System.Windows.Forms.GroupBox grpXML;
         private System.Windows.Forms.Button btnWallet;
         private System.Windows.Forms.Button btnPerfil;
         private System.Windows.Forms.GroupBox adminGroup;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
