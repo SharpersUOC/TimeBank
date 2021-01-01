@@ -67,6 +67,8 @@ namespace TimeBank.Presentacion
                     txtDescripcion.Text = mioferta.Descripcion;
                     txtTiempo.Text = Math.Truncate(mioferta.Tiempo).ToString() + ":" + ((mioferta.Tiempo - Math.Truncate(mioferta.Tiempo)) * 60).ToString();
                 }
+
+                
                 
             }
 
@@ -126,6 +128,8 @@ namespace TimeBank.Presentacion
                 }//End Using
 
             MessageBox.Show("La transferencia se realizó CORRECTAMENTE");
+            System.Threading.Thread.Sleep(1000);
+            this.Close();
 
         }//btnTransferir_Click
 
@@ -136,9 +140,11 @@ namespace TimeBank.Presentacion
                 String mensaje = "La fecha seleccionada debe ser posterior a la publicación de la OFERTA.";
                 String titulo = "Operación no permitida";
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                selectedTime = DateTime.Today.Date;
+                selectedTime = DateTime.Today;
             }
         }
+
+       
 
 
 

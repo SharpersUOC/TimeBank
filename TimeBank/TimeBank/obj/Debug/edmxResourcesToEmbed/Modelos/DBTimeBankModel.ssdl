@@ -120,8 +120,7 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
       <PropertyRef Name="Apellidos" />
       <PropertyRef Name="Titulo" />
       <PropertyRef Name="Tiempo" />
-      <PropertyRef Name="OfertaUser" />
-      <PropertyRef Name="OrdenUser" />
+      <PropertyRef Name="idUser" />
       <PropertyRef Name="idEstado" />
     </Key>
     <Property Name="idOferta" Type="int" Nullable="false" />
@@ -129,8 +128,8 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
     <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Titulo" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="Tiempo" Type="float" Nullable="false" />
-    <Property Name="OfertaUser" Type="int" Nullable="false" />
-    <Property Name="OrdenUser" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="ou" Type="int" />
     <Property Name="idEstado" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Clientes_Usuarios">
@@ -336,8 +335,8 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
     [ResumenOfertas].[Apellidos] AS [Apellidos], 
     [ResumenOfertas].[Titulo] AS [Titulo], 
     [ResumenOfertas].[Tiempo] AS [Tiempo], 
-    [ResumenOfertas].[OfertaUser] AS [OfertaUser], 
-    [ResumenOfertas].[OrdenUser] AS [OrdenUser], 
+    [ResumenOfertas].[idUser] AS [idUser], 
+    [ResumenOfertas].[ou] AS [ou], 
     [ResumenOfertas].[idEstado] AS [idEstado]
     FROM [dbo].[ResumenOfertas] AS [ResumenOfertas]</DefiningQuery>
     </EntitySet>

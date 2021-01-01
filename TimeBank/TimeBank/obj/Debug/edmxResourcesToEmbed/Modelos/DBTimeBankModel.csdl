@@ -240,8 +240,7 @@
       <PropertyRef Name="Apellidos" />
       <PropertyRef Name="Titulo" />
       <PropertyRef Name="Tiempo" />
-      <PropertyRef Name="OfertaUser" />
-      <PropertyRef Name="OrdenUser" />
+      <PropertyRef Name="idUser" />
       <PropertyRef Name="idEstado" />
     </Key>
     <Property Name="idOferta" Type="Int32" Nullable="false" />
@@ -249,8 +248,8 @@
     <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Titulo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
     <Property Name="Tiempo" Type="Double" Nullable="false" />
-    <Property Name="OfertaUser" Type="Int32" Nullable="false" />
-    <Property Name="OrdenUser" Type="Int32" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="ou" Type="Int32" />
     <Property Name="idEstado" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Demandas_Categorias">

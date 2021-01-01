@@ -152,8 +152,8 @@
       <EntityTypeMapping TypeName="BancoDeTiempoModel.ResumenOfertas">
         <MappingFragment StoreEntitySet="ResumenOfertas">
           <ScalarProperty Name="idEstado" ColumnName="idEstado" />
-          <ScalarProperty Name="OrdenUser" ColumnName="OrdenUser" />
-          <ScalarProperty Name="OfertaUser" ColumnName="OfertaUser" />
+          <ScalarProperty Name="ou" ColumnName="ou" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
           <ScalarProperty Name="Titulo" ColumnName="Titulo" />
           <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />

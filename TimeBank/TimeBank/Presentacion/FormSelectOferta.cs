@@ -41,7 +41,7 @@ namespace TimeBank.Presentacion
             using (BancoDeTiempoEntities db = new BancoDeTiempoEntities()) {
 
                 var lstDatosOfertas = from d in db.ResumenOfertas
-                                      where (d.OfertaUser != currentuser.IdUser && d.OrdenUser == currentuser.IdUser && d.idEstado == 2)
+                                      where (d.idUser!= currentuser.IdUser && d.ou == currentuser.IdUser && d.idEstado == 2)
                                       select d;
 
                 dgvSelecOferta.DataSource = lstDatosOfertas.ToList();

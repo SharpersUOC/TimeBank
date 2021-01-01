@@ -19,8 +19,8 @@ namespace TimeBank.Modelos
         public string Apellidos { get; set; }
         public string Titulo { get; set; }
         public double Tiempo { get; set; }
-        public int OfertaUser { get; set; }
-        public int OrdenUser { get; set; }
+        public int idUser { get; set; }
+        public Nullable<int> ou { get; set; }
         public int idEstado { get; set; }
     }
 }
