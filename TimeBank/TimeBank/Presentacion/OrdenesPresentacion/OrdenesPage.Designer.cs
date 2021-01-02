@@ -1,3 +1,5 @@
+using System;
+
 namespace TimeBank.Presentacion.OrdenesPresentacion
 {
     partial class OrdenesPage
@@ -29,6 +31,7 @@ namespace TimeBank.Presentacion.OrdenesPresentacion
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnWallet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,13 +43,24 @@ namespace TimeBank.Presentacion.OrdenesPresentacion
             this.dataGridView1.Size = new System.Drawing.Size(776, 372);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Ordenes
+            // btnWallet
+            // 
+            this.btnWallet.Location = new System.Drawing.Point(703, 12);
+            this.btnWallet.Name = "btnWallet";
+            this.btnWallet.Size = new System.Drawing.Size(85, 24);
+            this.btnWallet.TabIndex = 11;
+            this.btnWallet.Text = "Wallet";
+            this.btnWallet.UseVisualStyleBackColor = true;
+            this.btnWallet.Click += new System.EventHandler(this.btnWallet_Click);
+            // 
+            // OrdenesPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnWallet);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Ordenes";
+            this.Name = "OrdenesPage";
             this.Text = "Ordenes";
             this.Load += new System.EventHandler(this.OrdenesPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -54,8 +68,18 @@ namespace TimeBank.Presentacion.OrdenesPresentacion
 
         }
 
+        private void btnWallet_Click(object sender, EventArgs e)
+        {
+            Presentacion.FormWallet formWallet = new Presentacion.FormWallet(TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser());
+
+            formWallet.ShowDialog();
+
+            formWallet.Refrescar();
+        }
+
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnWallet;
     }
 } 
