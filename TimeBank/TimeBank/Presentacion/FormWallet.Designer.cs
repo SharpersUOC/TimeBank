@@ -28,28 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvofertas = new System.Windows.Forms.DataGridView();
+            this.dgvdemandas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tiempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
+            ((System.ComponentModel.ISupportInitialize)(this.dgvofertas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvdemandas)).BeginInit();
+
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(362, 354);
-            this.dataGridView1.TabIndex = 0;
+
+            this.dgvofertas.AllowUserToDeleteRows = false;
+            this.dgvofertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvofertas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Titulo,
+            this.Descripcion,
+            this.Tiempo,
+            this.Fecha,
+            this.Categoria});
+            this.dgvofertas.Location = new System.Drawing.Point(12, 12);
+            this.dgvofertas.Name = "dgvofertas";
+            this.dgvofertas.Size = new System.Drawing.Size(362, 354);
+            this.dgvofertas.TabIndex = 0;
             // 
             // dataGridView2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(426, 12);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(362, 354);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvdemandas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvdemandas.Location = new System.Drawing.Point(426, 12);
+            this.dgvdemandas.Name = "dgvdemandas";
+            this.dgvdemandas.Size = new System.Drawing.Size(362, 354);
+            this.dgvdemandas.TabIndex = 1;
             // 
             // label1
             // 
@@ -59,7 +74,6 @@
             this.label1.Size = new System.Drawing.Size(112, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Balance de tu cuenta:";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // FormWallet
             // 
@@ -67,13 +81,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvdemandas);
+            this.Controls.Add(this.dgvofertas);
             this.Name = "FormWallet";
             this.Text = "Wallet";
             this.Load += new System.EventHandler(this.FormWallet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvofertas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvdemandas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,8 +95,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvofertas;
+        private System.Windows.Forms.DataGridView dgvdemandas;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tiempo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+
         private System.Windows.Forms.Label label1;
     }
 }

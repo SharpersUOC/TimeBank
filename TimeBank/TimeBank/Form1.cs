@@ -29,6 +29,15 @@ namespace TimeBank
         }
 
 
+
+        private void btnWallet_Click(object sender, EventArgs e)
+        {
+            Presentacion.FormWallet formWallet = new Presentacion.FormWallet(TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser());
+            formWallet.ShowDialog();
+            formWallet.Refrescar();
+        }
+
+
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             Presentacion.FormCategorias formCategorias = new Presentacion.FormCategorias();
@@ -95,12 +104,6 @@ namespace TimeBank
             Presentacion.XMLUserForm formXMLUser = new Presentacion.XMLUserForm();
             formXMLUser.ShowDialog();
 
-        }
-
-       private void btnWallet_Click(object sender, EventArgs e)
-        {
-            Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
-            formWallet.Show();
         }
 
         private void btnPerfil_Click(object sender, EventArgs e)

@@ -60,7 +60,7 @@ namespace TimeBank.Presentacion
                                        idWallet=w.idWallet
                                   }
                     ).ToList();
-
+                
                 dgvUsuarios.DataSource = lstUsuarios.ToList();
             }
 
@@ -140,7 +140,7 @@ namespace TimeBank.Presentacion
 
                     usuario = db.Usuarios.Where(x => x.IdUser == usuario.IdUser).FirstOrDefault();
                     txtEmail.Text = usuario.Email;
-                    txtContraseña.Text = usuario.Contraseña;
+                    txtContraseña.Text = TimeBank.Servicios.Password.Decrypt(usuario.Contraseña);
                     cliente = db.Clientes.Where(x => x.idCliente == cliente.idCliente).FirstOrDefault();
                     txtNombre.Text = cliente.Nombre;
                     txtApellidos.Text = cliente.Apellidos;

@@ -37,7 +37,6 @@
             this.btnOfertaForm = new System.Windows.Forms.Button();
             this.btnOrdenes = new System.Windows.Forms.Button();
             this.btnDemandaForm = new System.Windows.Forms.Button();
-            this.btnWallet = new System.Windows.Forms.Button();
             this.btnPerfil = new System.Windows.Forms.Button();
             this.adminGroup = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +47,7 @@
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.Location = new System.Drawing.Point(315, 30);
+            this.btnUsuarios.Location = new System.Drawing.Point(224, 30);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(89, 24);
             this.btnUsuarios.TabIndex = 0;
@@ -136,15 +135,6 @@
             this.btnDemandaForm.UseVisualStyleBackColor = true;
             this.btnDemandaForm.Click += new System.EventHandler(this.btnDemandaForm_Click);
             // 
-            // btnWallet
-            // 
-            this.btnWallet.Location = new System.Drawing.Point(224, 30);
-            this.btnWallet.Name = "btnWallet";
-            this.btnWallet.Size = new System.Drawing.Size(85, 24);
-            this.btnWallet.TabIndex = 10;
-            this.btnWallet.Text = "Wallet";
-            this.btnWallet.UseVisualStyleBackColor = true;
-            // 
             // btnPerfil
             // 
             this.btnPerfil.Location = new System.Drawing.Point(821, 24);
@@ -159,7 +149,6 @@
             // 
             this.adminGroup.Controls.Add(this.btnCategorias);
             this.adminGroup.Controls.Add(this.btnEstado);
-            this.adminGroup.Controls.Add(this.btnWallet);
             this.adminGroup.Controls.Add(this.btnUsuarios);
             this.adminGroup.Location = new System.Drawing.Point(12, 323);
             this.adminGroup.Name = "adminGroup";
@@ -224,7 +213,6 @@
         private System.Windows.Forms.Button btnOfertaForm;
         private System.Windows.Forms.Button btnOrdenes;
         private System.Windows.Forms.Button btnDemandaForm;
-        private System.Windows.Forms.Button btnWallet;
         private System.Windows.Forms.Button btnPerfil;
         private System.Windows.Forms.GroupBox adminGroup;
         private System.Windows.Forms.Label label1;
