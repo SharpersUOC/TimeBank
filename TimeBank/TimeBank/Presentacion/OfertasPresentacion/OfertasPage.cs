@@ -19,6 +19,17 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         {
             InitializeComponent();
             populateTable();
+
+            var buttonColumn = new DataGridViewButtonColumn();
+
+            {
+                buttonColumn.Text = "Ver";
+                buttonColumn.UseColumnTextForButtonValue = true;
+            }
+
+            this.ofertasDataGrid.Columns.Add(buttonColumn);
+
+            ofertasDataGrid.CellClick += new DataGridViewCellEventHandler(ofertasDataGrid_CellClick);
         }
 
         private void populateTable() {
@@ -34,17 +45,6 @@ namespace TimeBank.Presentacion.OfertasPresentacion
                                };
 
             this.ofertasDataGrid.DataSource = ofertasQuery.ToList();
-
-            var buttonColumn = new DataGridViewButtonColumn();
-            
-            {
-                buttonColumn.Text = "Ver";
-                buttonColumn.UseColumnTextForButtonValue = true;
-            }
-            
-            this.ofertasDataGrid.Columns.Add(buttonColumn);
-
-            ofertasDataGrid.CellClick += new DataGridViewCellEventHandler(ofertasDataGrid_CellClick);
         }
 
         public override void Refresh()
