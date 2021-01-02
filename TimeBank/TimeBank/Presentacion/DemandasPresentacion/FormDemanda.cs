@@ -88,7 +88,7 @@ namespace TimeBank.Presentacion.DemandasPresentacion
             {
                 context.SaveChanges();
 
-                MessageBox.Show("Oferta creada con éxito.");
+                MessageBox.Show("Demanda creada con éxito.");
             }
             catch (Exception e)
             {
