@@ -286,6 +286,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBTimeBankModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="connections.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Modelos\DBTimeBankModel.edmx.diagram">
       <DependentUpon>DBTimeBankModel.edmx</DependentUpon>
     </None>
