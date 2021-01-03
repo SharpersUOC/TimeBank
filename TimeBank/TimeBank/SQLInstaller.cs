@@ -48,7 +48,7 @@ namespace TimeBank
 
         private string addData(string str) {
             return str.Replace("{{servername}}", servername)
-                .Replace("{{dbname}}", dbname)
+                .Replace("{{dbname}}", "master")
                 .Replace("{{username}}", username)
                 .Replace("{{password}}", password);
         }
@@ -73,7 +73,7 @@ namespace TimeBank
                     {
 
                         conn.Open();
-                        using (SqlCommand command = new SqlCommand(commandLine, conn))
+                        using (SqlCommand command = new SqlCommand(commandLine.Replace("<dbname>", dbname), conn))
                         {
                             command.ExecuteNonQuery();
                         }
