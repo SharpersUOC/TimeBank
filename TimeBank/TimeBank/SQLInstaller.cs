@@ -48,7 +48,7 @@ namespace TimeBank
 
         private string addData(string str) {
             return str.Replace("{{servername}}", servername)
-                .Replace("{{dbname}}", "master")
+                .Replace("{{dbname}}", dbname)
                 .Replace("{{username}}", username)
                 .Replace("{{password}}", password);
         }
