@@ -62,9 +62,17 @@ namespace TimeBank.Presentacion
                                   where d.ordenUser == currentuser.IdUser
                                   select d;
 
-           
-                dgvofertas.DataSource = lstOfertas.ToList();
-                dgvdemandas.DataSource = lstDemandas.ToList();
+
+                try
+                {
+                    dgvofertas.DataSource = lstOfertas.ToList();
+                    dgvdemandas.DataSource = lstDemandas.ToList();
+
+                }catch(Exception e)
+                {
+                    dgvofertas.DataSource = null;
+                    dgvdemandas.DataSource = null;
+                }
             }
         }
     }
