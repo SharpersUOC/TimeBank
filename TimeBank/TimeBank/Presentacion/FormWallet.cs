@@ -62,9 +62,18 @@ namespace TimeBank.Presentacion
                                   where d.ordenUser == currentuser.IdUser
                                   select d;
 
-           
-                dgvofertas.DataSource = lstOfertas.ToList();
-                dgvdemandas.DataSource = lstDemandas.ToList();
+
+                try
+                {
+                    dgvofertas.DataSource = lstOfertas.ToList();
+                    dgvdemandas.DataSource = lstDemandas.ToList();
+
+                }catch(Exception e)
+                {
+                    MessageBox.Show("No se ha encontrado\nun balance asociado a esta cuenta.");
+                    dgvofertas.DataSource = null;
+                    dgvdemandas.DataSource = null;
+                }
             }
         }
     }
