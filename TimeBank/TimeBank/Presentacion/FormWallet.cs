@@ -70,6 +70,7 @@ namespace TimeBank.Presentacion
 
                 }catch(Exception e)
                 {
+                    MessageBox.Show("No se ha encontrado\nun balance asociado a esta cuenta.");
                     dgvofertas.DataSource = null;
                     dgvdemandas.DataSource = null;
                 }
