@@ -7776,7 +7776,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TimeBankSetup"
         "ProductCode" = "8:{E23C4A48-9036-4C6B-8AD5-5B58676E3AD9}"
-        "PackageCode" = "8:{B39D2487-EE89-425B-953E-6FCCBEF1DC20}"
+        "PackageCode" = "8:{08582C13-EC46-4337-8D64-C7FA38F1CF56}"
         "UpgradeCode" = "8:{297AF375-E868-45BF-96D8-8C7C9A286813}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -8249,7 +8249,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:username"
+                            "Value" = "8:Username"
                             "DefaultValue" = "8:#1248"
                             "UsePlugInResources" = "11:TRUE"
                             }

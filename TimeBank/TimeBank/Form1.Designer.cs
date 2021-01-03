@@ -157,7 +157,7 @@
             this.adminGroup.Size = new System.Drawing.Size(901, 75);
             this.adminGroup.TabIndex = 12;
             this.adminGroup.TabStop = false;
-            this.adminGroup.Text = "Admininistracion";
+            this.adminGroup.Text = "Administración";
             // 
             // btnOrdenes
             // 
@@ -205,7 +205,7 @@
             this.Controls.Add(this.btnDemandas);
             this.Controls.Add(this.btnOfertas);
             this.Name = "Form1";
-            this.Text = "Panel Inico";
+            this.Text = "Panel Inicio";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.adminGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
