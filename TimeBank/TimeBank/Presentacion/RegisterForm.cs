@@ -44,7 +44,7 @@ namespace TimeBank.Presentacion
             usuario.fecha_alta = DateTime.Now.ToLocalTime();
             cliente.Nombre = nameField.Text.Trim();
             cliente.Apellidos = surnameField.Text.Trim();
-            cliente.Esadmin = checkBAdmin.Checked;
+            cliente.Esadmin = false;
             cartera.Balance = 0.0;
             cartera.fecha = usuario.fecha_alta;
 
@@ -72,7 +72,7 @@ namespace TimeBank.Presentacion
             usuario.Contraseña = TimeBank.Servicios.Password.Encrypt(passwordField.Text.Trim());
             cliente.Nombre = nameField.Text.Trim();
             cliente.Apellidos = surnameField.Text.Trim();
-            cliente.Esadmin = checkBAdmin.Checked;
+            cliente.Esadmin = false;
             db.SaveChanges();
 
             MessageBox.Show("Registro actualizado correctamente");
@@ -103,7 +103,6 @@ namespace TimeBank.Presentacion
                 this.passwordField.Text = TimeBank.Servicios.Password.Decrypt(usuario.Contraseña);
                 this.nameField.Text = cliente.Nombre;
                 this.surnameField.Text = cliente.Apellidos;
-                this.checkBAdmin.Checked = cliente.Esadmin;
                 this.emailField.ReadOnly = true;
             }
         }

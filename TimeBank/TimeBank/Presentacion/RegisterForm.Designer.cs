@@ -31,7 +31,6 @@
             this.surnameField = new System.Windows.Forms.TextBox();
             this.nameField = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBAdmin = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.emailField = new System.Windows.Forms.TextBox();
@@ -64,18 +63,6 @@
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Nombre";
-            // 
-            // checkBAdmin
-            // 
-            this.checkBAdmin.AutoSize = true;
-            this.checkBAdmin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBAdmin.Location = new System.Drawing.Point(45, 206);
-            this.checkBAdmin.Name = "checkBAdmin";
-            this.checkBAdmin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBAdmin.Size = new System.Drawing.Size(89, 17);
-            this.checkBAdmin.TabIndex = 15;
-            this.checkBAdmin.Text = "Administrador";
-            this.checkBAdmin.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -149,7 +136,6 @@
             this.Controls.Add(this.surnameField);
             this.Controls.Add(this.nameField);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBAdmin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.emailField);
@@ -170,7 +156,6 @@
         private System.Windows.Forms.TextBox surnameField;
         private System.Windows.Forms.TextBox nameField;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBAdmin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox emailField;
