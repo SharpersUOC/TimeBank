@@ -16,8 +16,13 @@ namespace TimeBank
     [RunInstaller(true)]
     public partial class SQLInstaller : System.Configuration.Install.Installer
     {
+        private string servername = "";
+        private string dbname = "";
+        private string username = "";
+        private string password = "";
+
         private string logFilePath = "C:\\setupLog.txt";
-        private string connectionString = "Data Source={{servername}};Network Library=DBMSSOCN;Initial Catalog={{dbname}};Integrated Security=False;User ID={{username}};Password={{password}}";
+        private string connectionString = "Server={{servername}};Database={{dbname}};Integrated Security=False;User ID={{username}};Password={{password}}";
         public SQLInstaller()
         {
             InitializeComponent();
@@ -41,31 +46,45 @@ namespace TimeBank
             }
         }
 
-        private void ExecuteSql(string serverName, string dbName, string username, string password, string Sql) {
+        private string addData(string str) {
+            return str.Replace("{{servername}}", servername)
+                .Replace("{{dbname}}", dbname)
+                .Replace("{{username}}", username)
+                .Replace("{{password}}", password);
+        }
+
+        private void ExecuteSql(string Sql) {
             Log("Executing Sql");
-            Log(serverName);
-            Log(dbName);
+            Log(servername);
+            Log(dbname);
             Log(username);
             Log(password);
 
-            string connStr = connectionString
-                .Replace("{{servername}}", serverName)
-                .Replace("{{dbname}}", dbName)
-                .Replace("{{username}}", username)
-                .Replace("{{password}}", password);
+            string connStr = addData(connectionString); 
 
-            using (SqlConnection conn = new SqlConnection(Sql))
+            
+            string[] splitter = new string[] { "\r\nGO\r\n" };
+            var commandText = Sql.Split(splitter, StringSplitOptions.RemoveEmptyEntries);
+            try
             {
-                try {
-                    conn.Open();
-                    using (SqlCommand command = new SqlCommand(Sql)) {
-                        command.ExecuteNonQuery();
+                foreach (string commandLine in commandText) {
+
+                    using (SqlConnection conn = new SqlConnection(connStr))
+                    {
+
+                        conn.Open();
+                        using (SqlCommand command = new SqlCommand(commandLine, conn))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                        conn.Close();
                     }
-                    conn.Close();
-                } catch (Exception ex) {
-                    Log(ex.Message);
-                    Log(ex.StackTrace);
                 }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.Message);
+                Log(ex.StackTrace);
             }
         }
 
@@ -73,11 +92,12 @@ namespace TimeBank
             try
             {
                 Log("Edit config file.");
+                Log("In " + this.Context.Parameters["targetdir"] + "TimeBank.exe.config");
                 string text = File.ReadAllText(this.Context.Parameters["targetdir"] + "TimeBank.exe.config");
                 int start = text.IndexOf("connection string=&quot;");
                 int end = text.IndexOf(";MultipleActiveResultSets=True;App=EntityFramework");
-                string result = text.Substring(start + 1, end - start - 1);
-                text = text.Replace(result, connectionString);
+                string result = text.Substring(start, end - start);
+                text = text.Replace(result, "connection string = &quot;"  + addData(connectionString));
                 File.WriteAllText(this.Context.Parameters["targetdir"] + "TimeBank.exe.config", text);
             }
             catch (Exception e) {
@@ -85,11 +105,11 @@ namespace TimeBank
             }
         }
 
-        protected void AddDBTable(string serverName, string dbname, string username, string password) {
+        protected void AddDBTable() {
             try
             {
                 string strScript = GetSql("sql.txt");
-                ExecuteSql(serverName, dbname, username, password, strScript);
+                ExecuteSql(strScript);
             }
             catch {
             
@@ -99,13 +119,14 @@ namespace TimeBank
         public override void Install(System.Collections.IDictionary stateSaver) {
             base.Install(stateSaver);
             Log("Setup started");
-            
-            AddDBTable(
-                this.Context.Parameters["servername"],
-                this.Context.Parameters["dbname"],
-                this.Context.Parameters["username"],
-                this.Context.Parameters["password"]
-            );
+
+            this.servername = this.Context.Parameters["servername"];
+            this.dbname = this.Context.Parameters["dbname"];
+            this.username = this.Context.Parameters["username"];
+            this.password = this.Context.Parameters["password"];
+
+
+            AddDBTable();
 
             EditConnFile();
         }
