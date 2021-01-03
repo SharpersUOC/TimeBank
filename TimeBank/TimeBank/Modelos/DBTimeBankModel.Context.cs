@@ -39,6 +39,7 @@ namespace TimeBank.Modelos
         public virtual DbSet<Transferencia> Transferencia { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Wallet> Wallet { get; set; }
+        public virtual DbSet<ResumenActividad> ResumenActividad { get; set; }
         public virtual DbSet<ResumenOfertas> ResumenOfertas { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

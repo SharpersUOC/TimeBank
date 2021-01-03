@@ -29,7 +29,7 @@ namespace TimeBank.Presentacion.OrdenesPresentacion
 
         private void OrdenesPage_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = getOrdenes();
         }
     }

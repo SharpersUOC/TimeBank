@@ -117,6 +117,29 @@
           <Property Name="idCliente" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenActividad' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ResumenActividad">
+          <Key>
+            <PropertyRef Name="NombreCat" />
+            <PropertyRef Name="Titulo" />
+            <PropertyRef Name="Tiempo" />
+            <PropertyRef Name="NombreEstado" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Apellidos" />
+            <PropertyRef Name="fecha_ofer" />
+            <PropertyRef Name="oferUser" />
+          </Key>
+          <Property Name="NombreCat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Tiempo" Type="float" Nullable="false" />
+          <Property Name="NombreEstado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_ofer" Type="date" Nullable="false" />
+          <Property Name="oferUser" Type="int" Nullable="false" />
+          <Property Name="ordenUser" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="ResumenOfertas">
           <Key>
@@ -333,6 +356,19 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
           <EntitySet Name="Transferencia" EntityType="Self.Transferencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumenActividad" EntityType="Self.ResumenActividad" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ResumenActividad].[NombreCat] AS [NombreCat], 
+    [ResumenActividad].[Titulo] AS [Titulo], 
+    [ResumenActividad].[Tiempo] AS [Tiempo], 
+    [ResumenActividad].[NombreEstado] AS [NombreEstado], 
+    [ResumenActividad].[Nombre] AS [Nombre], 
+    [ResumenActividad].[Apellidos] AS [Apellidos], 
+    [ResumenActividad].[fecha_ofer] AS [fecha_ofer], 
+    [ResumenActividad].[oferUser] AS [oferUser], 
+    [ResumenActividad].[ordenUser] AS [ordenUser]
+    FROM [dbo].[ResumenActividad] AS [ResumenActividad]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ResumenOfertas" EntityType="Self.ResumenOfertas" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ResumenOfertas].[idOferta] AS [idOferta], 
@@ -437,6 +473,7 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
           <EntitySet Name="Transferencia" EntityType="BancoDeTiempoModel.Transferencia" />
           <EntitySet Name="Usuarios" EntityType="BancoDeTiempoModel.Usuarios" />
           <EntitySet Name="Wallet" EntityType="BancoDeTiempoModel.Wallet" />
+          <EntitySet Name="ResumenActividad" EntityType="BancoDeTiempoModel.ResumenActividad" />
           <EntitySet Name="ResumenOfertas" EntityType="BancoDeTiempoModel.ResumenOfertas" />
           <AssociationSet Name="FK_Demandas_Categorias" Association="BancoDeTiempoModel.FK_Demandas_Categorias">
             <End Role="Categorias" EntitySet="Categorias" />
@@ -626,6 +663,27 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="idCliente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clientes" Relationship="BancoDeTiempoModel.FK_Wallet_Clientes1" FromRole="Wallet" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="ResumenActividad">
+          <Key>
+            <PropertyRef Name="NombreCat" />
+            <PropertyRef Name="Titulo" />
+            <PropertyRef Name="Tiempo" />
+            <PropertyRef Name="NombreEstado" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Apellidos" />
+            <PropertyRef Name="fecha_ofer" />
+            <PropertyRef Name="oferUser" />
+          </Key>
+          <Property Name="NombreCat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo" Type="Double" Nullable="false" />
+          <Property Name="NombreEstado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ofer" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="oferUser" Type="Int32" Nullable="false" />
+          <Property Name="ordenUser" Type="Int32" />
         </EntityType>
         <EntityType Name="ResumenOfertas">
           <Key>
@@ -948,6 +1006,21 @@ advertencia 6002: La tabla o vista 'BancoDeTiempo.dbo.ResumenOfertas' no tiene d
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="idWallet" ColumnName="idWallet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResumenActividad">
+            <EntityTypeMapping TypeName="BancoDeTiempoModel.ResumenActividad">
+              <MappingFragment StoreEntitySet="ResumenActividad">
+                <ScalarProperty Name="ordenUser" ColumnName="ordenUser" />
+                <ScalarProperty Name="oferUser" ColumnName="oferUser" />
+                <ScalarProperty Name="fecha_ofer" ColumnName="fecha_ofer" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+                <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="NombreCat" ColumnName="NombreCat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

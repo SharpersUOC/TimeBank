@@ -36,6 +36,7 @@
             this.updateBtn = new System.Windows.Forms.Button();
             this.categoriaField = new System.Windows.Forms.TextBox();
             this.publicadoField = new System.Windows.Forms.TextBox();
+            this.lblEscontratada = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tiempoField
@@ -113,11 +114,24 @@
             this.publicadoField.Size = new System.Drawing.Size(245, 20);
             this.publicadoField.TabIndex = 11;
             // 
+            // lblEscontratada
+            // 
+            this.lblEscontratada.AutoSize = true;
+            this.lblEscontratada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEscontratada.ForeColor = System.Drawing.Color.Red;
+            this.lblEscontratada.Location = new System.Drawing.Point(438, 171);
+            this.lblEscontratada.Name = "lblEscontratada";
+            this.lblEscontratada.Size = new System.Drawing.Size(172, 20);
+            this.lblEscontratada.TabIndex = 12;
+            this.lblEscontratada.Text = "OFERTA CERRADA";
+            this.lblEscontratada.Visible = false;
+            // 
             // OfertaPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblEscontratada);
             this.Controls.Add(this.publicadoField);
             this.Controls.Add(this.categoriaField);
             this.Controls.Add(this.updateBtn);
@@ -144,5 +158,6 @@
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.TextBox categoriaField;
         private System.Windows.Forms.TextBox publicadoField;
+        private System.Windows.Forms.Label lblEscontratada;
     }
 } 
