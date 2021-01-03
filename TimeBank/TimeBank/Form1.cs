@@ -29,15 +29,6 @@ namespace TimeBank
         }
 
 
-
-        private void btnWallet_Click(object sender, EventArgs e)
-        {
-            Presentacion.FormWallet formWallet = new Presentacion.FormWallet(TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser());
-            formWallet.ShowDialog();
-            formWallet.Refrescar();
-        }
-
-
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             Presentacion.FormCategorias formCategorias = new Presentacion.FormCategorias();
@@ -87,11 +78,6 @@ namespace TimeBank
             ofertasPage.Show();
         }
 
-        private void btnOrdenes_Click(object sender, EventArgs e)
-        {
-            Presentacion.OrdenesPresentacion.OrdenesPage ordenesPage = new Presentacion.OrdenesPresentacion.OrdenesPage();
-            ordenesPage.Show();
-        }
 
         private void btnDemandaForm_Click(object sender, EventArgs e)
         {
@@ -127,6 +113,19 @@ namespace TimeBank
         {
             Presentacion.DemandasPresentacion.DemandasPage demandasPage = new Presentacion.DemandasPresentacion.DemandasPage();
             demandasPage.Show();
+        }
+
+        private void btnWallet_Click_1(object sender, EventArgs e)
+        {
+            Presentacion.FormWallet formWallet = new Presentacion.FormWallet();
+            formWallet.Show();
+            
+        }
+
+        private void btnOrdenes_Click(object sender, EventArgs e)
+        {
+            Presentacion.OrdenesPresentacion.OrdenesPage ordenesPage = new Presentacion.OrdenesPresentacion.OrdenesPage();
+            ordenesPage.Show();
         }
     }
 }

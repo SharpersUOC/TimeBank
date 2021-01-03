@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeBank.Modelos; // Me traigo la clase donde estan el modelo de la base de datos EntityDataModel
+using TimeBank.Servicios;
 
 namespace TimeBank.Presentacion
 {
@@ -15,16 +16,20 @@ namespace TimeBank.Presentacion
     {
 
         private BancoDeTiempoEntities db;
-        private Usuarios usuario;
+        private Usuarios usuario,currentuser;
         private Clientes cliente;
         private Wallet cartera;
+        private Session currentsession;
 
-        public FormWallet(Usuarios usuario)
+
+        public FormWallet()
         {
             InitializeComponent();
+            currentsession = Servicios.Session.GetCurrentSession();
+            currentuser = currentsession.getCurrentUser();
             this.db = new BancoDeTiempoEntities();
 
-            this.usuario = db.Usuarios.Find(usuario.IdUser);
+            this.usuario = db.Usuarios.Find(currentuser.IdUser);
             cliente = db.Clientes.Find(usuario.Clientes.First().idCliente);
             var carteraQuery = from c in db.Wallet
                                where c.idCliente == cliente.idCliente
@@ -43,23 +48,23 @@ namespace TimeBank.Presentacion
         {
             dgvofertas.AutoGenerateColumns = false;     //Evitar que se incluyan las columnas de las clases relacionadas
             dgvdemandas.AutoGenerateColumns = false;
-
-            this.label1.Text = "Balance de tu cuenta: " + this.cartera.Balance;
+            label1.Text += "  " + this.cartera.Balance;
+            lblHoras.Text=(this.cartera.Balance/3600).ToString();
+            lblMinutos.Text = ((this.cartera.Balance % 3600) / 60).ToString();
+            using (BancoDeTiempoEntities mdb=new BancoDeTiempoEntities())
             {
-                var lstOfertas = (from o in db.Ofertas
-                                  where o.idUser == usuario.IdUser
-                                  select new
-                                  {
-                                      Titulo = o.Titulo,
-                                      Descripción = o.Descripcion,
-                                      Tiempo = o.Tiempo,
-                                      Fecha = o.fecha_ofer,
-                                      Categoría = o.idCategoria
-                                  }
-                    ).ToList();
+                var lstOfertas = from d in mdb.ResumenActividad
+                                 where d.oferUser == currentuser.IdUser
+                                 select d;
 
-                lstOfertas.ToList();
+
+                var lstDemandas = from d in mdb.ResumenActividad
+                                  where d.ordenUser == currentuser.IdUser
+                                  select d;
+
+           
                 dgvofertas.DataSource = lstOfertas.ToList();
+                dgvdemandas.DataSource = lstDemandas.ToList();
             }
         }
     }

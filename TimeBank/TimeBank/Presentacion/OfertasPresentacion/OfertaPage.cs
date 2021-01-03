@@ -16,11 +16,17 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         BancoDeTiempoEntities context = null;
         public Form parent = null;
         Ofertas oferta = null;
+        Orden orden = null;
         int id = 0;
         public OfertaPage(int id)
         {
             InitializeComponent();
             this.id = id;
+            if (checkOferHired(id)) {
+                contratarBtn.Enabled = false;
+                lblEscontratada.Visible = true;
+            }
+
         }
 
         private void populateFields() {
@@ -100,6 +106,24 @@ namespace TimeBank.Presentacion.OfertasPresentacion
                 this.oferta.Orden.FirstOrDefault().idUser != null
             ) {
                 this.contratarBtn.Visible = false;
+            }
+        }
+
+        /*Mira si la oferta ha sido contratada*/
+        private Boolean checkOferHired(int id)
+        {
+
+            Boolean result;
+            using (BancoDeTiempoEntities db=new BancoDeTiempoEntities())
+            {
+                var ordenQuery = from o in db.Orden
+                                 where o.idOferta == id
+                                 select o;
+                var idUsuario=ordenQuery.FirstOrDefault().idUser;
+                if (!(idUsuario is null)){ result = true; }
+                else result = false;
+                return result;
+
             }
         }
     }

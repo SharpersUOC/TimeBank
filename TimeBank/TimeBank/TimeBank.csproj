@@ -230,6 +230,9 @@
     <Compile Include="Modelos\Orden.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\ResumenActividad.cs">
+      <DependentUpon>DBTimeBankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\ResumenOfertas.cs">
       <DependentUpon>DBTimeBankModel.tt</DependentUpon>
     </Compile>
@@ -383,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FormTransferencia.resx">
       <DependentUpon>FormTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FormWallet.resx">
+      <DependentUpon>FormWallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

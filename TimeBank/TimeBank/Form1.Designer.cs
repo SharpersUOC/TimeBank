@@ -35,10 +35,11 @@
             this.btnDemandas = new System.Windows.Forms.Button();
             this.btnTransferencia = new System.Windows.Forms.Button();
             this.btnOfertaForm = new System.Windows.Forms.Button();
-            this.btnOrdenes = new System.Windows.Forms.Button();
+            this.btnWallet = new System.Windows.Forms.Button();
             this.btnDemandaForm = new System.Windows.Forms.Button();
             this.btnPerfil = new System.Windows.Forms.Button();
             this.adminGroup = new System.Windows.Forms.GroupBox();
+            this.btnOrdenes = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.adminGroup.SuspendLayout();
@@ -115,15 +116,15 @@
             this.btnOfertaForm.UseVisualStyleBackColor = true;
             this.btnOfertaForm.Click += new System.EventHandler(this.btnOfertaForm_Click);
             // 
-            // btnOrdenes
+            // btnWallet
             // 
-            this.btnOrdenes.Location = new System.Drawing.Point(434, 24);
-            this.btnOrdenes.Name = "btnOrdenes";
-            this.btnOrdenes.Size = new System.Drawing.Size(89, 23);
-            this.btnOrdenes.TabIndex = 8;
-            this.btnOrdenes.Text = "Ordenes";
-            this.btnOrdenes.UseVisualStyleBackColor = true;
-            this.btnOrdenes.Click += new System.EventHandler(this.btnOrdenes_Click);
+            this.btnWallet.Location = new System.Drawing.Point(434, 24);
+            this.btnWallet.Name = "btnWallet";
+            this.btnWallet.Size = new System.Drawing.Size(89, 23);
+            this.btnWallet.TabIndex = 8;
+            this.btnWallet.Text = "Balance";
+            this.btnWallet.UseVisualStyleBackColor = true;
+            this.btnWallet.Click += new System.EventHandler(this.btnWallet_Click_1);
             // 
             // btnDemandaForm
             // 
@@ -147,6 +148,7 @@
             // 
             // adminGroup
             // 
+            this.adminGroup.Controls.Add(this.btnOrdenes);
             this.adminGroup.Controls.Add(this.btnCategorias);
             this.adminGroup.Controls.Add(this.btnEstado);
             this.adminGroup.Controls.Add(this.btnUsuarios);
@@ -156,6 +158,16 @@
             this.adminGroup.TabIndex = 12;
             this.adminGroup.TabStop = false;
             this.adminGroup.Text = "Admininistracion";
+            // 
+            // btnOrdenes
+            // 
+            this.btnOrdenes.Location = new System.Drawing.Point(319, 31);
+            this.btnOrdenes.Name = "btnOrdenes";
+            this.btnOrdenes.Size = new System.Drawing.Size(89, 23);
+            this.btnOrdenes.TabIndex = 14;
+            this.btnOrdenes.Text = "Ordenes";
+            this.btnOrdenes.UseVisualStyleBackColor = true;
+            this.btnOrdenes.Click += new System.EventHandler(this.btnOrdenes_Click);
             // 
             // label1
             // 
@@ -187,7 +199,7 @@
             this.Controls.Add(this.adminGroup);
             this.Controls.Add(this.btnPerfil);
             this.Controls.Add(this.btnDemandaForm);
-            this.Controls.Add(this.btnOrdenes);
+            this.Controls.Add(this.btnWallet);
             this.Controls.Add(this.btnOfertaForm);
             this.Controls.Add(this.btnTransferencia);
             this.Controls.Add(this.btnDemandas);
@@ -211,12 +223,13 @@
         private System.Windows.Forms.Button btnDemandas;
         private System.Windows.Forms.Button btnTransferencia;
         private System.Windows.Forms.Button btnOfertaForm;
-        private System.Windows.Forms.Button btnOrdenes;
+        private System.Windows.Forms.Button btnWallet;
         private System.Windows.Forms.Button btnDemandaForm;
         private System.Windows.Forms.Button btnPerfil;
         private System.Windows.Forms.GroupBox adminGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnOrdenes;
     }
 }
 
