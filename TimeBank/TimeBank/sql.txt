@@ -1,0 +1,602 @@
+﻿USE [master]
+GO
+/****** Object:  Database [BancoDeTiempo]    Script Date: 01/01/2021 21:00:24 ******/
+/**DROP DATABASE [IF EXISTS]
+  BancoDeTiempo**/
+CREATE DATABASE [BancoDeTiempo]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'BancoDeTiempo', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\BancoDeTiempo.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'BancoDeTiempo_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\BancoDeTiempo_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [BancoDeTiempo] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [BancoDeTiempo].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [BancoDeTiempo] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [BancoDeTiempo] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [BancoDeTiempo] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [BancoDeTiempo] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [BancoDeTiempo] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET RECOVERY FULL 
+GO
+ALTER DATABASE [BancoDeTiempo] SET  MULTI_USER 
+GO
+ALTER DATABASE [BancoDeTiempo] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [BancoDeTiempo] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [BancoDeTiempo] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [BancoDeTiempo] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [BancoDeTiempo] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [BancoDeTiempo] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'BancoDeTiempo', N'ON'
+GO
+ALTER DATABASE [BancoDeTiempo] SET QUERY_STORE = OFF
+GO
+USE [BancoDeTiempo]
+GO
+/****** Object:  Table [dbo].[Orden]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Orden](
+	[idOrden] [int] IDENTITY(1,1) NOT NULL,
+	[idOferta] [int] NOT NULL,
+	[idUser] [int] NULL,
+	[idEstado] [int] NOT NULL,
+ CONSTRAINT [PK_Mensaje] PRIMARY KEY CLUSTERED 
+(
+	[idOrden] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Ofertas]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Ofertas](
+	[idOferta] [int] IDENTITY(1,1) NOT NULL,
+	[Titulo] [varchar](70) NOT NULL,
+	[Descripcion] [text] NULL,
+	[Tiempo] [float] NOT NULL,
+	[fecha_ofer] [date] NOT NULL,
+	[idUser] [int] NOT NULL,
+	[idCategoria] [int] NOT NULL,
+ CONSTRAINT [PK_Ofertas] PRIMARY KEY CLUSTERED 
+(
+	[idOferta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Clientes]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Clientes](
+	[idCliente] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](30) NOT NULL,
+	[Apellidos] [varchar](50) NOT NULL,
+	[Esadmin] [bit] NOT NULL,
+	[idUser] [int] NOT NULL,
+ CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED 
+(
+	[idCliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  View [dbo].[ResumenOfertas]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[ResumenOfertas]
+AS
+SELECT        dbo.Ofertas.idOferta, dbo.Clientes.Nombre, dbo.Clientes.Apellidos, dbo.Ofertas.Titulo, dbo.Ofertas.Tiempo, dbo.Ofertas.idUser, dbo.Orden.idUser AS ou, dbo.Orden.idEstado
+FROM            dbo.Orden INNER JOIN
+                         dbo.Ofertas ON dbo.Orden.idOferta = dbo.Ofertas.idOferta INNER JOIN
+                         dbo.Clientes ON dbo.Ofertas.idUser = dbo.Clientes.idUser
+GO
+/****** Object:  Table [dbo].[Categorias]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categorias](
+	[idCat] [int] IDENTITY(1,1) NOT NULL,
+	[NombreCat] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Categorias] PRIMARY KEY CLUSTERED 
+(
+	[idCat] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Demandas]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Demandas](
+	[idDemanda] [int] IDENTITY(1,1) NOT NULL,
+	[Titulo] [varchar](70) NOT NULL,
+	[Descripcion] [text] NULL,
+	[Tiempo] [float] NOT NULL,
+	[fecha_dem] [date] NOT NULL,
+	[idUser] [int] NOT NULL,
+	[idCategoria] [int] NOT NULL,
+ CONSTRAINT [PK_Demandas] PRIMARY KEY CLUSTERED 
+(
+	[idDemanda] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Estado]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Estado](
+	[idEstado] [int] IDENTITY(1,1) NOT NULL,
+	[NombreEstado] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Estado] PRIMARY KEY CLUSTERED 
+(
+	[idEstado] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Media]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Media](
+	[idMedia] [int] IDENTITY(1,1) NOT NULL,
+	[filename] [varchar](50) NOT NULL,
+	[path] [varchar](90) NOT NULL,
+	[format] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Media] PRIMARY KEY CLUSTERED 
+(
+	[idMedia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sesiones]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sesiones](
+	[idsesion] [int] IDENTITY(1,1) NOT NULL,
+	[fecha_sesion] [date] NOT NULL,
+	[idUser] [int] NOT NULL,
+ CONSTRAINT [PK_Sesiones] PRIMARY KEY CLUSTERED 
+(
+	[idsesion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Transferencia]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Transferencia](
+	[idTransferencia] [int] IDENTITY(1,1) NOT NULL,
+	[fecha] [date] NOT NULL,
+	[comentarios] [text] NULL,
+	[idUser] [int] NOT NULL,
+ CONSTRAINT [PK_Transferencia] PRIMARY KEY CLUSTERED 
+(
+	[idTransferencia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuarios](
+	[IdUser] [int] IDENTITY(1,1) NOT NULL,
+	[Email] [varchar](70) NOT NULL,
+	[Contraseña] [varchar](50) NOT NULL,
+	[fecha_alta] [date] NOT NULL,
+ CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
+(
+	[IdUser] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Wallet]    Script Date: 01/01/2021 21:00:25 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Wallet](
+	[idWallet] [int] IDENTITY(1,1) NOT NULL,
+	[Balance] [float] NOT NULL,
+	[fecha] [date] NOT NULL,
+	[idCliente] [int] NOT NULL,
+ CONSTRAINT [PK_Wallet] PRIMARY KEY CLUSTERED 
+(
+	[idWallet] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Categorias] ON 
+
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (1, N'Albañilería')
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (2, N'Fontanería')
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (3, N'Electricidad')
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (4, N'Formación')
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (5, N'Cuidados')
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (6, N'Jardinería')
+INSERT [dbo].[Categorias] ([idCat], [NombreCat]) VALUES (7, N'Otros')
+SET IDENTITY_INSERT [dbo].[Categorias] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Clientes] ON 
+
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (18, N'Susana', N'Díaz Díaz', 0, 24)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (19, N'Sergio', N'Fernandez Perez', 1, 25)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (20, N'Samuel', N'Pérez Fernandez', 0, 26)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (21, N'Elisa', N'Sánchez Girón', 0, 27)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (22, N'Ramon', N'Gómez Sanz', 0, 28)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (23, N'Juana', N'Hernández Caumel', 0, 29)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (24, N'Felipe', N'Massa Mena', 0, 30)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (25, N'Elvira', N'Lindo Lindo', 0, 31)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (26, N'Manuel', N'García Velasco', 0, 32)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (27, N'Miguel', N'Martín Palacios', 0, 33)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (28, N'Silvia', N'Pérez Cruz', 0, 34)
+INSERT [dbo].[Clientes] ([idCliente], [Nombre], [Apellidos], [Esadmin], [idUser]) VALUES (29, N'Admin', N'Admin', 1, 35)
+SET IDENTITY_INSERT [dbo].[Clientes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Demandas] ON 
+
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (2, N'Trabajos jardinería', N'Necesito contactar con Jardinero para realizar trabajo en Madrid capital. Preferiblemente fin de semana.', 0, CAST(N'2021-01-01' AS Date), 24, 6)
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (3, N'Necesito clases de inglés', N'Necesitaría recibir clases de inglés para poder saber las expresiones básicas para viajar al Reino Unido y poder moverme sin problemas durante una semana.', 0, CAST(N'2021-01-01' AS Date), 30, 4)
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (4, N'Necesidad puntual de cuidadora personas mayores', N'Necesitaría una persona que cuidase a mi madre durante 3 horas en las que me tengo que ausentar y no ninguno de mis familiares puede hacerse cargo', 0, CAST(N'2021-01-01' AS Date), 33, 5)
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (5, N'Necesito servicio fontanería', N'Necesito que arreglen la cisterna de mi baño porque pierde agua. Me puedo acomodar a cualquier horario. Vivo en Madrid Capital.', 0, CAST(N'2021-01-01' AS Date), 31, 2)
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (6, N'Necesito albañil', N'Necesito albañil para hacer pequeña reparación en baño vivienda.', 0, CAST(N'2021-01-01' AS Date), 25, 1)
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (7, N'Necesito Electricista', N'Necesito electricista para hacer reparación en baño vivienda.', 0, CAST(N'2021-01-01' AS Date), 25, 3)
+INSERT [dbo].[Demandas] ([idDemanda], [Titulo], [Descripcion], [Tiempo], [fecha_dem], [idUser], [idCategoria]) VALUES (8, N'Necesito que cuiden de mi perro', N'Necesito que cuiden de mi perro.', 0, CAST(N'2021-01-01' AS Date), 32, 7)
+SET IDENTITY_INSERT [dbo].[Demandas] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Estado] ON 
+
+INSERT [dbo].[Estado] ([idEstado], [NombreEstado]) VALUES (1, N'Pendiente')
+INSERT [dbo].[Estado] ([idEstado], [NombreEstado]) VALUES (2, N'En_proceso')
+INSERT [dbo].[Estado] ([idEstado], [NombreEstado]) VALUES (3, N'Cerrada')
+SET IDENTITY_INSERT [dbo].[Estado] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Ofertas] ON 
+
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (7, N'Clases de inglés', N'Clases de inglés para todos los niveles. Nivel nativo, ya que he vivido 20 años en Londres.
+Sólo mañanas de martes a Jueves.', 3600, CAST(N'2021-01-01' AS Date), 24, 4)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (9, N'Servicio Electricidad', N'Ofrezco trabajos de electricista en Madrid capital y alrededores. Los fines de semana, sábados tarde y domingos mañana.', 3600, CAST(N'2021-01-01' AS Date), 30, 3)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (10, N'Servicio cuidados a personas mayores', N'Especialista en geriatría se ofrece como cuidador de personas mayores en la ciudad de Madrid para cubrir alguna necesidad puntual. Tengo más de 10 años de experiencia en este oficio.', 10800, CAST(N'2021-01-01' AS Date), 31, 5)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (11, N'Servicio Albañilería', N'Oficial albañil con más de 30 años de experiencia en el sector se ofrece para hacer reparaciones en interiores de viviendas. Preferiblemente sábados por la mañana en Madrid capital.', 14400, CAST(N'2021-01-01' AS Date), 33, 1)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (12, N'Servicio fontanería', N'Ofrezco servicio de fontanería los fines de semana por la mañana en Madrid y alrededores.', 3600, CAST(N'2021-01-01' AS Date), 28, 2)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (13, N'Servicio formación estudiantes', N'Soy profesor de instituto y me ofrezco para dar clases a jóvenes de edades entre 12 y 18 años. Matemáticas, Física. Química y dibujo técnico principalmente.', 3600, CAST(N'2021-01-01' AS Date), 25, 4)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (14, N'Servicio de cuidado de animales', N'Me ofrezco para pasear perros puntualmente.', 3600, CAST(N'2021-01-01' AS Date), 34, 7)
+INSERT [dbo].[Ofertas] ([idOferta], [Titulo], [Descripcion], [Tiempo], [fecha_ofer], [idUser], [idCategoria]) VALUES (15, N'Servicio cuidados', N'Cuido de personas mayores con dificultades para moverse.', 3600, CAST(N'2021-01-01' AS Date), 29, 5)
+SET IDENTITY_INSERT [dbo].[Ofertas] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Orden] ON 
+
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (1, 7, 30, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (2, 9, 25, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (3, 10, 33, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (4, 11, 25, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (5, 12, 31, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (6, 13, 34, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (7, 14, 32, 3)
+INSERT [dbo].[Orden] ([idOrden], [idOferta], [idUser], [idEstado]) VALUES (8, 15, 33, 3)
+SET IDENTITY_INSERT [dbo].[Orden] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Transferencia] ON 
+
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (1, CAST(N'0001-01-01' AS Date), N'El servicio ha sido muy bueno.', 24)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (2, CAST(N'2021-01-01' AS Date), N'Susana es una profesora magnífica con la que estoy aprendiendo mucho.', 30)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (3, CAST(N'2021-01-02' AS Date), N'Elvira es una gran profesional y estamos muy agradecidos por lo bien que cuido de nuestra madre.', 33)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (4, CAST(N'2021-01-02' AS Date), N'Elvira es una gran profesional y estamos muy agradecidos por lo bien que cuido de nuestra madre.', 33)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (5, CAST(N'2021-01-03' AS Date), N'El trabajo ha sido excelente y como termino pronto me ha revisado las cañerías.', 31)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (6, CAST(N'0001-01-01' AS Date), N'Es un electricista excelente.', 25)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (7, CAST(N'2021-01-01' AS Date), N'Es un albañil excelente', 25)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (8, CAST(N'0001-01-01' AS Date), N'Magnífico profesor.', 34)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (9, CAST(N'0001-01-01' AS Date), N'Es una gran amantes de los animales y cuidó muy bien de mi perro.', 32)
+INSERT [dbo].[Transferencia] ([idTransferencia], [fecha], [comentarios], [idUser]) VALUES (10, CAST(N'2021-01-09' AS Date), N'Es un gran cuidador.', 33)
+SET IDENTITY_INSERT [dbo].[Transferencia] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Usuarios] ON 
+
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (24, N'susanadi@gmail.com', N'f4fReXjSwven+MMoSbg3eA==', CAST(N'2020-12-31' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (25, N'serfer@gmail.com', N'SVnU9HDSQuw=', CAST(N'2020-12-31' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (26, N'samuper@gmail.com', N'OYiJOKirxS0=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (27, N'elisan@gmail.com', N'7md9yMgKeq4=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (28, N'ramongo@gmail.com', N'0+m0tR3cD74=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (29, N'juanher@gmail.com', N'uCMclTNio5M=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (30, N'felimasa@gmail.com', N'EMYB9ijpY9Cn+MMoSbg3eA==', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (31, N'elvilin@gmail.com', N'b1tldPjHRMk=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (32, N'mangar@gmail.com', N'XLmfz9aods8=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (33, N'mimar@gmail.com', N'rQkTBXu5fFo=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (34, N'silper@gmail.com', N'HB+cxmyL5u4=', CAST(N'2021-01-01' AS Date))
+INSERT [dbo].[Usuarios] ([IdUser], [Email], [Contraseña], [fecha_alta]) VALUES (35, N'admin@gmail.com', N'chhK5BbGw4k=', CAST(N'2021-01-01' AS Date))
+SET IDENTITY_INSERT [dbo].[Usuarios] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Wallet] ON 
+
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (11, 3597.75, CAST(N'2020-12-31' AS Date), 18)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (12, -14400, CAST(N'2020-12-31' AS Date), 19)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (13, 0, CAST(N'2021-01-01' AS Date), 20)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (14, 0, CAST(N'2021-01-01' AS Date), 21)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (15, 3600, CAST(N'2021-01-01' AS Date), 22)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (16, 3600, CAST(N'2021-01-01' AS Date), 23)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (17, 0, CAST(N'2021-01-01' AS Date), 24)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (18, 18000, CAST(N'2021-01-01' AS Date), 25)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (19, -3600, CAST(N'2021-01-01' AS Date), 26)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (20, -10800, CAST(N'2021-01-01' AS Date), 27)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (21, 0, CAST(N'2021-01-01' AS Date), 28)
+INSERT [dbo].[Wallet] ([idWallet], [Balance], [fecha], [idCliente]) VALUES (22, 0, CAST(N'2021-01-01' AS Date), 29)
+SET IDENTITY_INSERT [dbo].[Wallet] OFF
+GO
+ALTER TABLE [dbo].[Clientes]  WITH CHECK ADD  CONSTRAINT [FK_Clientes_Usuarios] FOREIGN KEY([idUser])
+REFERENCES [dbo].[Usuarios] ([IdUser])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Clientes] CHECK CONSTRAINT [FK_Clientes_Usuarios]
+GO
+ALTER TABLE [dbo].[Demandas]  WITH CHECK ADD  CONSTRAINT [FK_Demandas_Categorias] FOREIGN KEY([idCategoria])
+REFERENCES [dbo].[Categorias] ([idCat])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Demandas] CHECK CONSTRAINT [FK_Demandas_Categorias]
+GO
+ALTER TABLE [dbo].[Demandas]  WITH CHECK ADD  CONSTRAINT [FK_Demandas_Usuarios] FOREIGN KEY([idUser])
+REFERENCES [dbo].[Usuarios] ([IdUser])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Demandas] CHECK CONSTRAINT [FK_Demandas_Usuarios]
+GO
+ALTER TABLE [dbo].[Ofertas]  WITH CHECK ADD  CONSTRAINT [FK_Ofertas_Categorias] FOREIGN KEY([idCategoria])
+REFERENCES [dbo].[Categorias] ([idCat])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Ofertas] CHECK CONSTRAINT [FK_Ofertas_Categorias]
+GO
+ALTER TABLE [dbo].[Ofertas]  WITH CHECK ADD  CONSTRAINT [FK_Ofertas_Usuarios] FOREIGN KEY([idUser])
+REFERENCES [dbo].[Usuarios] ([IdUser])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Ofertas] CHECK CONSTRAINT [FK_Ofertas_Usuarios]
+GO
+ALTER TABLE [dbo].[Orden]  WITH CHECK ADD  CONSTRAINT [FK_Orden_Estado] FOREIGN KEY([idEstado])
+REFERENCES [dbo].[Estado] ([idEstado])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Orden] CHECK CONSTRAINT [FK_Orden_Estado]
+GO
+ALTER TABLE [dbo].[Orden]  WITH CHECK ADD  CONSTRAINT [FK_Orden_Ofertas] FOREIGN KEY([idOferta])
+REFERENCES [dbo].[Ofertas] ([idOferta])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Orden] CHECK CONSTRAINT [FK_Orden_Ofertas]
+GO
+ALTER TABLE [dbo].[Orden]  WITH CHECK ADD  CONSTRAINT [FK_Orden_Usuarios] FOREIGN KEY([idUser])
+REFERENCES [dbo].[Usuarios] ([IdUser])
+GO
+ALTER TABLE [dbo].[Orden] CHECK CONSTRAINT [FK_Orden_Usuarios]
+GO
+ALTER TABLE [dbo].[Sesiones]  WITH CHECK ADD  CONSTRAINT [FK_Sesiones_Usuarios] FOREIGN KEY([idUser])
+REFERENCES [dbo].[Usuarios] ([IdUser])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Sesiones] CHECK CONSTRAINT [FK_Sesiones_Usuarios]
+GO
+ALTER TABLE [dbo].[Transferencia]  WITH CHECK ADD  CONSTRAINT [FK_Transferencia_Usuarios] FOREIGN KEY([idUser])
+REFERENCES [dbo].[Usuarios] ([IdUser])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Transferencia] CHECK CONSTRAINT [FK_Transferencia_Usuarios]
+GO
+ALTER TABLE [dbo].[Wallet]  WITH CHECK ADD  CONSTRAINT [FK_Wallet_Clientes1] FOREIGN KEY([idCliente])
+REFERENCES [dbo].[Clientes] ([idCliente])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Wallet] CHECK CONSTRAINT [FK_Wallet_Clientes1]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
+Begin DesignProperties = 
+   Begin PaneConfigurations = 
+      Begin PaneConfiguration = 0
+         NumPanes = 4
+         Configuration = "(H (1[45] 4[28] 2[15] 3) )"
+      End
+      Begin PaneConfiguration = 1
+         NumPanes = 3
+         Configuration = "(H (1 [50] 4 [25] 3))"
+      End
+      Begin PaneConfiguration = 2
+         NumPanes = 3
+         Configuration = "(H (1 [50] 2 [25] 3))"
+      End
+      Begin PaneConfiguration = 3
+         NumPanes = 3
+         Configuration = "(H (4 [30] 2 [40] 3))"
+      End
+      Begin PaneConfiguration = 4
+         NumPanes = 2
+         Configuration = "(H (1 [56] 3))"
+      End
+      Begin PaneConfiguration = 5
+         NumPanes = 2
+         Configuration = "(H (2 [66] 3))"
+      End
+      Begin PaneConfiguration = 6
+         NumPanes = 2
+         Configuration = "(H (4 [50] 3))"
+      End
+      Begin PaneConfiguration = 7
+         NumPanes = 1
+         Configuration = "(V (3))"
+      End
+      Begin PaneConfiguration = 8
+         NumPanes = 3
+         Configuration = "(H (1[56] 4[18] 2) )"
+      End
+      Begin PaneConfiguration = 9
+         NumPanes = 2
+         Configuration = "(H (1 [75] 4))"
+      End
+      Begin PaneConfiguration = 10
+         NumPanes = 2
+         Configuration = "(H (1[66] 2) )"
+      End
+      Begin PaneConfiguration = 11
+         NumPanes = 2
+         Configuration = "(H (4 [60] 2))"
+      End
+      Begin PaneConfiguration = 12
+         NumPanes = 1
+         Configuration = "(H (1) )"
+      End
+      Begin PaneConfiguration = 13
+         NumPanes = 1
+         Configuration = "(V (4))"
+      End
+      Begin PaneConfiguration = 14
+         NumPanes = 1
+         Configuration = "(V (2))"
+      End
+      ActivePaneConfig = 0
+   End
+   Begin DiagramPane = 
+      Begin Origin = 
+         Top = 0
+         Left = 0
+      End
+      Begin Tables = 
+         Begin Table = "Clientes"
+            Begin Extent = 
+               Top = 42
+               Left = 2
+               Bottom = 222
+               Right = 210
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "Ofertas"
+            Begin Extent = 
+               Top = 15
+               Left = 284
+               Bottom = 232
+               Right = 492
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "Orden"
+            Begin Extent = 
+               Top = 47
+               Left = 628
+               Bottom = 215
+               Right = 836
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+      End
+   End
+   Begin SQLPane = 
+   End
+   Begin DataPane = 
+      Begin ParameterDefaults = ""
+      End
+   End
+   Begin CriteriaPane = 
+      Begin ColumnWidths = 11
+         Column = 1440
+         Alias = 900
+         Table = 1170
+         Output = 720
+         Append = 1400
+         NewValue = 1170
+         SortType = 1350
+         SortOrder = 1410
+         GroupBy = 1350
+         Filter = 1350
+         Or = 1350
+         Or = 1350
+         Or = 1350
+      End
+   End
+End
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ResumenOfertas'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ResumenOfertas'
+GO
+USE [master]
+GO
+ALTER DATABASE [BancoDeTiempo] SET  READ_WRITE 
+GO

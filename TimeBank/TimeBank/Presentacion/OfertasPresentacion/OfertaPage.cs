@@ -90,12 +90,21 @@ namespace TimeBank.Presentacion.OfertasPresentacion
         private void OfertaPage_Load(object sender, EventArgs e)
         {
             this.populateFields();
-            if (TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser != this.oferta.idUser)
+            int idUser = TimeBank.Servicios.Session.GetCurrentSession().getCurrentUser().IdUser;
+            
+            if (idUser != this.oferta.idUser)
             {
                 this.updateBtn.Visible = false;
                 this.deleteBtn.Visible = false;
             }
             else {
+                this.contratarBtn.Visible = false;
+            }
+
+            if (
+                this.oferta.Orden.FirstOrDefault() != null &&
+                this.oferta.Orden.FirstOrDefault().idUser != null
+            ) {
                 this.contratarBtn.Visible = false;
             }
         }
